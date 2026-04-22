@@ -28,6 +28,7 @@ const chChars = 'Chemical S.R.L.'.split('');
 <!-- ░░ HERO ░░ -->
 <section class="hero" id="home">
   <div class="hero-content">
+    <div class="hero-text">
 
     <!-- brand con efecto shutter -->
     <div class="shutter-brand">
@@ -115,6 +116,12 @@ const chChars = 'Chemical S.R.L.'.split('');
       <a href="#contacto" class="btn btn-ghost">Contáctanos</a>
     </div>
 
+    </div><!-- end hero-text -->
+
+    <div class="hero-visual">
+      <img src="/assets/images/hero_chemical.png" alt="Laboratorio Evolution Chemical" />
+    </div>
+
   </div>
 </section>
 
@@ -185,8 +192,36 @@ const chChars = 'Chemical S.R.L.'.split('');
 .hero-content {
   max-width: 1200px; margin: 0 auto; width: 100%;
   padding: 120px 80px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.hero-text {
   display: flex; flex-direction: column;
   gap: 32px;
+}
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: heroImgIn 1s cubic-bezier(.16,1,.3,1) .5s both;
+}
+.hero-visual img {
+  width: 100%;
+  max-width: 560px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 24px 48px rgba(11,31,58,.12));
+  animation: heroFloat 6s ease-in-out infinite;
+}
+@keyframes heroImgIn {
+  from { opacity: 0; transform: translateX(48px) scale(.96); }
+  to   { opacity: 1; transform: translateX(0)    scale(1); }
+}
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-14px); }
 }
 
 /* ─── SHUTTER BRAND ───────────────────────────────────────── */
@@ -419,7 +454,7 @@ const chChars = 'Chemical S.R.L.'.split('');
   .nav-link   { padding: 6px 9px; font-size: .78rem; }
   .nav-cta    { padding: 8px 14px; font-size: .78rem; }
   .nav-login  { padding: 7px 13px; font-size: .78rem; }
-  .hero-content { padding: 100px 40px 60px; }
+  .hero-content { padding: 100px 40px 60px; grid-template-columns: 1fr 1fr; gap: 32px; }
 }
 @media (max-width: 640px) {
   .nav-menu, .nav-actions { display: none; }
@@ -432,7 +467,13 @@ const chChars = 'Chemical S.R.L.'.split('');
     z-index: 999; justify-content: center; align-items: center; gap: 28px;
   }
   .nav-menu.open .nav-link { font-size: 1.2rem; color: var(--navy); }
-  .hero-content { padding: 88px 24px 56px; }
+  .hero-content { padding: 88px 24px 48px; grid-template-columns: 1fr; }
+  .hero-visual { animation: heroImgInMobile .9s cubic-bezier(.16,1,.3,1) .4s both; }
+  .hero-visual img { max-width: 320px; }
+  @keyframes heroImgInMobile {
+    from { opacity: 0; transform: translateY(32px) scale(.96); }
+    to   { opacity: 1; transform: translateY(0)    scale(1); }
+  }
   .shutter-text { flex-wrap: wrap; }
 }
 </style>
