@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Claude
+.claude/
+
+# Playwright snapshots
+.playwright-mcp/
+
+# Screenshots de debug
+*.png
+contacto-*.png
+navbar-*.png
+debug-*.png
+login-*.png

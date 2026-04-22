@@ -1,0 +1,276 @@
+---
+// v6
+---
+
+<section class="ct" id="contacto">
+
+  <!-- ── HEADER ──────────────────────────────────────────── -->
+  <div class="ct-header">
+    <p class="ct-eyebrow">— Contacto</p>
+    <h2>Hablemos de <em>tu proyecto</em></h2>
+    <p class="ct-sub">Respondemos en el día. Estamos en Neuquén con dos laboratorios listos para atenderte.</p>
+  </div>
+
+  <!-- ── INFO STRIP ─────────────────────────────────────── -->
+  <div class="ct-strip">
+    <div class="ct-strip-inner">
+
+      <a href="mailto:info@evolution-chemical.net" class="ct-strip-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span>info@evolution-chemical.net</span>
+      </a>
+
+      <div class="ct-strip-sep"></div>
+
+      <a href="https://wa.me/5492994867613" class="ct-strip-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.14 12a19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 3.05 1.1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.96a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+        <span>299 486 7613 · 299 452 7591</span>
+      </a>
+
+      <div class="ct-strip-sep"></div>
+
+      <div class="ct-strip-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><strong>Cutral-Có</strong> · Manuel Sabio 278</span>
+      </div>
+
+      <div class="ct-strip-sep"></div>
+
+      <div class="ct-strip-item">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span><strong>Rincón de los Sauces</strong> · Puesto Cofré s/n</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FORM ────────────────────────────────────────────── -->
+  <div class="ct-form-wrap">
+    <div class="ct-form-inner">
+
+      <form class="ct-form" name="contacto" method="POST" data-netlify="true" novalidate>
+        <div class="ct-row">
+          <div class="ct-field">
+            <label for="nombre">Nombre completo</label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Juan Pérez" />
+          </div>
+          <div class="ct-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="juan@empresa.com" />
+          </div>
+        </div>
+        <div class="ct-row">
+          <div class="ct-field">
+            <label for="telefono">Teléfono <span class="ct-opt">(opcional)</span></label>
+            <input type="tel" id="telefono" name="telefono" placeholder="+54 299 000 0000" />
+          </div>
+          <div class="ct-field">
+            <label for="asunto">Asunto</label>
+            <input type="text" id="asunto" name="asunto" placeholder="Análisis de agua" />
+          </div>
+        </div>
+        <div class="ct-field">
+          <label for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="5" required placeholder="Contanos sobre tu proyecto o consulta..."></textarea>
+        </div>
+        <div class="ct-form-footer">
+          <p class="ct-cv-note">¿Querés sumarte al equipo? <a href="mailto:info@evolution-chemical.net?subject=CV">Envianos tu CV →</a></p>
+          <button type="submit" class="ct-submit">
+            Enviar mensaje
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.ct {
+  background: var(--gray-100);
+  overflow: hidden;
+}
+
+/* ─── HEADER ──────────────────────────────────────────── */
+.ct-header {
+  text-align: center;
+  padding: 80px 80px 48px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.ct-eyebrow {
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+.ct-header h2 {
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  font-weight: 800; line-height: 1.1;
+  letter-spacing: -.03em;
+  color: var(--navy);
+  margin-bottom: 16px;
+}
+.ct-header h2 em { color: var(--orange); font-style: italic; }
+
+.ct-sub {
+  font-size: .95rem;
+  color: var(--gray-400);
+  line-height: 1.72;
+}
+
+/* ─── INFO STRIP ──────────────────────────────────────── */
+.ct-strip {
+  padding: 0 80px 52px;
+}
+
+.ct-strip-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border-top: 1px solid rgba(11,31,58,.10);
+  padding-top: 32px;
+}
+
+.ct-strip-sep {
+  width: 1px;
+  height: 20px;
+  background: rgba(11,31,58,.15);
+  flex-shrink: 0;
+  margin: 0 28px;
+}
+
+.ct-strip-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: .88rem;
+  color: var(--gray-400);
+  transition: color .2s;
+  white-space: nowrap;
+}
+.ct-strip-item svg { color: var(--orange); flex-shrink: 0; }
+a.ct-strip-item:hover { color: var(--navy); }
+.ct-strip-item span { color: var(--navy); font-weight: 500; }
+
+.ct-strip-item--sedes { flex-wrap: wrap; gap: 6px; white-space: normal; }
+.ct-strip-item--sedes span { white-space: nowrap; }
+.ct-strip-sede-sep { color: rgba(11,31,58,.25) !important; font-weight: 400 !important; }
+.ct-strip-item strong { font-weight: 600; }
+
+/* ─── FORM ────────────────────────────────────────────── */
+.ct-form-wrap {
+  background: #fff;
+  padding: 64px 80px 88px;
+}
+
+.ct-form-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.ct-form { display: flex; flex-direction: column; gap: 22px; }
+
+.ct-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.ct-field { display: flex; flex-direction: column; gap: 8px; }
+
+.ct-field label {
+  font-size: .82rem; font-weight: 600;
+  color: var(--navy); letter-spacing: .01em;
+}
+.ct-opt { font-weight: 400; color: var(--gray-400); }
+
+.ct-field input,
+.ct-field textarea {
+  background: var(--gray-50);
+  border: 1.5px solid rgba(11,31,58,.10);
+  border-radius: 10px;
+  padding: 15px 18px;
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--navy);
+  outline: none;
+  transition: border-color .2s, box-shadow .2s, background .2s;
+  resize: none;
+  width: 100%;
+}
+.ct-field input::placeholder,
+.ct-field textarea::placeholder {
+  color: rgba(11,31,58,.22);
+}
+.ct-field input:focus,
+.ct-field textarea:focus {
+  border-color: var(--orange);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(232,99,10,.09);
+}
+.ct-field textarea { min-height: 148px; padding-top: 14px; }
+
+.ct-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.ct-submit {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--orange);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 1rem; font-weight: 600;
+  padding: 16px 38px;
+  border-radius: 100px;
+  border: none; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(232,99,10,.3);
+  transition: background .2s, transform .15s, box-shadow .2s;
+  flex-shrink: 0;
+}
+.ct-submit:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(232,99,10,.45);
+}
+
+.ct-cv-note {
+  font-size: .8rem; color: var(--gray-400);
+}
+.ct-cv-note a {
+  color: var(--navy); font-weight: 600;
+  text-decoration: none;
+  transition: color .2s;
+}
+.ct-cv-note a:hover { color: var(--orange); }
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 860px) {
+  .ct-strip-inner { flex-wrap: wrap; gap: 16px; }
+  .ct-strip-sep { display: none; }
+  .ct-strip-item { flex: 0 0 auto; }
+}
+@media (max-width: 640px) {
+  .ct-header { padding: 60px 24px 36px; }
+  .ct-strip { padding: 0 24px 36px; }
+  .ct-form-wrap { padding: 48px 24px 72px; }
+  .ct-row { grid-template-columns: 1fr; }
+  .ct-form-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
+}
+</style>

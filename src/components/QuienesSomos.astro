@@ -1,0 +1,439 @@
+---
+---
+
+<section class="qs" id="quienes-somos">
+
+  <!-- ── glowing blobs background ──────────────────────── -->
+  <div class="qs-bg" aria-hidden="true">
+    <div class="qs-blob qs-blob--1"></div>
+    <div class="qs-blob qs-blob--2"></div>
+    <div class="qs-blob qs-blob--3"></div>
+  </div>
+
+  <!-- ── TOP: story + images ───────────────────────────── -->
+  <div class="qs-inner">
+
+    <!-- left: text -->
+    <div class="qs-text">
+      <p class="qs-eyebrow qs-reveal" data-dir="up">— Quiénes somos</p>
+      <h2 class="qs-reveal" data-dir="up" style="--d:.1s">
+        Más de dos décadas<br/>de <em>experiencia analítica</em>
+      </h2>
+      <p class="qs-lead qs-reveal" data-dir="up" style="--d:.2s">
+        Somos un laboratorio de análisis industriales dedicado a la realización
+        de ensayos analíticos y asesoramiento técnico, con el objetivo de
+        brindar calidad en los servicios ofrecidos, fiel reflejo de las
+        expectativas de cada cliente.
+      </p>
+      <p class="qs-body qs-reveal" data-dir="up" style="--d:.3s">
+        Evolution Chemical S.R.L. surgió del emprendimiento conjunto de sus
+        integrantes, impulsados por la visión de ofrecer un servicio acorde a
+        las necesidades de la industria petrolera. Respaldados por más de 25 años
+        de experiencia como laboratoristas y técnicos en estudio de la corrosión
+        en yacimientos petroleros, comenzamos este camino lleno de desafíos.
+      </p>
+      <p class="qs-body qs-reveal" data-dir="up" style="--d:.38s">
+        Contamos con instalaciones en <strong>Cutral-Có</strong> y
+        <strong>Rincón de los Sauces</strong>, provincia de Neuquén, donde
+        hemos incorporado tecnología de punta e innovación continua, sumando
+        ensayos de gas y expandiendo nuestra cartera de servicios día a día.
+      </p>
+    </div>
+
+    <!-- right: images -->
+    <div class="qs-media qs-reveal" data-dir="right">
+
+      <!-- imagen principal con stats overlay -->
+      <div class="qs-img-main">
+        <img src="/assets/images/resource/about-1.jpg" alt="Laboratorio Evolution Chemical" loading="lazy" />
+        <div class="qs-img-fade"></div>
+        <div class="qs-overlay-stats">
+          <div class="qs-ostat">
+            <span class="qs-ostat-n">+25</span>
+            <span class="qs-ostat-l">Años<br/>en el rubro</span>
+          </div>
+          <div class="qs-ostat-sep"></div>
+          <div class="qs-ostat">
+            <span class="qs-ostat-n">2</span>
+            <span class="qs-ostat-l">Sedes en<br/>Neuquén</span>
+          </div>
+          <div class="qs-ostat-sep"></div>
+          <div class="qs-ostat">
+            <span class="qs-ostat-n">ISO</span>
+            <span class="qs-ostat-l">9001:2015<br/>Certificado</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- fila inferior: imagen secundaria + tarjeta highlight -->
+      <div class="qs-media-row">
+        <div class="qs-img-sec">
+          <img src="/assets/images/resource/about-3.jpg" alt="Análisis en campo" loading="lazy" />
+        </div>
+        <div class="qs-img-sec qs-img-sec--alt">
+          <img src="/assets/images/service/service-5.jpg" alt="Equipamiento analítico" loading="lazy" />
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ── BOTTOM: misión / visión / equipo ──────────────── -->
+  <div class="qs-pillars">
+    <div class="qs-pillars-inner">
+
+      <div class="qs-pillar qs-reveal" data-dir="up" style="--d:0s">
+        <span class="qs-pillar-tag">Misión</span>
+        <p class="qs-pillar-body">Brindar servicios analíticos de alta calidad y resultados confiables, legalmente defendibles y oportunos, a un precio competitivo, utilizando la mejor tecnología disponible.</p>
+      </div>
+
+      <div class="qs-pillar-sep" aria-hidden="true"></div>
+
+      <div class="qs-pillar qs-reveal" data-dir="up" style="--d:.1s">
+        <span class="qs-pillar-tag">Visión</span>
+        <p class="qs-pillar-body">Ser el laboratorio de referencia de la Patagonia, reconocido por la precisión de nuestros análisis, la velocidad de respuesta y el asesoramiento técnico que acompaña cada resultado.</p>
+      </div>
+
+      <div class="qs-pillar-sep" aria-hidden="true"></div>
+
+      <div class="qs-pillar qs-reveal" data-dir="up" style="--d:.2s">
+        <span class="qs-pillar-tag">Equipo</span>
+        <p class="qs-pillar-body">Profesionales con décadas de experiencia en la industria petrolera de Neuquén, comprometidos con la excelencia técnica y la mejora continua en cada análisis.</p>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<style>
+
+/* ─── SECTION ─────────────────────────────────────── */
+.qs {
+  background: var(--gray-100);
+  padding: 110px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── BLOBS ───────────────────────────────────────── */
+.qs-bg {
+  position: absolute; inset: 0;
+  pointer-events: none; overflow: hidden;
+}
+.qs-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+}
+.qs-blob--1 {
+  width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(232,99,10,.10), transparent 70%);
+  top: -160px; left: -120px;
+  animation: blobDrift 22s ease-in-out infinite;
+}
+.qs-blob--2 {
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(37,99,235,.09), transparent 70%);
+  top: 20%; right: -100px;
+  animation: blobDrift 28s ease-in-out infinite reverse;
+  animation-delay: -9s;
+}
+.qs-blob--3 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(27,79,140,.10), transparent 70%);
+  bottom: 0; left: 35%;
+  animation: blobDrift 20s ease-in-out infinite;
+  animation-delay: -14s;
+}
+@keyframes blobDrift {
+  0%, 100% { transform: translate(0,    0)    scale(1);    }
+  33%       { transform: translate(28px, -22px) scale(1.06); }
+  66%       { transform: translate(-18px, 26px) scale(0.95); }
+}
+
+/* ─── INNER (story + images) ──────────────────────── */
+.qs-inner {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 80px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: stretch;
+  position: relative;
+}
+
+/* ─── TEXT ────────────────────────────────────────── */
+.qs-eyebrow {
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--orange); margin-bottom: 20px;
+}
+.qs-text h2 {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800; line-height: 1.12;
+  letter-spacing: -.03em; color: var(--navy);
+  margin-bottom: 28px;
+}
+.qs-text h2 em { color: var(--orange); font-style: italic; }
+.qs-lead {
+  font-size: 1.05rem;
+  color: var(--gray-600);
+  line-height: 1.72;
+  margin-bottom: 20px;
+}
+.qs-body {
+  font-size: .92rem;
+  color: var(--gray-600);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.qs-body strong { color: var(--navy); font-weight: 600; }
+
+/* ─── MEDIA (lado derecho) ────────────────────────── */
+.qs-media {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-self: stretch;
+}
+
+.qs-img-main {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  flex: 1;
+  min-height: 280px;
+}
+
+.qs-img-main img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transform: scale(1.04);
+  transition: transform 6s ease;
+}
+.qs-img-main:hover img { transform: scale(1.0); }
+
+.qs-img-fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, transparent 35%, rgba(11,31,58,.78) 100%);
+}
+
+/* stats overlay sobre la imagen */
+.qs-overlay-stats {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 26px;
+}
+
+.qs-ostat {
+  display: flex; flex-direction: column; gap: 3px;
+}
+
+.qs-ostat-n {
+  font-size: 1.55rem; font-weight: 900;
+  color: #fff; letter-spacing: -.04em; line-height: 1;
+}
+
+.qs-ostat-l {
+  font-size: .6rem; font-weight: 600;
+  color: rgba(255,255,255,.55);
+  text-transform: uppercase; letter-spacing: .07em;
+  line-height: 1.45;
+}
+
+.qs-ostat-sep {
+  width: 1px; height: 34px;
+  background: rgba(255,255,255,.18);
+  flex-shrink: 0;
+}
+
+/* fila inferior */
+.qs-media-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  height: 185px;
+}
+
+.qs-img-sec {
+  border-radius: 14px;
+  overflow: hidden;
+}
+.qs-img-sec img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transform: scale(1.06);
+  transition: transform 5s ease;
+}
+.qs-img-sec:hover img { transform: scale(1.0); }
+
+/* tarjeta highlight */
+.qs-highlight {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 22px 20px 20px;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+}
+
+.qs-highlight::before {
+  content: '';
+  position: absolute;
+  bottom: -40px; right: -40px;
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232,99,10,.25), transparent 70%);
+  pointer-events: none;
+}
+
+.qs-highlight-top {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.qs-highlight-since {
+  font-size: .6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em;
+  color: var(--orange);
+  background: rgba(232,99,10,.12);
+  border: 1px solid rgba(232,99,10,.2);
+  border-radius: 100px;
+  padding: 3px 10px;
+}
+
+.qs-highlight-num {
+  font-size: 3rem; font-weight: 900;
+  color: #fff;
+  letter-spacing: -.06em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.qs-highlight-label {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.qs-highlight-años {
+  font-size: .85rem; font-weight: 700;
+  color: var(--orange);
+  letter-spacing: -.01em;
+}
+
+.qs-highlight-desc {
+  font-size: .72rem; font-weight: 400;
+  color: rgba(255,255,255,.45);
+  line-height: 1.5;
+}
+
+.qs-highlight-bar {
+  margin-top: 14px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--orange), transparent);
+}
+
+/* ─── PILLARS (misión / visión / equipo) ──────────── */
+.qs-pillars {
+  border-top: 1px solid rgba(11,31,58,.08);
+}
+.qs-pillars-inner {
+  max-width: 1140px; margin: 0 auto;
+  padding: 64px 80px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  gap: 0 48px;
+  align-items: start;
+}
+
+.qs-pillar-sep {
+  background: rgba(11,31,58,.10);
+  height: 100%;
+  min-height: 120px;
+}
+
+.qs-pillar {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.qs-pillar-tag {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+.qs-pillar-body {
+  font-size: .95rem;
+  color: var(--gray-600);
+  line-height: 1.82;
+}
+
+/* ─── REVEAL ──────────────────────────────────────── */
+.qs-reveal {
+  opacity: 0;
+  transition:
+    opacity .75s cubic-bezier(0.16,1,0.3,1),
+    transform .75s cubic-bezier(0.16,1,0.3,1);
+  transition-delay: var(--d, 0s);
+}
+.qs-reveal[data-dir="up"]    { transform: translateY(40px); }
+.qs-reveal[data-dir="right"] { transform: translateX(60px); }
+.qs-reveal.in { opacity: 1; transform: translate(0); }
+
+/* ─── RESPONSIVE ──────────────────────────────────── */
+@media (max-width: 960px) {
+  .qs-inner {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding-bottom: 72px;
+  }
+  .qs-media { min-height: 480px; }
+  .qs-media-row { height: 160px; }
+  .qs-pillars-inner {
+    grid-template-columns: 1fr;
+    padding: 48px 40px 60px;
+  }
+  .qs-pillar-sep {
+    min-height: 1px; height: 1px; width: 100%;
+    background: rgba(11,31,58,.08);
+  }
+  .qs-pillar { padding: 24px 0; }
+}
+@media (max-width: 640px) {
+  .qs { padding: 72px 0 0; }
+  .qs-inner { padding: 0 24px 56px; }
+  .qs-text h2 { font-size: 1.9rem; }
+  .qs-lead { font-size: .95rem; }
+  .qs-body { font-size: .86rem; }
+  .qs-media-row { grid-template-columns: 1fr; height: auto; }
+  .qs-img-sec { height: 160px; }
+  .qs-highlight { min-height: 140px; }
+  .qs-pillars-inner { padding: 36px 24px 52px; }
+}
+</style>
+
+<script>
+const ioQs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    (entry.target as HTMLElement).classList.add('in');
+    ioQs.unobserve(entry.target);
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.qs-reveal').forEach(el => ioQs.observe(el));
+</script>

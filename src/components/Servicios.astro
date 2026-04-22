@@ -1,0 +1,483 @@
+---
+const servicios = [
+  {
+    n: "01", cat: "Campo", color: "orange",
+    titulo: "Asistencia en Campo",
+    desc: "Visualización, interpretación y asesoramiento técnico ante problemáticas inherentes a los distintos sistemas implicados, determinando su origen y proyección.",
+    tags: ["Diagnóstico in situ", "Asesoramiento técnico"],
+    img: "/assets/images/service/service-7.jpg",
+  },
+  {
+    n: "02", cat: "Campo", color: "orange",
+    titulo: "Desarrollo en Sistema de Control",
+    desc: "Orientado al estudio de corrosión, incrustación, biocompetición y mecánica de fluidos para optimizar el rendimiento de los sistemas productivos.",
+    tags: ["Corrosión", "Incrustación", "Biocompetición", "Fluidos"],
+    img: "/assets/images/service/service-8.jpg",
+  },
+  {
+    n: "03", cat: "Campo", color: "orange",
+    titulo: "Monitoreo y Muestreo en Instalaciones",
+    desc: "Plantas de tratamiento de crudo, agua, gas y pozos petroleros. Cobertura integral de todas las instalaciones de producción.",
+    tags: ["Crudo", "Agua", "Gas", "Pozos petroleros"],
+    img: "/assets/images/service/service-9.jpg",
+  },
+  {
+    n: "04", cat: "Laboratorio", color: "blue",
+    titulo: "Análisis Fisicoquímicos y Microbiológicos",
+    desc: "Análisis básico de agua, tendencia incrustante, potabilidad, gases disueltos (O₂, CO₂, SH₂), metales, sulfuros, iones, bacterias por método ATP, hidrocarburos y sólidos en suspensión.",
+    tags: ["Agua", "O₂ CO₂ SH₂", "Bacterias ATP", "Metales"],
+    img: "/assets/images/service/service-4.jpg",
+  },
+  {
+    n: "05", cat: "Laboratorio", color: "blue",
+    titulo: "Análisis de Crudo",
+    desc: "Saturados, aromáticos, resinas y asfáltenos, viscosidad, gravedad API, densidad, destilación, pour point, TAN, azufre, sales, Flash point, Cold finger y Bottle test.",
+    tags: ["Gravedad API", "Viscosidad", "Bottle test", "TAN"],
+    img: "/assets/images/service/service-5.jpg",
+  },
+  {
+    n: "06", cat: "Laboratorio", color: "blue",
+    titulo: "Análisis de Sólidos",
+    desc: "Caracterización por DRX, FX, microscopía de barrido electrónico (SEM) y granulometría de sólidos.",
+    tags: ["DRX", "FX", "SEM", "Granulometría"],
+    img: "/assets/images/service/service-6.jpg",
+  },
+  {
+    n: "07", cat: "Laboratorio", color: "blue",
+    titulo: "Calidad y Eficiencia de Productos Químicos",
+    desc: "Evaluación de inhibidores de corrosión, incrustación, biocidas, floculantes, dispersantes de parafinas, reductores de fricción, desemulsionantes y espumígenos.",
+    tags: ["Inhibidores", "Biocidas", "Floculantes", "Desemulsionantes"],
+    img: "/assets/images/service/service-10.jpg",
+  },
+  {
+    n: "08", cat: "Laboratorio", color: "blue",
+    titulo: "Análisis de Muestras Gaseosas",
+    desc: "Análisis cromatográfico y determinación de contaminantes en gas natural y asociado.",
+    tags: ["Cromatografía", "Gas natural", "Contaminantes"],
+    img: "/assets/images/service/service-11.jpg",
+  },
+];
+---
+
+<section class="srv" id="servicios">
+
+  <!-- header -->
+  <header class="srv-head">
+    <p class="srv-eyebrow">— Nuestros Servicios</p>
+    <div class="srv-head-grid">
+      <h2>Soluciones para cada<br/><em>desafío industrial</em></h2>
+      <p class="srv-sub">
+        Servicios de campo y laboratorio para la industria petrolera,
+        respaldados por más de 25 años de experiencia en la industria petrolera.
+      </p>
+    </div>
+  </header>
+
+  <!-- body -->
+  <div class="srv-body">
+
+    <!-- LEFT: sticky image panel -->
+    <div class="srv-panel" id="srvPanel">
+      <div class="srv-panel-imgs">
+        {servicios.map((s, i) => (
+          <div class={`srv-panel-img${i === 0 ? ' active' : ''}`} data-pidx={i}>
+            <img src={s.img} alt={s.titulo} loading="eager" decoding="async" />
+          </div>
+        ))}
+      </div>
+      <div class="srv-panel-overlay"></div>
+
+      <!-- bottom info -->
+      <div class="srv-panel-bottom">
+        <span class="srv-panel-cat orange" id="panelCat">Campo</span>
+        <p class="srv-panel-num" id="panelNum">01</p>
+        <p class="srv-panel-title" id="panelTitle">Asistencia en Campo</p>
+      </div>
+
+      <!-- progress dots -->
+      <div class="srv-dots" role="tablist">
+        {servicios.map((s, i) => (
+          <button
+            class={`srv-dot${i === 0 ? ' active' : ''}`}
+            data-didx={i}
+            role="tab"
+            aria-label={s.titulo}
+          ></button>
+        ))}
+      </div>
+    </div>
+
+    <!-- RIGHT: scrollable list -->
+    <div class="srv-list">
+      {servicios.map((s, i) => (
+        <div class={`srv-item${i === 0 ? ' active' : ''}`} data-idx={i}>
+          <div class="srv-item-left">
+            <span class="srv-item-n">{s.n}</span>
+            <div class="srv-item-line"></div>
+          </div>
+          <div class="srv-item-content">
+            <span class={`srv-item-cat ${s.color}`}>{s.cat}</span>
+            <h3>{s.titulo}</h3>
+            <p>{s.desc}</p>
+            <div class="srv-item-tags">
+              {s.tags.map(t => <span>{t}</span>)}
+            </div>
+          </div>
+          <div class="srv-item-arrow">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3.5 9h11M10 5l4 4-4 4"
+                stroke="currentColor" stroke-width="1.6"
+                stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+
+  <!-- cta -->
+  <div class="srv-cta">
+    <span>¿Necesitás un análisis específico?</span>
+    <a href="#contacto">
+      Consultanos
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+</section>
+
+<style>
+
+/* ─── SECTION ─────────────────────────────── */
+.srv {
+  background: #fff;
+  padding: 100px 0 80px;
+  position: relative;
+}
+
+/* ─── HEADER ──────────────────────────────── */
+.srv-head {
+  max-width: 1200px; margin: 0 auto 64px;
+  padding: 0 80px;
+}
+.srv-eyebrow {
+  font-size: .72rem; font-weight: 700;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 20px;
+}
+.srv-head-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+}
+.srv-head h2 {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800; line-height: 1.12;
+  letter-spacing: -.03em; color: var(--navy);
+}
+.srv-head h2 em { color: var(--blue); font-style: italic; }
+.srv-sub {
+  font-size: .95rem; color: var(--gray-600);
+  line-height: 1.72;
+}
+
+/* ─── BODY ────────────────────────────────── */
+.srv-body {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 80px;
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+}
+
+/* ─── LEFT PANEL ──────────────────────────── */
+.srv-panel {
+  position: sticky;
+  top: 88px;
+  width: 420px;
+  height: calc(100vh - 160px);
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--navy);
+}
+
+.srv-panel-imgs { position: absolute; inset: 0; }
+
+.srv-panel-img {
+  position: absolute; inset: 0;
+  opacity: 0;
+  transition: opacity .7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.srv-panel-img.active { opacity: 1; }
+
+.srv-panel-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  opacity: .6;
+  transform: scale(1.04);
+  transition: transform 8s ease, opacity .7s ease;
+}
+.srv-panel-img.active img { transform: scale(1); }
+
+.srv-panel-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(11,31,58,.25) 0%,
+    rgba(11,31,58,.1)  40%,
+    rgba(11,31,58,.85) 100%
+  );
+}
+
+/* panel bottom info */
+.srv-panel-bottom {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 32px 32px 36px;
+}
+.srv-panel-cat {
+  display: inline-block;
+  font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .12em;
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 10px;
+  transition: background .4s, color .4s;
+}
+.srv-panel-cat.orange { background: rgba(232,99,10,.22); color: #fb923c; }
+.srv-panel-cat.blue   { background: rgba(96,165,250,.18); color: #93c5fd; }
+
+.srv-panel-num {
+  font-size: 5.5rem; font-weight: 900;
+  letter-spacing: -.07em; line-height: .9;
+  color: rgba(255,255,255,.1);
+  margin: 0 0 -8px;
+  transition: opacity .35s ease;
+}
+.srv-panel-title {
+  font-size: 1.3rem; font-weight: 700;
+  color: #fff; line-height: 1.3;
+  transition: opacity .35s ease;
+}
+
+/* dots */
+.srv-dots {
+  position: absolute;
+  right: 14px; top: 50%;
+  transform: translateY(-50%);
+  display: flex; flex-direction: column; gap: 7px;
+}
+.srv-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(255,255,255,.28);
+  border: none; padding: 0; cursor: pointer;
+  transition: background .3s, transform .3s;
+}
+.srv-dot.active {
+  background: #fff;
+  transform: scale(1.5);
+}
+.srv-dot:hover:not(.active) { background: rgba(255,255,255,.6); }
+
+/* ─── RIGHT LIST ──────────────────────────── */
+.srv-list { flex: 1; }
+
+.srv-item {
+  display: grid;
+  grid-template-columns: 48px 1fr 28px;
+  gap: 0 24px;
+  padding: 36px 24px 36px 0;
+  border-bottom: 1px solid rgba(11,31,58,.07);
+  cursor: default;
+  align-items: start;
+  border-left: 2px solid transparent;
+  padding-left: 20px;
+  margin-left: -22px;
+  transition: border-color .4s ease, background .4s ease;
+}
+.srv-item:first-child { border-top: 1px solid rgba(11,31,58,.07); }
+.srv-item.active {
+  border-left-color: var(--orange);
+  background: linear-gradient(to right, rgba(232,99,10,.03) 0%, transparent 60%);
+}
+
+/* left column */
+.srv-item-left {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 12px;
+  padding-top: 4px;
+}
+.srv-item-n {
+  font-size: .75rem; font-weight: 800;
+  letter-spacing: .08em;
+  color: rgba(11,31,58,.2);
+  font-variant-numeric: tabular-nums;
+  transition: color .4s;
+}
+.srv-item-line {
+  width: 1.5px; flex: 1; min-height: 32px;
+  background: rgba(11,31,58,.08);
+  border-radius: 1px;
+  transition: background .4s;
+}
+.srv-item.active .srv-item-n    { color: var(--orange); }
+.srv-item.active .srv-item-line { background: rgba(232,99,10,.3); }
+
+/* content — siempre visible */
+.srv-item-content { }
+
+.srv-item-cat {
+  display: inline-block;
+  font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 10px;
+  transition: opacity .4s;
+  opacity: .55;
+}
+.srv-item-cat.orange { background: rgba(232,99,10,.08); color: var(--orange); }
+.srv-item-cat.blue   { background: rgba(27,79,140,.08);  color: var(--blue); }
+.srv-item.active .srv-item-cat { opacity: 1; }
+
+.srv-item h3 {
+  font-size: 1.35rem; font-weight: 800;
+  color: var(--navy); letter-spacing: -.025em; line-height: 1.25;
+  margin-bottom: 12px;
+  opacity: .35;
+  transition: opacity .45s ease;
+}
+.srv-item.active h3 { opacity: 1; }
+
+.srv-item p {
+  font-size: .93rem; color: var(--gray-600);
+  line-height: 1.78; margin-bottom: 16px;
+  opacity: .45;
+  transition: opacity .4s ease;
+}
+.srv-item.active p { opacity: 1; }
+
+.srv-item-tags {
+  display: flex; flex-wrap: wrap; gap: 6px;
+}
+.srv-item-tags span {
+  font-size: .67rem; font-weight: 600;
+  padding: 4px 11px; border-radius: 100px;
+  background: rgba(11,31,58,.04);
+  border: 1px solid rgba(11,31,58,.08);
+  color: var(--gray-600);
+  opacity: .5;
+  transition: opacity .4s;
+}
+.srv-item.active .srv-item-tags span { opacity: 1; }
+
+/* arrow */
+.srv-item-arrow {
+  padding-top: 6px;
+  color: rgba(11,31,58,.15);
+  transition: color .35s, transform .35s;
+}
+.srv-item.active .srv-item-arrow {
+  color: var(--orange);
+  transform: translateX(3px);
+}
+
+/* ─── CTA ─────────────────────────────────── */
+.srv-cta {
+  max-width: 1200px; margin: 60px auto 0;
+  padding: 36px 80px 0;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(11,31,58,.07);
+}
+.srv-cta span {
+  font-size: 1.1rem; font-weight: 600; color: var(--navy);
+}
+.srv-cta a {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .9rem; font-weight: 600;
+  color: #fff; background: var(--blue);
+  padding: 12px 24px; border-radius: 100px;
+  box-shadow: 0 4px 16px rgba(27,79,140,.25);
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.srv-cta a:hover {
+  background: var(--navy-mid);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(27,79,140,.35);
+}
+
+/* ─── RESPONSIVE ──────────────────────────── */
+@media (max-width: 960px) {
+  .srv-body     { flex-direction: column; padding: 0 24px; gap: 0; }
+  .srv-panel    { position: relative; top: 0; width: 100%; height: 300px; margin-bottom: 8px; }
+  .srv-head, .srv-cta { padding: 0 24px; }
+  .srv-head-grid { grid-template-columns: 1fr; }
+  .srv-dots { display: none; }
+}
+@media (max-width: 600px) {
+  .srv { padding: 64px 0 56px; }
+  .srv-head { margin-bottom: 40px; }
+  .srv-item { grid-template-columns: 32px 1fr 24px; gap: 0 14px; }
+  .srv-item h3 { font-size: 1.1rem; }
+  .srv-item p  { font-size: .86rem; }
+  .srv-cta { flex-direction: column; gap: 20px; text-align: center; }
+  .srv-cta span { font-size: .95rem; }
+}
+</style>
+
+<script>
+const panelImgs  = document.querySelectorAll<HTMLElement>('.srv-panel-img');
+const panelCat   = document.getElementById('panelCat')!;
+const panelNum   = document.getElementById('panelNum')!;
+const panelTitle = document.getElementById('panelTitle')!;
+const items      = document.querySelectorAll<HTMLElement>('.srv-item');
+const dots       = document.querySelectorAll<HTMLElement>('.srv-dot');
+
+let current = 0;
+
+function setActive(idx: number) {
+  if (idx === current && document.querySelector('.srv-item.active')) return;
+  current = idx;
+
+  /* items + dots */
+  items.forEach((it, i) => it.classList.toggle('active', i === idx));
+  dots.forEach((d,  i) => d.classList.toggle('active',  i === idx));
+
+  /* panel image */
+  panelImgs.forEach((img, i) => img.classList.toggle('active', i === idx));
+
+  /* panel text — read from DOM */
+  const item   = items[idx];
+  const catEl  = item.querySelector('.srv-item-cat')!;
+  const h3     = item.querySelector('h3')!;
+  const numTxt = item.querySelector('.srv-item-n')!.textContent ?? '01';
+
+  panelNum.textContent   = numTxt;
+  panelTitle.textContent = h3.textContent ?? '';
+  panelCat.textContent   = catEl.textContent ?? '';
+  panelCat.className     = `srv-panel-cat ${catEl.classList.contains('orange') ? 'orange' : 'blue'}`;
+}
+
+/* dot clicks → scroll to item */
+dots.forEach((dot, i) => {
+  dot.addEventListener('click', () => {
+    items[i].scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+});
+
+/* IO: detect active item in center band of viewport */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      setActive(parseInt((entry.target as HTMLElement).dataset.idx ?? '0'));
+    }
+  });
+}, { threshold: 0, rootMargin: '-38% 0px -38% 0px' });
+
+items.forEach(item => io.observe(item));
+setActive(0);
+</script>

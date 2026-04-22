@@ -1,0 +1,474 @@
+---
+const evChars = 'EVOLUTION'.split('');
+const chChars = 'Chemical S.R.L.'.split('');
+---
+
+<!-- ░░ NAVBAR ░░ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/assets/images/logo-2.png" alt="Evolution Chemical SRL" height="46" />
+    </a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#home"           class="nav-link">Home</a></li>
+      <li><a href="#quienes-somos"  class="nav-link">Quiénes somos</a></li>
+      <li><a href="#servicios"      class="nav-link">Nuestros Servicios</a></li>
+      <li><a href="#contacto"       class="nav-link">Contacto</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#contacto" class="nav-cta">Contáctanos</a>
+      <a href="/login" class="nav-login">Ingresar</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ░░ HERO ░░ -->
+<section class="hero" id="home">
+  <div class="hero-content">
+
+    <!-- brand con efecto shutter -->
+    <div class="shutter-brand">
+
+        <div class="shutter-text" id="evolutionText">
+          {evChars.map((char, i) => (
+            <div class="shutter-char" style={`--i:${i}`}>
+              <span class="char-main">{char}</span>
+              <span class="char-slice char-slice--top">{char}</span>
+              <span class="char-slice char-slice--mid">{char}</span>
+              <span class="char-slice char-slice--bot">{char}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="shutter-text shutter-text--sub" id="chemicalText">
+          {chChars.map((char, i) => (
+            <div class="shutter-char" style={`--i:${i}`}>
+              <span class="char-main">{char === ' ' ? '\u00A0' : char}</span>
+              <span class="char-slice char-slice--top">{char === ' ' ? '\u00A0' : char}</span>
+              <span class="char-slice char-slice--mid">{char === ' ' ? '\u00A0' : char}</span>
+              <span class="char-slice char-slice--bot">{char === ' ' ? '\u00A0' : char}</span>
+            </div>
+          ))}
+        </div>
+
+      </div>
+
+    <!-- separador + cert -->
+    <div class="hero-meta anim-fade" style="--d:.2s">
+      <span class="cert-dot"></span>
+      Certificado ISO 9001:2015
+    </div>
+
+    <!-- descripción -->
+    <p class="hero-desc anim-fade" style="--d:.4s">
+      Laboratorio de Análisis Industriales de Alta Calidad.<br/>
+      Más de 25 años brindando servicios analíticos confiables y legalmente
+      defendibles para la industria petrolera de Neuquén.
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-ctas anim-fade" style="--d:.6s">
+
+      <!-- Glow Button -->
+      <a href="#servicios" class="glow-btn" aria-label="Nuestros Servicios">
+        <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+          <filter width="300%" x="-100%" height="300%" y="-100%" id="gb-f1">
+            <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 9 0"/>
+          </filter>
+          <filter width="300%" x="-100%" height="300%" y="-100%" id="gb-f2">
+            <feColorMatrix values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 3 0"/>
+          </filter>
+          <filter width="300%" x="-100%" height="300%" y="-100%" id="gb-f3">
+            <feColorMatrix values="1 0 0 0.2 0 0 1 0 0.2 0 0 0 1 0.2 0 0 0 0 2 0"/>
+          </filter>
+        </svg>
+
+        <!-- outer glow -->
+        <div class="gb-glow gb-glow--outer">
+          <div class="gb-spin" style="background:linear-gradient(90deg,#f50 30%,#0000 50%,#05f 70%)"></div>
+        </div>
+        <!-- mid glow -->
+        <div class="gb-glow gb-glow--mid">
+          <div class="gb-spin" style="background:linear-gradient(90deg,#f95 20%,#0000 45%,#0000 55%,#59f 80%)"></div>
+        </div>
+
+        <!-- border shell -->
+        <div class="gb-shell">
+          <!-- inner glow -->
+          <div class="gb-glow gb-glow--inner">
+            <div class="gb-spin" style="background:linear-gradient(90deg,#fc9 30%,#0000 45%,#0000 55%,#9cf 70%)"></div>
+          </div>
+          <!-- surface -->
+          <div class="gb-surface">
+            Nuestros Servicios
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8"
+                    stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="#contacto" class="btn btn-ghost">Contáctanos</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ░░ STYLES ░░ -->
+<style>
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(11,31,58,.07);
+  transition: box-shadow .3s ease;
+}
+.navbar.scrolled { box-shadow: 0 2px 16px rgba(11,31,58,.08); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  padding: 0 32px; height: 72px;
+  display: flex; align-items: center; gap: 36px;
+}
+.nav-logo img { height: 46px; width: auto; object-fit: contain; }
+.nav-menu { display: flex; align-items: center; gap: 2px; margin-left: auto; }
+.nav-link {
+  font-size: .85rem; font-weight: 500; color: var(--navy);
+  padding: 7px 13px; border-radius: 8px;
+  transition: color .2s, background .2s;
+}
+.nav-link:hover { color: var(--blue); background: rgba(37,99,235,.06); }
+.nav-actions {
+  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+}
+.nav-cta {
+  flex-shrink: 0; font-size: .85rem; font-weight: 600;
+  color: #fff; background: var(--orange);
+  padding: 9px 20px; border-radius: 100px;
+  transition: background .2s, transform .2s;
+}
+.nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+.nav-login {
+  flex-shrink: 0; font-size: .85rem; font-weight: 600;
+  color: var(--navy); background: transparent;
+  border: 1.5px solid rgba(11,31,58,.18);
+  padding: 8px 18px; border-radius: 100px;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.nav-login:hover {
+  border-color: var(--navy);
+  background: rgba(11,31,58,.05);
+  transform: translateY(-1px);
+}
+.hamburger {
+  display: none; flex-direction: column; gap: 5px;
+  padding: 4px; margin-left: auto;
+}
+.hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--navy); border-radius: 2px; transition: .3s ease;
+}
+
+/* ─── HERO ────────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: #fff;
+  display: flex;
+  align-items: center;
+}
+.hero-content {
+  max-width: 1200px; margin: 0 auto; width: 100%;
+  padding: 120px 80px 80px;
+  display: flex; flex-direction: column;
+  gap: 32px;
+}
+
+/* ─── SHUTTER BRAND ───────────────────────────────────────── */
+.shutter-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.shutter-text {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  font-size: clamp(44px, 7.5vw, 96px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+.shutter-text--sub {
+  font-size: clamp(20px, 3.5vw, 46px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.shutter-char {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  line-height: 1;
+}
+
+/* texto principal — empieza invisible con blur */
+.char-main {
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 0;
+  line-height: 1;
+  color: #1d4ed8;
+  opacity: 0;
+  filter: blur(10px);
+  user-select: none;
+}
+.shutter-text--sub .char-main {
+  color: var(--navy);
+}
+
+/* slices — absolutas, solo visibles durante la animación */
+.char-slice {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: block;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: 0;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.char-slice--top { color: #2563eb; clip-path: polygon(0 0,   100% 0,   100% 35%, 0 35%); }
+.char-slice--mid { color: #1e40af; clip-path: polygon(0 35%, 100% 35%, 100% 65%, 0 65%); }
+.char-slice--bot { color: #60a5fa; clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%); }
+
+.shutter-text--sub .char-slice--top { color: #3b82f6; }
+.shutter-text--sub .char-slice--mid { color: var(--navy); }
+.shutter-text--sub .char-slice--bot { color: #3b82f6; }
+
+/* ── animaciones — activan con .shutter-ready ── */
+.shutter-ready .char-main {
+  animation: char-blur-in 0.85s ease forwards;
+  animation-delay: calc(var(--i) * 45ms + 280ms);
+}
+.shutter-ready .char-slice--top {
+  animation: shutter-ltr 0.65s ease-in-out forwards;
+  animation-delay: calc(var(--i) * 45ms);
+}
+.shutter-ready .char-slice--mid {
+  animation: shutter-rtl 0.65s ease-in-out forwards;
+  animation-delay: calc(var(--i) * 45ms + 90ms);
+}
+.shutter-ready .char-slice--bot {
+  animation: shutter-ltr 0.65s ease-in-out forwards;
+  animation-delay: calc(var(--i) * 45ms + 180ms);
+}
+
+@keyframes char-blur-in {
+  from { opacity: 0; filter: blur(10px); }
+  to   { opacity: 1; filter: blur(0px);  }
+}
+@keyframes shutter-ltr {
+  0%   { transform: translateX(-100%); opacity: 0; }
+  18%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { transform: translateX(100%);  opacity: 0; }
+}
+@keyframes shutter-rtl {
+  0%   { transform: translateX(100%);  opacity: 0; }
+  18%  { opacity: 1; }
+  82%  { opacity: 1; }
+  100% { transform: translateX(-100%); opacity: 0; }
+}
+
+/* ─── META / CERT ─────────────────────────────────────────── */
+.hero-meta {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-size: .78rem; font-weight: 600;
+  letter-spacing: .05em; text-transform: uppercase;
+  color: var(--gray-400);
+  border-top: 1px solid rgba(11,31,58,.09);
+  padding-top: 24px;
+}
+.cert-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--orange); flex-shrink: 0;
+}
+
+/* ─── DESCRIPTION ─────────────────────────────────────────── */
+.hero-desc {
+  font-size: 1.05rem; color: var(--gray-600);
+  line-height: 1.78; max-width: 520px;
+}
+
+/* ─── CTAs ────────────────────────────────────────────────── */
+.hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .9rem; font-weight: 600;
+  padding: 13px 26px; border-radius: 100px;
+  border: 2px solid transparent;
+  transition: transform .25s, box-shadow .25s, background .25s, color .25s;
+  cursor: pointer;
+}
+.btn-ghost {
+  background: transparent; color: var(--navy);
+  border-color: rgba(11,31,58,.2);
+}
+.btn-ghost:hover { background: rgba(11,31,58,.04); border-color: rgba(11,31,58,.35); }
+
+/* ─── FADE-UP (cert / desc / ctas) ───────────────────────── */
+.anim-fade {
+  opacity: 0;
+  animation: fadeUp .7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--d, 0s);
+  animation-play-state: paused;
+}
+.anims-ready .anim-fade { animation-play-state: running; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── GLOW BUTTON ────────────────────────────────────────── */
+.glow-btn {
+  position: relative;
+  display: inline-flex;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* shared glow layer */
+.gb-glow {
+  position: absolute;
+  overflow: hidden;
+  border-radius: 100px;
+  opacity: .22;
+  transition: opacity .3s;
+  pointer-events: none;
+}
+.glow-btn:hover .gb-glow   { opacity: .55; }
+.glow-btn:active .gb-glow  { opacity: .8;  }
+
+.gb-glow--outer {
+  inset: -1px; z-index: -2;
+  filter: blur(3px) url(#gb-f1);
+}
+.gb-glow--mid {
+  inset: -1px; z-index: -2;
+  filter: blur(1px) url(#gb-f2);
+}
+.gb-glow--inner {
+  inset: -1px; z-index: -1;
+  filter: blur(1px) url(#gb-f3);
+}
+
+/* rotating gradient — animates on hover */
+.gb-spin {
+  position: absolute;
+  inset: -150%;
+}
+.glow-btn:hover .gb-spin {
+  animation: gb-speen 8s cubic-bezier(.56,.15,.28,.86) infinite;
+}
+
+/* border shell */
+.gb-shell {
+  position: relative;
+  padding: 2px;
+  background: rgba(0,0,0,.25);
+  border-radius: 100px;
+}
+
+/* button surface */
+.gb-surface {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  border-radius: 100px;
+  background: #111215;
+  color: #fff;
+  font-size: .9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  letter-spacing: .01em;
+}
+
+@keyframes gb-speen {
+  0%   { transform: rotate(10deg);  }
+  50%  { transform: rotate(190deg); }
+  100% { transform: rotate(370deg); }
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav-inner  { gap: 12px; padding: 0 20px; }
+  .nav-link   { padding: 6px 9px; font-size: .78rem; }
+  .nav-cta    { padding: 8px 14px; font-size: .78rem; }
+  .nav-login  { padding: 7px 13px; font-size: .78rem; }
+  .hero-content { padding: 100px 40px 60px; }
+}
+@media (max-width: 640px) {
+  .nav-menu, .nav-actions { display: none; }
+  .hamburger { display: flex; }
+  .nav-menu.open {
+    display: flex; flex-direction: column;
+    position: fixed; inset: 0;
+    background: rgba(255,255,255,.97);
+    backdrop-filter: blur(20px);
+    z-index: 999; justify-content: center; align-items: center; gap: 28px;
+  }
+  .nav-menu.open .nav-link { font-size: 1.2rem; color: var(--navy); }
+  .hero-content { padding: 88px 24px 56px; }
+  .shutter-text { flex-wrap: wrap; }
+}
+</style>
+
+<!-- ░░ SCRIPTS ░░ -->
+<script>
+/* ── Navbar scroll ─────────────────────────────────── */
+const navbar = document.getElementById('navbar')!;
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+/* ── Hamburger ─────────────────────────────────────── */
+const hamburgerBtn = document.getElementById('hamburger')!;
+const navMenuEl    = document.getElementById('navMenu')!;
+hamburgerBtn.addEventListener('click', () => {
+  const open = navMenuEl.classList.toggle('open');
+  hamburgerBtn.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+navMenuEl.querySelectorAll('.nav-link').forEach(l => l.addEventListener('click', () => {
+  navMenuEl.classList.remove('open');
+  hamburgerBtn.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}));
+
+/* ── Animaciones del hero ───────────────────────────── */
+document.querySelector('.hero-content')!.classList.add('anims-ready');
+
+/* ── Shutter: agrega .shutter-ready para disparar CSS ─ */
+const evText = document.getElementById('evolutionText');
+const chText = document.getElementById('chemicalText');
+
+// rAF asegura que los estilos están calculados antes de la animación
+requestAnimationFrame(() => {
+  evText?.classList.add('shutter-ready');
+  setTimeout(() => chText?.classList.add('shutter-ready'), 550);
+});
+</script>
