@@ -27,6 +27,20 @@ const servicios = [
     desc: "Análisis básico de agua, tendencia incrustante, potabilidad, gases disueltos (O₂, CO₂, SH₂), metales, sulfuros, iones, bacterias por método ATP, hidrocarburos y sólidos en suspensión.",
     tags: ["Agua", "O₂ CO₂ SH₂", "Bacterias ATP", "Metales"],
     img: "/assets/images/service/service-4.jpg",
+    detalles: [
+      "Análisis básico de agua",
+      "Análisis de tendencia incrustante, compatibilidad de aguas",
+      "Análisis de potabilidad y microbiológico bajo el código alimentario argentino",
+      "Determinación de gases disueltos en agua: O₂, CO₂, SH₂",
+      "Metales por absorción atómica",
+      "Determinación de Sulfuros totales y disueltos",
+      "Determinación iones específicos bajo normativa inherente",
+      "Determinación de residuales y eficiencia de productos químicos",
+      "Determinación de bacterias por método ATP, extinción o cultivo",
+      "Determinación de HC por espectrofotómetro o IR",
+      "Tamaño de distribución de partículas",
+      "Determinación de sólidos en suspensión, índice de taponamiento"
+    ]
   },
   {
     n: "05", cat: "Laboratorio", color: "blue",
@@ -34,6 +48,28 @@ const servicios = [
     desc: "Saturados, aromáticos, resinas y asfáltenos, viscosidad, gravedad API, densidad, destilación, pour point, TAN, azufre, sales, Flash point, Cold finger y Bottle test.",
     tags: ["Gravedad API", "Viscosidad", "Bottle test", "TAN"],
     img: "/assets/images/service/service-5.jpg",
+    detalles: [
+      "Determinación de saturados, aromáticos, resinas y asfáltenos",
+      "Análisis cromatográfico líquido",
+      "Viscosidad",
+      "Índice de viscosidad",
+      "Punto de inflamación",
+      "Insolubles en pentano / Insolubles en tolueno",
+      "Contenido de humedad (KF)",
+      "Pour Point",
+      "Punto de turbidez",
+      "Densidad",
+      "Curva de destilación",
+      "Gravedad API",
+      "Determinación de %Agua y sedimentos",
+      "Determinación del número de acidez TAN",
+      "Determinación de azufre por combustión",
+      "Determinación de sales",
+      "Determinación SSFF en oil",
+      "Flash point, Cloud point",
+      "Ensayo Cold finger",
+      "Ensayos Bottle test"
+    ]
   },
   {
     n: "06", cat: "Laboratorio", color: "blue",
@@ -119,6 +155,27 @@ const servicios = [
             <span class={`srv-item-cat ${s.color}`}>{s.cat}</span>
             <h3>{s.titulo}</h3>
             <p>{s.desc}</p>
+
+            {s.detalles && (
+              <>
+                <button class="srv-item-toggle" data-service-id={i}>
+                  Ver más
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path d="M7 3v8M3 7h8" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class="srv-item-details" data-details-id={i}>
+                  <h4>Servicios incluidos:</h4>
+                  <ul>
+                    {s.detalles.map(detalle => (
+                      <li>{detalle}</li>
+                    ))}
+                  </ul>
+                </div>
+              </>
+            )}
+
             <div class="srv-item-tags">
               {s.tags.map(t => <span>{t}</span>)}
             </div>
@@ -157,6 +214,7 @@ const servicios = [
   background: #fff;
   padding: 100px 0 80px;
   position: relative;
+  z-index: 2;
 }
 
 /* ─── HEADER ──────────────────────────────── */
@@ -375,6 +433,75 @@ const servicios = [
 }
 .srv-item.active .srv-item-tags span { opacity: 1; }
 
+/* Ver más button */
+.srv-item-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  margin-bottom: 8px;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--blue);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 0;
+  transition: color .2s, transform .2s;
+}
+.srv-item-toggle:hover {
+  color: var(--orange);
+  transform: translateX(2px);
+}
+.srv-item-toggle svg {
+  transition: transform .3s ease;
+}
+.srv-item-toggle.expanded svg {
+  transform: rotate(45deg);
+}
+
+/* Details card */
+.srv-item-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s ease, opacity .4s ease, margin-top .4s ease;
+  opacity: 0;
+  margin-top: 0;
+}
+.srv-item-details.expanded {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.srv-item-details h4 {
+  font-size: .85rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+}
+.srv-item-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.srv-item-details li {
+  font-size: .78rem;
+  color: var(--gray-600);
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.5;
+}
+.srv-item-details li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+
 /* arrow */
 .srv-item-arrow {
   padding-top: 6px;
@@ -480,4 +607,37 @@ const io = new IntersectionObserver((entries) => {
 
 items.forEach(item => io.observe(item));
 setActive(0);
+
+/* Toggle details */
+document.querySelectorAll('.srv-item-toggle').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const serviceId = (button as HTMLElement).dataset.serviceId;
+    const detailsEl = document.querySelector(`[data-details-id="${serviceId}"]`) as HTMLElement;
+
+    if (detailsEl) {
+      const isExpanded = detailsEl.classList.contains('expanded');
+      detailsEl.classList.toggle('expanded');
+      button.classList.toggle('expanded');
+      button.textContent = isExpanded ? 'Ver más' : 'Ver menos';
+
+      // Re-add the icon
+      const icon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      icon.setAttribute('width', '14');
+      icon.setAttribute('height', '14');
+      icon.setAttribute('viewBox', '0 0 14 14');
+      icon.setAttribute('fill', 'none');
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', 'M7 3v8M3 7h8');
+      path.setAttribute('stroke', 'currentColor');
+      path.setAttribute('stroke-width', '2');
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-linejoin', 'round');
+
+      icon.appendChild(path);
+      button.appendChild(icon);
+    }
+  });
+});
 </script>
