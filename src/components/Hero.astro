@@ -18,7 +18,6 @@ const chChars = 'Chemical S.R.L.'.split('');
     </ul>
     <div class="nav-actions">
       <a href="#contacto" class="nav-cta">Contáctanos</a>
-      <a href="/login" class="nav-login">Ingresar</a>
     </div>
     <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -177,26 +176,6 @@ const chChars = 'Chemical S.R.L.'.split('');
   transition: background .2s, transform .2s;
 }
 .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
-.nav-login {
-  flex-shrink: 0; font-size: .85rem; font-weight: 600;
-  color: #ffffff; background: transparent;
-  border: 1.5px solid rgba(255,255,255,.3);
-  padding: 8px 18px; border-radius: 100px;
-  transition: border-color .2s, background .2s, transform .2s, color .2s;
-}
-.nav-login:hover {
-  border-color: rgba(255,255,255,.6);
-  background: rgba(255,255,255,.1);
-  transform: translateY(-1px);
-}
-.navbar.scrolled .nav-login {
-  color: var(--navy);
-  border-color: rgba(11,31,58,.18);
-}
-.navbar.scrolled .nav-login:hover {
-  border-color: var(--navy);
-  background: rgba(11,31,58,.05);
-}
 .hamburger {
   display: none; flex-direction: column; gap: 5px;
   padding: 4px; margin-left: auto;
@@ -497,7 +476,6 @@ const chChars = 'Chemical S.R.L.'.split('');
   .nav-inner  { gap: 12px; padding: 0 20px; }
   .nav-link   { padding: 6px 9px; font-size: .78rem; }
   .nav-cta    { padding: 8px 14px; font-size: .78rem; }
-  .nav-login  { padding: 7px 13px; font-size: .78rem; }
   .hero-content { padding: 100px 40px 60px; }
 }
 @media (max-width: 640px) {

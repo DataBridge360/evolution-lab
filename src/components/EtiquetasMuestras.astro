@@ -1,0 +1,1016 @@
+---
+// Generador de Etiquetas de Muestra
+---
+
+<section class="em" id="etiquetas">
+
+  <!-- ── HEADER ──────────────────────────────────────────── -->
+  <div class="em-header">
+    <p class="em-eyebrow">— Generador de Etiquetas</p>
+    <h2>Genera <em>etiquetas</em> para tus muestras</h2>
+    <p class="em-sub">Imprime etiquetas profesionales para identificar tus muestras de laboratorio</p>
+  </div>
+
+  <!-- ── FORMULARIO ──────────────────────────────────────── -->
+  <div class="em-form-section">
+    <div class="em-form-inner">
+
+      <form id="em-form" class="em-form">
+        <div class="em-row">
+          <div class="em-field">
+            <label for="cliente">Empresa solicitante <span class="em-required">*</span></label>
+            <input type="text" id="cliente" name="cliente" required placeholder="Empresa ABC S.A." />
+          </div>
+          <div class="em-field">
+            <label for="fecha">Fecha <span class="em-required">*</span></label>
+            <input type="date" id="fecha" name="fecha" required />
+          </div>
+        </div>
+
+        <div class="em-field">
+          <label>Tipo de Muestra <span class="em-required">*</span> <span class="em-req">(selecciona al menos uno)</span></label>
+          <div class="em-checkbox-group">
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Sólido" />
+              <span>Sólido</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Agua" />
+              <span>Agua</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Petróleo" />
+              <span>Petróleo</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Prod. Qco." />
+              <span>Prod. Qco.</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" id="tipo_otro" name="tipo_muestra" value="Otro" />
+              <span>Otro (especificar)</span>
+            </label>
+          </div>
+          <input
+            type="text"
+            id="tipo_otro_texto"
+            name="tipo_otro_texto"
+            placeholder="Especificar otro tipo (obligatorio)..."
+            class="em-otro-input"
+            style="display: none; margin-top: 12px;"
+          />
+        </div>
+
+        <div class="em-field">
+          <label for="mail">Contacto <span class="em-required">*</span></label>
+          <input type="email" id="mail" name="mail" required placeholder="juan@empresa.com" />
+        </div>
+
+        <div class="em-field">
+          <label for="analisis">Análisis Requerido <span class="em-required">*</span></label>
+          <textarea id="analisis" name="analisis" rows="4" required placeholder="Descripción del análisis requerido..."></textarea>
+        </div>
+
+        <div class="em-form-footer">
+          <button type="button" id="btn-generar" class="em-submit">
+            Generar Etiqueta
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- ── ETIQUETAS GENERADAS (oculta por defecto) ─────────── -->
+  <div class="em-preview" style="display: none;">
+    <div class="em-preview-inner">
+      <h3 class="em-preview-title">Etiquetas Generadas (<span id="contador-etiquetas">0</span>)</h3>
+      <p class="em-preview-hint">Puedes generar más etiquetas o imprimir todas juntas</p>
+
+      <div class="em-etiquetas-lista" id="etiquetas-lista">
+        <!-- Las etiquetas se agregan aquí dinámicamente -->
+      </div>
+
+      <div class="em-actions">
+        <button id="btn-nueva-etiqueta" class="em-btn em-btn-secondary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+          Generar Otra Etiqueta
+        </button>
+        <button id="btn-imprimir" class="em-btn em-btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+          </svg>
+          Imprimir Todas las Etiquetas
+        </button>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ░░ STYLES ░░ -->
+<style>
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.em {
+  position: relative;
+  background: var(--gray-100);
+  padding: 100px 80px;
+  z-index: 2;
+}
+
+/* ─── HEADER ──────────────────────────────────────────── */
+.em-header {
+  max-width: 960px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.em-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+.em-header h2 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.em-header h2 em {
+  color: var(--orange);
+  font-style: italic;
+}
+
+.em-sub {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── FORMULARIO ──────────────────────────────────────── */
+.em-form-section {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.em-form-inner {
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+}
+
+.em-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.em-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.em-field {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.em-field label {
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.em-required {
+  color: #dc2626;
+  font-weight: 700;
+  margin-left: 2px;
+}
+
+.em-req {
+  font-size: .75rem;
+  font-weight: 500;
+  color: var(--gray-400);
+  font-style: italic;
+}
+
+.em-field input,
+.em-field textarea {
+  font-family: var(--font);
+  font-size: .92rem;
+  color: var(--navy);
+  background: var(--gray-50);
+  border: 1.5px solid rgba(11,31,58,.10);
+  border-radius: 10px;
+  padding: 15px 18px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.em-field input::placeholder,
+.em-field textarea::placeholder {
+  color: rgba(11,31,58,.35);
+}
+
+.em-field input:focus,
+.em-field textarea:focus {
+  outline: none;
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232,99,10,.09);
+}
+
+.em-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ─── CHECKBOXES ──────────────────────────────────────── */
+.em-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.em-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: .9rem;
+  color: var(--navy);
+  font-weight: 500;
+  user-select: none;
+}
+
+.em-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--orange);
+}
+
+.em-otro-input {
+  width: 100%;
+}
+
+/* ─── BOTÓN SUBMIT ────────────────────────────────────── */
+.em-form-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+.em-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .94rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--orange);
+  border: none;
+  border-radius: 100px;
+  padding: 16px 38px;
+  cursor: pointer;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 14px rgba(232,99,10,.25);
+}
+
+.em-submit:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232,99,10,.35);
+}
+
+.em-submit:active {
+  transform: translateY(0);
+}
+
+/* ─── VISTA PREVIA ────────────────────────────────────── */
+.em-preview {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.em-preview-inner {
+  background: #fff;
+  border-radius: 20px;
+  padding: 48px;
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.em-preview-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  text-align: center;
+}
+
+.em-preview-hint {
+  font-size: .88rem;
+  color: var(--gray-600);
+  text-align: center;
+  margin-top: -12px;
+}
+
+/* ─── LISTA DE ETIQUETAS ──────────────────────────────── */
+.em-etiquetas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.em-etiqueta-item {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+}
+
+.em-etiqueta-item .btn-eliminar {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #dc2626;
+  color: white;
+  border: 2px solid white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+  transition: background 0.2s, transform 0.2s;
+  z-index: 10;
+}
+
+.em-etiqueta-item .btn-eliminar:hover {
+  background: #b91c1c;
+  transform: scale(1.1);
+}
+
+/* ─── ETIQUETA ────────────────────────────────────────── */
+.etiqueta {
+  width: 302px;
+  height: 189px;
+  border: 2px solid var(--navy);
+  background: #fff;
+  display: grid;
+  grid-template-columns: 30% 1px 1fr;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.etiqueta-lado-izq {
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--gray-50);
+}
+
+.etiqueta-lado-izq img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
+.etiqueta-empresa {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-align: center;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.etiqueta-divisor {
+  background: var(--navy);
+  width: 1px;
+}
+
+.etiqueta-lado-der {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.etiqueta-campo {
+  font-size: 0.68rem;
+  line-height: 1.3;
+  color: var(--navy);
+}
+
+.etiqueta-campo strong {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.etiqueta-campo--analisis {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* ─── BOTONES DE ACCIÓN ───────────────────────────────── */
+.em-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.em-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 100px;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: background .2s, transform .2s, box-shadow .2s, border-color .2s;
+}
+
+.em-btn-primary {
+  color: #fff;
+  background: var(--orange);
+  box-shadow: 0 4px 14px rgba(232,99,10,.25);
+}
+
+.em-btn-primary:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232,99,10,.35);
+}
+
+.em-btn-secondary {
+  color: var(--navy);
+  background: transparent;
+  border: 2px solid rgba(11,31,58,.18);
+}
+
+.em-btn-secondary:hover {
+  border-color: var(--navy);
+  background: rgba(11,31,58,.05);
+  transform: translateY(-2px);
+}
+
+/* ─── PRINT STYLES ────────────────────────────────────── */
+@media print {
+  /* Ocultar todo el contenido del sitio */
+  body > * {
+    display: none !important;
+  }
+
+  /* Mostrar solo la sección de etiquetas */
+  body .em {
+    display: block !important;
+  }
+
+  /* Ocultar todo dentro de .em excepto la etiqueta */
+  .em > * {
+    display: none !important;
+  }
+
+  .em .em-preview {
+    display: block !important;
+  }
+
+  .em-preview > * {
+    display: none !important;
+  }
+
+  .em-preview .etiqueta {
+    display: grid !important;
+  }
+
+  /* Configuración de página A4 */
+  @page {
+    size: A4;
+    margin: 2cm;
+  }
+
+  /* Ocultar elementos innecesarios */
+  .em-actions,
+  .em-preview-title,
+  .em-preview-hint,
+  .em-preview-inner {
+    display: none !important;
+  }
+
+  /* Etiqueta centrada en la página */
+  .em {
+    background: transparent !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 0 !important;
+  }
+
+  .em-preview {
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+  }
+
+  .etiqueta {
+    width: 8cm !important;
+    height: 5cm !important;
+    max-width: 8cm !important;
+    box-shadow: none !important;
+    margin: 0 auto !important;
+    page-break-inside: avoid;
+  }
+
+  /* Asegurar que el logo se imprima */
+  .etiqueta-lado-izq img {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 860px) {
+  .em {
+    padding: 80px 40px;
+  }
+
+  .em-form-inner,
+  .em-preview-inner {
+    padding: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  .em {
+    padding: 60px 24px;
+  }
+
+  .em-form-inner,
+  .em-preview-inner {
+    padding: 28px;
+  }
+
+  .em-row {
+    grid-template-columns: 1fr;
+  }
+
+  .em-checkbox-group {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .em-form-footer {
+    justify-content: stretch;
+  }
+
+  .em-submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .etiqueta {
+    max-width: calc(100vw - 56px);
+    width: 100%;
+    height: auto;
+    aspect-ratio: 8 / 5;
+    font-size: 0.62rem;
+  }
+
+  .etiqueta-lado-izq img {
+    width: 36px;
+  }
+
+  .etiqueta-empresa {
+    font-size: 0.52rem;
+  }
+
+  .etiqueta-campo {
+    font-size: 0.6rem;
+  }
+
+  .em-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .em-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+</style>
+
+<!-- ░░ SCRIPTS ░░ -->
+<script>
+interface Etiqueta {
+  id: number;
+  cliente: string;
+  fecha: string;
+  tipos: string;
+  mail: string;
+  analisis: string;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('em-form') as HTMLFormElement;
+  const btnGenerar = document.getElementById('btn-generar') as HTMLButtonElement;
+  const btnImprimir = document.getElementById('btn-imprimir') as HTMLButtonElement;
+  const btnNuevaEtiqueta = document.getElementById('btn-nueva-etiqueta') as HTMLButtonElement;
+  const formSection = document.querySelector('.em-form-section') as HTMLElement;
+  const previewSection = document.querySelector('.em-preview') as HTMLElement;
+  const etiquetasLista = document.getElementById('etiquetas-lista') as HTMLElement;
+  const contadorEtiquetas = document.getElementById('contador-etiquetas') as HTMLElement;
+
+  // Array para almacenar todas las etiquetas generadas
+  let etiquetas: Etiqueta[] = [];
+  let nextId = 1;
+
+  // Validación de checkboxes (al menos uno seleccionado)
+  const checkboxes = form.querySelectorAll('input[name="tipo_muestra"]') as NodeListOf<HTMLInputElement>;
+
+  const validateCheckboxes = (): boolean => {
+    const checked = Array.from(checkboxes).some(cb => cb.checked);
+    checkboxes.forEach(cb => {
+      cb.setCustomValidity(checked ? '' : 'Selecciona al menos un tipo de muestra');
+    });
+    return checked;
+  };
+
+  checkboxes.forEach(cb => {
+    cb.addEventListener('change', validateCheckboxes);
+  });
+
+  // Mostrar/ocultar campo "Otro" condicionalmente
+  const checkOtro = document.getElementById('tipo_otro') as HTMLInputElement;
+  const inputOtro = document.getElementById('tipo_otro_texto') as HTMLInputElement;
+
+  checkOtro?.addEventListener('change', () => {
+    inputOtro.style.display = checkOtro.checked ? 'block' : 'none';
+    inputOtro.required = checkOtro.checked;
+    if (!checkOtro.checked) {
+      inputOtro.value = '';
+      inputOtro.setCustomValidity('');
+    }
+  });
+
+  // Limpiar validación custom cuando el usuario escribe
+  inputOtro?.addEventListener('input', () => {
+    inputOtro.setCustomValidity('');
+  });
+
+  // Función para renderizar todas las etiquetas
+  const renderEtiquetas = () => {
+    etiquetasLista.innerHTML = '';
+    contadorEtiquetas.textContent = etiquetas.length.toString();
+
+    etiquetas.forEach(etiqueta => {
+      const etiquetaDiv = document.createElement('div');
+      etiquetaDiv.className = 'em-etiqueta-item';
+      etiquetaDiv.innerHTML = `
+        <button class="btn-eliminar" data-id="${etiqueta.id}" title="Eliminar etiqueta">×</button>
+        <div class="etiqueta">
+          <div class="etiqueta-lado-izq">
+            <img src="/assets/images/logo-2.png" alt="Evolution Chemical" />
+            <p class="etiqueta-empresa">EVOLUTION<br/>CHEMICAL S.R.L</p>
+          </div>
+          <div class="etiqueta-divisor"></div>
+          <div class="etiqueta-lado-der">
+            <div class="etiqueta-campo">
+              <strong>Empresa solicitante:</strong> ${etiqueta.cliente}
+              <strong style="margin-left: 20px;">Fecha:</strong> ${etiqueta.fecha}
+            </div>
+            <div class="etiqueta-campo">
+              <strong>Muestra:</strong> ${etiqueta.tipos}
+            </div>
+            <div class="etiqueta-campo">
+              <strong>Contacto:</strong> ${etiqueta.mail}
+            </div>
+            <div class="etiqueta-campo etiqueta-campo--analisis">
+              <strong>Análisis Requerido:</strong> ${etiqueta.analisis}
+            </div>
+          </div>
+        </div>
+      `;
+      etiquetasLista.appendChild(etiquetaDiv);
+    });
+
+    // Agregar event listeners a botones de eliminar
+    const botonesEliminar = etiquetasLista.querySelectorAll('.btn-eliminar');
+    botonesEliminar.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const id = parseInt(target.dataset.id || '0');
+        eliminarEtiqueta(id);
+      });
+    });
+  };
+
+  // Función para eliminar una etiqueta
+  const eliminarEtiqueta = (id: number) => {
+    etiquetas = etiquetas.filter(e => e.id !== id);
+    renderEtiquetas();
+
+    // Si no quedan etiquetas, volver al formulario
+    if (etiquetas.length === 0) {
+      formSection.style.display = 'block';
+      previewSection.style.display = 'none';
+    }
+  };
+
+  // Función para limpiar el formulario
+  const limpiarFormulario = () => {
+    form.reset();
+    inputOtro.style.display = 'none';
+    inputOtro.required = false;
+    checkboxes.forEach(cb => cb.setCustomValidity(''));
+  };
+
+  // Generar etiqueta
+  btnGenerar.addEventListener('click', (e) => {
+    e.preventDefault();
+
+    // Validar formulario
+    if (!form.checkValidity() || !validateCheckboxes()) {
+      form.reportValidity();
+      return;
+    }
+
+    // Validación adicional: si "Otro" está marcado, debe tener texto
+    if (checkOtro.checked && !inputOtro.value.trim()) {
+      inputOtro.focus();
+      inputOtro.setCustomValidity('Debes especificar el tipo de muestra');
+      inputOtro.reportValidity();
+      return;
+    }
+
+    // Capturar datos del formulario
+    const formData = new FormData(form);
+    const cliente = formData.get('cliente') as string;
+    const fechaRaw = formData.get('fecha') as string;
+    const mail = formData.get('mail') as string;
+    const analisis = formData.get('analisis') as string;
+
+    // Formatear fecha a formato español
+    const fechaObj = new Date(fechaRaw);
+    const fechaFormateada = fechaObj.toLocaleDateString('es-AR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    });
+
+    // Recopilar tipos de muestra seleccionados
+    const tiposSeleccionados: string[] = [];
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        if (cb.value === 'Otro') {
+          const otroTexto = formData.get('tipo_otro_texto') as string;
+          if (otroTexto) {
+            tiposSeleccionados.push(otroTexto);
+          }
+        } else {
+          tiposSeleccionados.push(cb.value);
+        }
+      }
+    });
+
+    // Crear nueva etiqueta
+    const nuevaEtiqueta: Etiqueta = {
+      id: nextId++,
+      cliente,
+      fecha: fechaFormateada,
+      tipos: tiposSeleccionados.join(', '),
+      mail,
+      analisis
+    };
+
+    // Agregar a la lista
+    etiquetas.push(nuevaEtiqueta);
+
+    // Renderizar todas las etiquetas
+    renderEtiquetas();
+
+    // Limpiar formulario
+    limpiarFormulario();
+
+    // Mostrar sección de etiquetas
+    formSection.style.display = 'none';
+    previewSection.style.display = 'block';
+
+    // Scroll suave a la vista previa
+    previewSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Generar otra etiqueta
+  btnNuevaEtiqueta.addEventListener('click', () => {
+    formSection.style.display = 'block';
+    previewSection.style.display = 'none';
+    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Imprimir todas las etiquetas
+  btnImprimir.addEventListener('click', () => {
+    if (etiquetas.length === 0) {
+      alert('No hay etiquetas para imprimir');
+      return;
+    }
+
+    // Generar HTML de todas las etiquetas
+    const etiquetasHTML = etiquetas.map(etiqueta => `
+      <div class="etiqueta">
+        <div class="etiqueta-lado-izq">
+          <img src="/assets/images/logo-2.png" alt="Evolution Chemical" />
+          <p class="etiqueta-empresa">EVOLUTION<br/>CHEMICAL S.R.L</p>
+        </div>
+        <div class="etiqueta-divisor"></div>
+        <div class="etiqueta-lado-der">
+          <div class="etiqueta-campo">
+            <strong>Empresa solicitante:</strong> ${etiqueta.cliente}
+            <strong style="margin-left: 20px;">Fecha:</strong> ${etiqueta.fecha}
+          </div>
+          <div class="etiqueta-campo">
+            <strong>Muestra:</strong> ${etiqueta.tipos}
+          </div>
+          <div class="etiqueta-campo">
+            <strong>Contacto:</strong> ${etiqueta.mail}
+          </div>
+          <div class="etiqueta-campo etiqueta-campo--analisis">
+            <strong>Análisis Requerido:</strong> ${etiqueta.analisis}
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    // Crear ventana de impresión
+    const printWindow = window.open('', '_blank', 'width=800,height=600');
+
+    if (printWindow) {
+      printWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8">
+          <title>Etiquetas de Muestra - Evolution Chemical</title>
+          <style>
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+
+            body {
+              font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+              padding: 2cm;
+              background: #f5f5f5;
+              display: flex;
+              flex-wrap: wrap;
+              gap: 1cm;
+              justify-content: flex-start;
+              align-content: flex-start;
+            }
+
+            .etiqueta {
+              width: 8cm;
+              height: 5cm;
+              border: 2px solid #0b1f3a;
+              background: #fff;
+              display: grid;
+              grid-template-columns: 30% 1px 1fr;
+              font-size: 0.7rem;
+              line-height: 1.4;
+              overflow: hidden;
+              page-break-inside: avoid;
+            }
+
+            .etiqueta-lado-izq {
+              padding: 16px 12px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              gap: 8px;
+              background: #f9fafb;
+            }
+
+            .etiqueta-lado-izq img {
+              width: 50px;
+              height: auto;
+              object-fit: contain;
+            }
+
+            .etiqueta-empresa {
+              font-size: 0.6rem;
+              font-weight: 700;
+              text-align: center;
+              color: #0b1f3a;
+              text-transform: uppercase;
+              letter-spacing: 0.02em;
+              line-height: 1.3;
+            }
+
+            .etiqueta-divisor {
+              background: #0b1f3a;
+              width: 1px;
+            }
+
+            .etiqueta-lado-der {
+              padding: 12px 14px;
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+            }
+
+            .etiqueta-campo {
+              font-size: 0.68rem;
+              line-height: 1.3;
+              color: #0b1f3a;
+            }
+
+            .etiqueta-campo strong {
+              font-weight: 700;
+              color: #0b1f3a;
+            }
+
+            .etiqueta-campo--analisis {
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+            }
+
+            @media print {
+              body {
+                background: white;
+                padding: 1cm;
+              }
+
+              @page {
+                size: A4;
+                margin: 1cm;
+              }
+            }
+          </style>
+        </head>
+        <body>
+          ${etiquetasHTML}
+        </body>
+        </html>
+      `);
+
+      printWindow.document.close();
+
+      // Esperar a que cargue y luego imprimir
+      printWindow.onload = () => {
+        printWindow.focus();
+        setTimeout(() => {
+          printWindow.print();
+          printWindow.close();
+        }, 250);
+      };
+    }
+  });
+});
+</script>
