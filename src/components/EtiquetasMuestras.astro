@@ -7,15 +7,85 @@
   <!-- ── HEADER ──────────────────────────────────────────── -->
   <div class="em-header">
     <p class="em-eyebrow">— Generador de Etiquetas</p>
-    <h2>Genera <em>etiquetas</em> para tus muestras</h2>
-    <p class="em-sub">Imprime etiquetas profesionales para identificar tus muestras de laboratorio</p>
+    <h2>Generá <em>etiquetas</em> para tus muestras</h2>
+    <p class="em-sub">Identificá tus muestras de laboratorio con etiquetas profesionales listas para imprimir</p>
   </div>
 
-  <!-- ── FORMULARIO ──────────────────────────────────────── -->
-  <div class="em-form-section">
+  <!-- ── ETIQUETA VISUAL (solo visual, no editable) ───────── -->
+  <div class="em-showcase">
+
+    <div class="label-preview">
+      <div class="lp-inner">
+
+        <div class="lp-row lp-top">
+          <div class="lp-logo">
+            <img src="/assets/images/logo-2.png" alt="Evolution Chemical S.R.L." />
+          </div>
+          <div class="lp-top-fields">
+            <div class="lp-field">
+              <span class="lp-lbl">Empresa solicitante:</span>
+              <span class="lp-line"></span>
+            </div>
+            <div class="lp-field lp-inline">
+              <span class="lp-lbl">Fecha:</span>
+              <span class="lp-line lp-line-short"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-row lp-tipo-row">
+          <div class="lp-tipo">
+            <span class="lp-lbl">Tipo de Muestra:</span>
+            <span class="lp-opt"><span class="lp-box"></span>Sólido</span>
+            <span class="lp-opt"><span class="lp-box"></span>Agua</span>
+            <span class="lp-opt"><span class="lp-box"></span>Petróleo</span>
+            <span class="lp-opt"><span class="lp-box"></span>Prod. Qco.</span>
+            <span class="lp-opt"><span class="lp-box"></span>Otro</span>
+          </div>
+        </div>
+
+        <div class="lp-row lp-bottom-row">
+          <div class="lp-bottom">
+            <div class="lp-field">
+              <span class="lp-lbl">Contacto:</span>
+              <span class="lp-line"></span>
+            </div>
+            <div class="lp-field lp-analisis">
+              <span class="lp-lbl">Análisis Requerido:</span>
+              <span class="lp-line"></span>
+            </div>
+            <span class="lp-line lp-line-full"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="em-actions">
+      <button id="btn-rellenar" class="em-btn-outline">
+        Rellenar etiqueta
+      </button>
+      <button id="btn-descargar" class="em-btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Descargar plantilla de etiquetas
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ── FORMULARIO (oculto por defecto) ─────────────────── -->
+  <div class="em-form-section" id="form-section" style="display:none">
     <div class="em-form-inner">
 
-      <form id="em-form" class="em-form">
+      <h3 class="em-form-title">Completá los datos de la etiqueta</h3>
+
+      <form id="em-form">
+
         <div class="em-row">
           <div class="em-field">
             <label for="cliente">Empresa solicitante <span class="em-required">*</span></label>
@@ -55,15 +125,15 @@
             type="text"
             id="tipo_otro_texto"
             name="tipo_otro_texto"
-            placeholder="Especificar otro tipo (obligatorio)..."
+            placeholder="Especificar otro tipo..."
             class="em-otro-input"
-            style="display: none; margin-top: 12px;"
+            style="display:none; margin-top: 12px;"
           />
         </div>
 
         <div class="em-field">
           <label for="mail">Contacto <span class="em-required">*</span></label>
-          <input type="email" id="mail" name="mail" required placeholder="juan@empresa.com" />
+          <input type="text" id="mail" name="mail" required placeholder="email o +54 299 000-0000" />
         </div>
 
         <div class="em-field">
@@ -72,45 +142,18 @@
         </div>
 
         <div class="em-form-footer">
-          <button type="button" id="btn-generar" class="em-submit">
-            Generar Etiqueta
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <button type="button" id="btn-cancelar" class="em-btn-cancel">Cancelar</button>
+          <button type="button" id="btn-generar" class="em-btn-generar">
+            Generar e Imprimir Etiqueta
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
             </svg>
           </button>
         </div>
+
       </form>
-
-    </div>
-  </div>
-
-  <!-- ── ETIQUETAS GENERADAS (oculta por defecto) ─────────── -->
-  <div class="em-preview" style="display: none;">
-    <div class="em-preview-inner">
-      <h3 class="em-preview-title">Etiquetas Generadas (<span id="contador-etiquetas">0</span>)</h3>
-      <p class="em-preview-hint">Puedes generar más etiquetas o imprimir todas juntas</p>
-
-      <div class="em-etiquetas-lista" id="etiquetas-lista">
-        <!-- Las etiquetas se agregan aquí dinámicamente -->
-      </div>
-
-      <div class="em-actions">
-        <button id="btn-nueva-etiqueta" class="em-btn em-btn-secondary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-          </svg>
-          Generar Otra Etiqueta
-        </button>
-        <button id="btn-imprimir" class="em-btn em-btn-primary">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="6 9 6 2 18 2 18 9"></polyline>
-            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-            <rect x="6" y="14" width="12" height="8"></rect>
-          </svg>
-          Imprimir Todas las Etiquetas
-        </button>
-      </div>
     </div>
   </div>
 
@@ -130,7 +173,7 @@
 /* ─── HEADER ──────────────────────────────────────────── */
 .em-header {
   max-width: 960px;
-  margin: 0 auto 64px;
+  margin: 0 auto 56px;
   text-align: center;
 }
 
@@ -164,122 +207,311 @@
   margin: 0 auto;
 }
 
+/* ─── SHOWCASE ────────────────────────────────────────── */
+.em-showcase {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* ─── LABEL PREVIEW (visual) ──────────────────────────── */
+.label-preview {
+  width: 100%;
+  max-width: 560px;
+  background: #fff;
+  border: 2px solid #111;
+  box-shadow: 0 6px 32px rgba(0,0,0,.14);
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.lp-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-row {
+  display: flex;
+}
+.lp-row + .lp-row {
+  border-top: 1.5px solid #111;
+}
+
+/* Fila 1 */
+.lp-top { min-height: 76px; }
+.lp-logo {
+  flex: 0 0 110px;
+  border-right: 1.5px solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #fafafa;
+}
+.lp-logo img {
+  max-width: 72px;
+  max-height: 52px;
+  display: block;
+}
+.lp-top-fields {
+  flex: 1 1 auto;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.lp-field {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 0;
+}
+.lp-inline { flex: 0 0 auto; }
+.lp-lbl {
+  flex: 0 0 auto;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+.lp-line {
+  flex: 1 1 auto;
+  border-bottom: 1.2px solid #111;
+  height: 1.4em;
+}
+.lp-line-short {
+  flex: 0 0 80px;
+}
+
+/* Fila 2: tipo */
+.lp-tipo-row { min-height: 44px; }
+.lp-tipo {
+  flex: 1 1 auto;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+.lp-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .72rem;
+  color: #111;
+  white-space: nowrap;
+}
+.lp-box {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 1.2px solid #111;
+  background: #fff;
+  flex: 0 0 11px;
+}
+
+/* Fila 3: bottom */
+.lp-bottom-row { min-height: 72px; }
+.lp-bottom {
+  flex: 1 1 auto;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lp-analisis { flex: 0 0 auto; }
+.lp-line-full {
+  display: block;
+  width: 100%;
+  border-bottom: 1.2px solid #111;
+  height: 1em;
+}
+
+/* ─── BOTONES DE ACCIÓN ───────────────────────────────── */
+.em-actions {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.em-btn-outline {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: .94rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #fff;
+  border: 2px solid rgba(11,31,58,.25);
+  border-radius: 100px;
+  padding: 16px 28px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.em-btn-outline:hover {
+  border-color: var(--navy);
+  background: rgba(11,31,58,.04);
+  transform: translateY(-2px);
+}
+
+.em-btn-primary {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .94rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--orange);
+  border: 2px solid transparent;
+  border-radius: 100px;
+  padding: 16px 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(232,99,10,.25);
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.em-btn-primary:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232,99,10,.35);
+}
+
 /* ─── FORMULARIO ──────────────────────────────────────── */
 .em-form-section {
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 640px;
+  margin: 48px auto 0;
 }
 
 .em-form-inner {
   background: #fff;
   border-radius: 20px;
-  padding: 48px;
-  box-shadow: var(--shadow-md);
+  padding: 44px 48px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.10);
+}
+
+.em-form-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 28px;
 }
 
 .em-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 22px;
+}
+
+form#em-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
 
 .em-row {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 18px;
 }
 
 .em-field {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 9px;
 }
 
 .em-field label {
-  font-size: .88rem;
+  font-size: .86rem;
   font-weight: 600;
   color: var(--navy);
 }
 
-.em-required {
-  color: #dc2626;
-  font-weight: 700;
-  margin-left: 2px;
-}
-
-.em-req {
-  font-size: .75rem;
-  font-weight: 500;
-  color: var(--gray-400);
-  font-style: italic;
-}
+.em-required { color: #dc2626; font-weight: 700; margin-left: 2px; }
+.em-req { font-size: .75rem; font-weight: 500; color: var(--gray-400); font-style: italic; }
 
 .em-field input,
 .em-field textarea {
   font-family: var(--font);
-  font-size: .92rem;
+  font-size: .9rem;
   color: var(--navy);
   background: var(--gray-50);
   border: 1.5px solid rgba(11,31,58,.10);
   border-radius: 10px;
-  padding: 15px 18px;
+  padding: 13px 16px;
   transition: border-color .2s, box-shadow .2s;
+  outline: none;
 }
-
 .em-field input::placeholder,
-.em-field textarea::placeholder {
-  color: rgba(11,31,58,.35);
-}
-
+.em-field textarea::placeholder { color: rgba(11,31,58,.35); }
 .em-field input:focus,
 .em-field textarea:focus {
-  outline: none;
   border-color: var(--orange);
   box-shadow: 0 0 0 3px rgba(232,99,10,.09);
 }
+.em-field textarea { resize: vertical; min-height: 100px; }
 
-.em-field textarea {
-  resize: vertical;
-  min-height: 100px;
-}
-
-/* ─── CHECKBOXES ──────────────────────────────────────── */
 .em-checkbox-group {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
 }
-
 .em-checkbox {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
-  font-size: .9rem;
+  font-size: .88rem;
   color: var(--navy);
   font-weight: 500;
   user-select: none;
 }
-
 .em-checkbox input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   cursor: pointer;
   accent-color: var(--orange);
 }
+.em-otro-input { width: 100%; }
 
-.em-otro-input {
-  width: 100%;
-}
-
-/* ─── BOTÓN SUBMIT ────────────────────────────────────── */
 .em-form-footer {
   display: flex;
+  align-items: center;
   justify-content: flex-end;
-  margin-top: 12px;
+  gap: 12px;
+  margin-top: 8px;
 }
 
-.em-submit {
+.em-btn-cancel {
+  font-family: var(--font);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  background: transparent;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: color .2s, background .2s;
+}
+.em-btn-cancel:hover {
+  color: var(--navy);
+  background: rgba(11,31,58,.05);
+}
+
+.em-btn-generar {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -290,496 +522,260 @@
   background: var(--orange);
   border: none;
   border-radius: 100px;
-  padding: 16px 38px;
+  padding: 14px 32px;
   cursor: pointer;
+  box-shadow: 0 4px 14px rgba(232,99,10,.25);
   transition: background .2s, transform .2s, box-shadow .2s;
-  box-shadow: 0 4px 14px rgba(232,99,10,.25);
 }
-
-.em-submit:hover {
+.em-btn-generar:hover {
   background: var(--orange-light);
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(232,99,10,.35);
-}
-
-.em-submit:active {
-  transform: translateY(0);
-}
-
-/* ─── VISTA PREVIA ────────────────────────────────────── */
-.em-preview {
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.em-preview-inner {
-  background: #fff;
-  border-radius: 20px;
-  padding: 48px;
-  box-shadow: var(--shadow-md);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-}
-
-.em-preview-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--navy);
-  text-align: center;
-}
-
-.em-preview-hint {
-  font-size: .88rem;
-  color: var(--gray-600);
-  text-align: center;
-  margin-top: -12px;
-}
-
-/* ─── LISTA DE ETIQUETAS ──────────────────────────────── */
-.em-etiquetas-lista {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  width: 100%;
-  max-width: 100%;
-}
-
-.em-etiqueta-item {
-  position: relative;
-  display: inline-block;
-  align-self: center;
-}
-
-.em-etiqueta-item .btn-eliminar {
-  position: absolute;
-  top: -12px;
-  right: -12px;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #dc2626;
-  color: white;
-  border: 2px solid white;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
-  transition: background 0.2s, transform 0.2s;
-  z-index: 10;
-}
-
-.em-etiqueta-item .btn-eliminar:hover {
-  background: #b91c1c;
-  transform: scale(1.1);
-}
-
-/* ─── ETIQUETA ────────────────────────────────────────── */
-.etiqueta {
-  width: 302px;
-  height: 189px;
-  border: 2px solid var(--navy);
-  background: #fff;
-  display: grid;
-  grid-template-columns: 30% 1px 1fr;
-  font-size: 0.7rem;
-  line-height: 1.4;
-  box-shadow: var(--shadow-md);
-  overflow: hidden;
-}
-
-.etiqueta-lado-izq {
-  padding: 16px 12px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: var(--gray-50);
-}
-
-.etiqueta-lado-izq img {
-  width: 50px;
-  height: auto;
-  object-fit: contain;
-}
-
-.etiqueta-empresa {
-  font-size: 0.6rem;
-  font-weight: 700;
-  text-align: center;
-  color: var(--navy);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.3;
-}
-
-.etiqueta-divisor {
-  background: var(--navy);
-  width: 1px;
-}
-
-.etiqueta-lado-der {
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.etiqueta-campo {
-  font-size: 0.68rem;
-  line-height: 1.3;
-  color: var(--navy);
-}
-
-.etiqueta-campo strong {
-  font-weight: 700;
-  color: var(--navy);
-}
-
-.etiqueta-campo--analisis {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-
-/* ─── BOTONES DE ACCIÓN ───────────────────────────────── */
-.em-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 16px;
-}
-
-.em-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font);
-  font-size: .9rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 100px;
-  padding: 14px 28px;
-  cursor: pointer;
-  transition: background .2s, transform .2s, box-shadow .2s, border-color .2s;
-}
-
-.em-btn-primary {
-  color: #fff;
-  background: var(--orange);
-  box-shadow: 0 4px 14px rgba(232,99,10,.25);
-}
-
-.em-btn-primary:hover {
-  background: var(--orange-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(232,99,10,.35);
-}
-
-.em-btn-secondary {
-  color: var(--navy);
-  background: transparent;
-  border: 2px solid rgba(11,31,58,.18);
-}
-
-.em-btn-secondary:hover {
-  border-color: var(--navy);
-  background: rgba(11,31,58,.05);
-  transform: translateY(-2px);
-}
-
-/* ─── PRINT STYLES ────────────────────────────────────── */
-@media print {
-  /* Ocultar todo el contenido del sitio */
-  body > * {
-    display: none !important;
-  }
-
-  /* Mostrar solo la sección de etiquetas */
-  body .em {
-    display: block !important;
-  }
-
-  /* Ocultar todo dentro de .em excepto la etiqueta */
-  .em > * {
-    display: none !important;
-  }
-
-  .em .em-preview {
-    display: block !important;
-  }
-
-  .em-preview > * {
-    display: none !important;
-  }
-
-  .em-preview .etiqueta {
-    display: grid !important;
-  }
-
-  /* Configuración de página A4 */
-  @page {
-    size: A4;
-    margin: 2cm;
-  }
-
-  /* Ocultar elementos innecesarios */
-  .em-actions,
-  .em-preview-title,
-  .em-preview-hint,
-  .em-preview-inner {
-    display: none !important;
-  }
-
-  /* Etiqueta centrada en la página */
-  .em {
-    background: transparent !important;
-    padding: 0 !important;
-    display: flex !important;
-    justify-content: center;
-    align-items: flex-start;
-    min-height: 0 !important;
-  }
-
-  .em-preview {
-    background: transparent !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    margin: 0 !important;
-  }
-
-  .etiqueta {
-    width: 8cm !important;
-    height: 5cm !important;
-    max-width: 8cm !important;
-    box-shadow: none !important;
-    margin: 0 auto !important;
-    page-break-inside: avoid;
-  }
-
-  /* Asegurar que el logo se imprima */
-  .etiqueta-lado-izq img {
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
 }
 
 /* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 860px) {
-  .em {
-    padding: 80px 40px;
-  }
-
-  .em-form-inner,
-  .em-preview-inner {
-    padding: 36px;
-  }
+  .em { padding: 80px 40px; }
 }
 
 @media (max-width: 640px) {
-  .em {
-    padding: 60px 24px;
-  }
-
-  .em-form-inner,
-  .em-preview-inner {
-    padding: 28px;
-  }
-
-  .em-row {
-    grid-template-columns: 1fr;
-  }
-
-  .em-checkbox-group {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .em-form-footer {
-    justify-content: stretch;
-  }
-
-  .em-submit {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .etiqueta {
-    max-width: calc(100vw - 56px);
-    width: 100%;
-    height: auto;
-    aspect-ratio: 8 / 5;
-    font-size: 0.62rem;
-  }
-
-  .etiqueta-lado-izq img {
-    width: 36px;
-  }
-
-  .etiqueta-empresa {
-    font-size: 0.52rem;
-  }
-
-  .etiqueta-campo {
-    font-size: 0.6rem;
-  }
-
-  .em-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .em-btn {
-    width: 100%;
-    justify-content: center;
-  }
+  .em { padding: 60px 24px; }
+  .em-actions { flex-direction: column; }
+  .em-btn-outline, .em-btn-primary { flex: none; width: 100%; }
+  .em-row { grid-template-columns: 1fr; }
+  .em-form-inner { padding: 28px 24px; }
+  .em-form-footer { flex-direction: column-reverse; align-items: stretch; }
+  .em-btn-generar, .em-btn-cancel { width: 100%; justify-content: center; }
 }
 
 </style>
 
 <!-- ░░ SCRIPTS ░░ -->
 <script>
-interface Etiqueta {
-  id: number;
-  cliente: string;
-  fecha: string;
-  tipos: string;
-  mail: string;
-  analisis: string;
+const TIPOS_STD = ['Sólido', 'Agua', 'Petróleo', 'Prod. Qco.'];
+
+function escHtml(s: string): string {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+const PRINT_CSS = `
+  @page { size: A4; margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #eceae6;
+    font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
+    color: #111;
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+  }
+  .sheet {
+    width: 210mm; height: 297mm;
+    background: #fff;
+    margin: 24px auto;
+    padding: 23.5mm 5mm;
+    box-shadow: 0 2px 40px rgba(0,0,0,.18);
+    display: grid;
+    grid-template-columns: 100mm 100mm;
+    grid-auto-rows: 50mm;
+    gap: 0;
+  }
+  .sheet > .label { border: 0.25mm dashed #9aa0a6; }
+  .label { width: 100mm; height: 50mm; padding: 1.2mm; overflow: hidden; }
+  .label-inner {
+    width: 100%; height: 100%;
+    border: 0.4mm solid #111;
+    display: flex; flex-direction: column;
+    font-size: 8pt; line-height: 1.2;
+    overflow: hidden;
+  }
+  .row { display: flex; }
+  .row + .row { border-top: 0.4mm solid #111; }
+  .top { flex: 0 0 13mm; }
+  .logo-cell {
+    flex: 0 0 28mm; border-right: 0.4mm solid #111;
+    display: flex; align-items: center; justify-content: center; padding: 1mm 1.5mm;
+  }
+  .logo-cell img { max-width: 100%; max-height: 11mm; display: block; }
+  .top-fields {
+    flex: 1 1 auto; padding: 1.5mm 2mm;
+    display: flex; flex-direction: column; justify-content: center; gap: 1.5mm;
+    min-width: 0;
+  }
+  .field { display: flex; align-items: baseline; gap: 1mm; min-width: 0; }
+  .field > .lbl { flex: 0 0 auto; font-weight: 700; font-size: 7pt; }
+  .underline {
+    flex: 1 1 auto; border-bottom: 0.4mm solid #111;
+    min-height: 1.4em; align-self: flex-end;
+    padding: 0 1mm; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+    font-size: 8pt;
+  }
+  .field.fecha { flex: 0 0 auto; }
+  .tipo-row { flex: 0 0 7.5mm; }
+  .tipo {
+    flex: 1 1 auto; padding: 1.5mm 2mm;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 1mm 2.5mm;
+  }
+  .tipo .lbl { font-weight: 700; font-size: 7pt; flex: 0 0 auto; }
+  .opt { display: inline-flex; align-items: center; gap: 1mm; white-space: nowrap; font-size: 7.5pt; }
+  .box {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 3mm; height: 3mm;
+    border: 0.4mm solid #111; background: #fff;
+    flex: 0 0 3mm; font-size: 2.8mm; line-height: 1; font-weight: 900;
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .box.checked { background: #111; color: #fff; }
+  .bottom-row { flex: 1 1 auto; }
+  .bottom {
+    flex: 1 1 auto; padding: 1.5mm 2mm;
+    display: flex; flex-direction: column; justify-content: flex-start; gap: 2mm;
+    min-width: 0;
+  }
+  .field-analisis { display: flex; align-items: baseline; gap: 1mm; min-width: 0; }
+  .field-analisis .lbl { flex: 0 0 auto; font-weight: 700; font-size: 7pt; }
+  .analisis-val {
+    flex: 1 1 auto; white-space: normal; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+  .toolbar {
+    position: fixed; top: 14px; right: 14px;
+    display: flex; gap: 8px; z-index: 10; text-transform: none;
+  }
+  .toolbar button {
+    font: 500 13px/1 Arial; padding: 9px 16px;
+    background: #111; color: #fff; border: none; border-radius: 6px; cursor: pointer;
+  }
+  .toolbar button:hover { opacity: .9; }
+  @media print {
+    html, body { background: #fff; }
+    .sheet { margin: 0; box-shadow: none; }
+    .sheet > .label { border: 0.2mm dashed #bbb; }
+    .toolbar { display: none !important; }
+  }
+`;
+
+function filledLabelHTML(data: {
+  cliente: string; fecha: string; tipos: string[]; mail: string; analisis: string; logoSrc: string;
+}): string {
+  const tiene = (t: string) => data.tipos.includes(t);
+  const otroVal = data.tipos.find((t: string) => !TIPOS_STD.includes(t));
+  const box = (sel: boolean) => `<span class="box${sel ? ' checked' : ''}">${sel ? '✓' : ''}</span>`;
+  return `<div class="label-inner">
+    <div class="row top">
+      <div class="logo-cell"><img src="${data.logoSrc}" alt="Evolution Chemical S.R.L." /></div>
+      <div class="top-fields">
+        <div class="field"><span class="lbl">Empresa solicitante:</span><span class="underline">${escHtml(data.cliente)}</span></div>
+        <div class="field fecha"><span class="lbl">Fecha:</span><span class="underline">${escHtml(data.fecha)}</span></div>
+      </div>
+    </div>
+    <div class="row tipo-row">
+      <div class="tipo">
+        <span class="lbl">Tipo de Muestra:</span>
+        <span class="opt">${box(tiene('Sólido'))}Sólido</span>
+        <span class="opt">${box(tiene('Agua'))}Agua</span>
+        <span class="opt">${box(tiene('Petróleo'))}Petróleo</span>
+        <span class="opt">${box(tiene('Prod. Qco.'))}Prod. Qco.</span>
+        <span class="opt">${box(!!otroVal)}Otro${otroVal ? ': ' + escHtml(otroVal) : ''}</span>
+      </div>
+    </div>
+    <div class="row bottom-row">
+      <div class="bottom">
+        <div class="field"><span class="lbl">Contacto:</span><span class="underline">${escHtml(data.mail)}</span></div>
+        <div class="field-analisis"><span class="lbl">Análisis Requerido:</span><span class="underline analisis-val">${escHtml(data.analisis)}</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function blankLabelHTML(logoSrc: string): string {
+  const box = () => `<span class="box"></span>`;
+  return `<div class="label-inner">
+    <div class="row top">
+      <div class="logo-cell"><img src="${logoSrc}" alt="Evolution Chemical S.R.L." /></div>
+      <div class="top-fields">
+        <div class="field"><span class="lbl">Empresa solicitante:</span><span class="underline"></span></div>
+        <div class="field fecha"><span class="lbl">Fecha:</span><span class="underline"></span></div>
+      </div>
+    </div>
+    <div class="row tipo-row">
+      <div class="tipo">
+        <span class="lbl">Tipo de Muestra:</span>
+        <span class="opt">${box()}Sólido</span>
+        <span class="opt">${box()}Agua</span>
+        <span class="opt">${box()}Petróleo</span>
+        <span class="opt">${box()}Prod. Qco.</span>
+        <span class="opt">${box()}Otro</span>
+      </div>
+    </div>
+    <div class="row bottom-row">
+      <div class="bottom">
+        <div class="field"><span class="lbl">Contacto:</span><span class="underline"></span></div>
+        <div class="field-analisis"><span class="lbl">Análisis Requerido:</span><span class="underline"></span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function openPrintWindow(sheetHTML: string): void {
+  const w = window.open('', '_blank', 'width=900,height=700');
+  if (!w) return;
+  w.document.write(`<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8" /><title>Etiquetas — Evolution Chemical S.R.L.</title>
+<style>${PRINT_CSS}</style></head><body>
+<div class="toolbar"><button onclick="window.print()">Imprimir hoja</button></div>
+${sheetHTML}
+</body></html>`);
+  w.document.close();
+  w.onload = () => { w.focus(); setTimeout(() => w.print(), 300); };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  const showcase = document.querySelector('.em-showcase') as HTMLElement;
+  const formSection = document.getElementById('form-section') as HTMLElement;
   const form = document.getElementById('em-form') as HTMLFormElement;
+  const btnRellenar = document.getElementById('btn-rellenar') as HTMLButtonElement;
+  const btnDescargar = document.getElementById('btn-descargar') as HTMLButtonElement;
   const btnGenerar = document.getElementById('btn-generar') as HTMLButtonElement;
-  const btnImprimir = document.getElementById('btn-imprimir') as HTMLButtonElement;
-  const btnNuevaEtiqueta = document.getElementById('btn-nueva-etiqueta') as HTMLButtonElement;
-  const formSection = document.querySelector('.em-form-section') as HTMLElement;
-  const previewSection = document.querySelector('.em-preview') as HTMLElement;
-  const etiquetasLista = document.getElementById('etiquetas-lista') as HTMLElement;
-  const contadorEtiquetas = document.getElementById('contador-etiquetas') as HTMLElement;
-
-  // Array para almacenar todas las etiquetas generadas
-  let etiquetas: Etiqueta[] = [];
-  let nextId = 1;
-
-  // Validación de checkboxes (al menos uno seleccionado)
+  const btnCancelar = document.getElementById('btn-cancelar') as HTMLButtonElement;
   const checkboxes = form.querySelectorAll('input[name="tipo_muestra"]') as NodeListOf<HTMLInputElement>;
-
-  const validateCheckboxes = (): boolean => {
-    const checked = Array.from(checkboxes).some(cb => cb.checked);
-    checkboxes.forEach(cb => {
-      cb.setCustomValidity(checked ? '' : 'Selecciona al menos un tipo de muestra');
-    });
-    return checked;
-  };
-
-  checkboxes.forEach(cb => {
-    cb.addEventListener('change', validateCheckboxes);
-  });
-
-  // Mostrar/ocultar campo "Otro" condicionalmente
   const checkOtro = document.getElementById('tipo_otro') as HTMLInputElement;
   const inputOtro = document.getElementById('tipo_otro_texto') as HTMLInputElement;
 
-  checkOtro?.addEventListener('change', () => {
-    inputOtro.style.display = checkOtro.checked ? 'block' : 'none';
-    inputOtro.required = checkOtro.checked;
-    if (!checkOtro.checked) {
-      inputOtro.value = '';
-      inputOtro.setCustomValidity('');
-    }
+  // Mostrar formulario
+  btnRellenar.addEventListener('click', () => {
+    formSection.style.display = 'block';
+    setTimeout(() => formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
   });
 
-  // Limpiar validación custom cuando el usuario escribe
-  inputOtro?.addEventListener('input', () => {
-    inputOtro.setCustomValidity('');
-  });
-
-  // Función para renderizar todas las etiquetas
-  const renderEtiquetas = () => {
-    etiquetasLista.innerHTML = '';
-    contadorEtiquetas.textContent = etiquetas.length.toString();
-
-    etiquetas.forEach(etiqueta => {
-      const etiquetaDiv = document.createElement('div');
-      etiquetaDiv.className = 'em-etiqueta-item';
-      etiquetaDiv.innerHTML = `
-        <button class="btn-eliminar" data-id="${etiqueta.id}" title="Eliminar etiqueta">×</button>
-        <div class="etiqueta">
-          <div class="etiqueta-lado-izq">
-            <img src="/assets/images/logo-2.png" alt="Evolution Chemical" />
-            <p class="etiqueta-empresa">EVOLUTION<br/>CHEMICAL S.R.L</p>
-          </div>
-          <div class="etiqueta-divisor"></div>
-          <div class="etiqueta-lado-der">
-            <div class="etiqueta-campo">
-              <strong>Empresa solicitante:</strong> ${etiqueta.cliente}
-              <strong style="margin-left: 20px;">Fecha:</strong> ${etiqueta.fecha}
-            </div>
-            <div class="etiqueta-campo">
-              <strong>Muestra:</strong> ${etiqueta.tipos}
-            </div>
-            <div class="etiqueta-campo">
-              <strong>Contacto:</strong> ${etiqueta.mail}
-            </div>
-            <div class="etiqueta-campo etiqueta-campo--analisis">
-              <strong>Análisis Requerido:</strong> ${etiqueta.analisis}
-            </div>
-          </div>
-        </div>
-      `;
-      etiquetasLista.appendChild(etiquetaDiv);
-    });
-
-    // Agregar event listeners a botones de eliminar
-    const botonesEliminar = etiquetasLista.querySelectorAll('.btn-eliminar');
-    botonesEliminar.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const target = e.currentTarget as HTMLElement;
-        const id = parseInt(target.dataset.id || '0');
-        eliminarEtiqueta(id);
-      });
-    });
-  };
-
-  // Función para eliminar una etiqueta
-  const eliminarEtiqueta = (id: number) => {
-    etiquetas = etiquetas.filter(e => e.id !== id);
-    renderEtiquetas();
-
-    // Si no quedan etiquetas, volver al formulario
-    if (etiquetas.length === 0) {
-      formSection.style.display = 'block';
-      previewSection.style.display = 'none';
-    }
-  };
-
-  // Función para limpiar el formulario
-  const limpiarFormulario = () => {
+  // Ocultar formulario (cancelar)
+  btnCancelar.addEventListener('click', () => {
+    formSection.style.display = 'none';
     form.reset();
     inputOtro.style.display = 'none';
     inputOtro.required = false;
-    checkboxes.forEach(cb => cb.setCustomValidity(''));
+    showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Validación de checkboxes
+  const validateCheckboxes = (): boolean => {
+    const checked = Array.from(checkboxes).some(cb => cb.checked);
+    checkboxes.forEach(cb => cb.setCustomValidity(checked ? '' : 'Selecciona al menos un tipo de muestra'));
+    return checked;
   };
+  checkboxes.forEach(cb => cb.addEventListener('change', validateCheckboxes));
 
-  // Generar etiqueta
-  btnGenerar.addEventListener('click', (e) => {
-    e.preventDefault();
+  // Campo "Otro"
+  checkOtro?.addEventListener('change', () => {
+    inputOtro.style.display = checkOtro.checked ? 'block' : 'none';
+    inputOtro.required = checkOtro.checked;
+    if (!checkOtro.checked) { inputOtro.value = ''; inputOtro.setCustomValidity(''); }
+  });
+  inputOtro?.addEventListener('input', () => inputOtro.setCustomValidity(''));
 
-    // Validar formulario
-    if (!form.checkValidity() || !validateCheckboxes()) {
-      form.reportValidity();
-      return;
-    }
-
-    // Validación adicional: si "Otro" está marcado, debe tener texto
+  // Generar e imprimir (1 llena + 9 en blanco)
+  btnGenerar.addEventListener('click', () => {
+    if (!form.checkValidity() || !validateCheckboxes()) { form.reportValidity(); return; }
     if (checkOtro.checked && !inputOtro.value.trim()) {
       inputOtro.focus();
       inputOtro.setCustomValidity('Debes especificar el tipo de muestra');
@@ -787,230 +783,42 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Capturar datos del formulario
     const formData = new FormData(form);
-    const cliente = formData.get('cliente') as string;
+    const cliente = (formData.get('cliente') as string).trim();
     const fechaRaw = formData.get('fecha') as string;
-    const mail = formData.get('mail') as string;
-    const analisis = formData.get('analisis') as string;
+    const mail = (formData.get('mail') as string).trim();
+    const analisis = (formData.get('analisis') as string).trim();
+    const fecha = new Date(fechaRaw + 'T12:00:00').toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
 
-    // Formatear fecha a formato español
-    const fechaObj = new Date(fechaRaw);
-    const fechaFormateada = fechaObj.toLocaleDateString('es-AR', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
-    });
-
-    // Recopilar tipos de muestra seleccionados
-    const tiposSeleccionados: string[] = [];
+    const tipos: string[] = [];
     checkboxes.forEach(cb => {
       if (cb.checked) {
         if (cb.value === 'Otro') {
-          const otroTexto = formData.get('tipo_otro_texto') as string;
-          if (otroTexto) {
-            tiposSeleccionados.push(otroTexto);
-          }
+          const txt = (formData.get('tipo_otro_texto') as string).trim();
+          if (txt) tipos.push(txt);
         } else {
-          tiposSeleccionados.push(cb.value);
+          tipos.push(cb.value);
         }
       }
     });
 
-    // Crear nueva etiqueta
-    const nuevaEtiqueta: Etiqueta = {
-      id: nextId++,
-      cliente,
-      fecha: fechaFormateada,
-      tipos: tiposSeleccionados.join(', '),
-      mail,
-      analisis
-    };
+    const logoSrc = window.location.origin + '/assets/images/logo-2.png';
+    const filled = filledLabelHTML({ cliente, fecha, tipos, mail, analisis, logoSrc });
+    const blank = blankLabelHTML(logoSrc);
 
-    // Agregar a la lista
-    etiquetas.push(nuevaEtiqueta);
-
-    // Renderizar todas las etiquetas
-    renderEtiquetas();
-
-    // Limpiar formulario
-    limpiarFormulario();
-
-    // Mostrar sección de etiquetas
-    formSection.style.display = 'none';
-    previewSection.style.display = 'block';
-
-    // Scroll suave a la vista previa
-    previewSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    openPrintWindow(`<div class="sheet">
+  <div class="label">${filled}</div>
+  ${Array(9).fill(`<div class="label">${blank}</div>`).join('\n  ')}
+</div>`);
   });
 
-  // Generar otra etiqueta
-  btnNuevaEtiqueta.addEventListener('click', () => {
-    formSection.style.display = 'block';
-    previewSection.style.display = 'none';
-    formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  // Imprimir todas las etiquetas
-  btnImprimir.addEventListener('click', () => {
-    if (etiquetas.length === 0) {
-      alert('No hay etiquetas para imprimir');
-      return;
-    }
-
-    // Generar HTML de todas las etiquetas
-    const etiquetasHTML = etiquetas.map(etiqueta => `
-      <div class="etiqueta">
-        <div class="etiqueta-lado-izq">
-          <img src="/assets/images/logo-2.png" alt="Evolution Chemical" />
-          <p class="etiqueta-empresa">EVOLUTION<br/>CHEMICAL S.R.L</p>
-        </div>
-        <div class="etiqueta-divisor"></div>
-        <div class="etiqueta-lado-der">
-          <div class="etiqueta-campo">
-            <strong>Empresa solicitante:</strong> ${etiqueta.cliente}
-            <strong style="margin-left: 20px;">Fecha:</strong> ${etiqueta.fecha}
-          </div>
-          <div class="etiqueta-campo">
-            <strong>Muestra:</strong> ${etiqueta.tipos}
-          </div>
-          <div class="etiqueta-campo">
-            <strong>Contacto:</strong> ${etiqueta.mail}
-          </div>
-          <div class="etiqueta-campo etiqueta-campo--analisis">
-            <strong>Análisis Requerido:</strong> ${etiqueta.analisis}
-          </div>
-        </div>
-      </div>
-    `).join('');
-
-    // Crear ventana de impresión
-    const printWindow = window.open('', '_blank', 'width=800,height=600');
-
-    if (printWindow) {
-      printWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="es">
-        <head>
-          <meta charset="UTF-8">
-          <title>Etiquetas de Muestra - Evolution Chemical</title>
-          <style>
-            * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-            }
-
-            body {
-              font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
-              padding: 2cm;
-              background: #f5f5f5;
-              display: flex;
-              flex-wrap: wrap;
-              gap: 1cm;
-              justify-content: flex-start;
-              align-content: flex-start;
-            }
-
-            .etiqueta {
-              width: 8cm;
-              height: 5cm;
-              border: 2px solid #0b1f3a;
-              background: #fff;
-              display: grid;
-              grid-template-columns: 30% 1px 1fr;
-              font-size: 0.7rem;
-              line-height: 1.4;
-              overflow: hidden;
-              page-break-inside: avoid;
-            }
-
-            .etiqueta-lado-izq {
-              padding: 16px 12px;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-              gap: 8px;
-              background: #f9fafb;
-            }
-
-            .etiqueta-lado-izq img {
-              width: 50px;
-              height: auto;
-              object-fit: contain;
-            }
-
-            .etiqueta-empresa {
-              font-size: 0.6rem;
-              font-weight: 700;
-              text-align: center;
-              color: #0b1f3a;
-              text-transform: uppercase;
-              letter-spacing: 0.02em;
-              line-height: 1.3;
-            }
-
-            .etiqueta-divisor {
-              background: #0b1f3a;
-              width: 1px;
-            }
-
-            .etiqueta-lado-der {
-              padding: 12px 14px;
-              display: flex;
-              flex-direction: column;
-              gap: 5px;
-            }
-
-            .etiqueta-campo {
-              font-size: 0.68rem;
-              line-height: 1.3;
-              color: #0b1f3a;
-            }
-
-            .etiqueta-campo strong {
-              font-weight: 700;
-              color: #0b1f3a;
-            }
-
-            .etiqueta-campo--analisis {
-              overflow: hidden;
-              display: -webkit-box;
-              -webkit-line-clamp: 3;
-              -webkit-box-orient: vertical;
-            }
-
-            @media print {
-              body {
-                background: white;
-                padding: 1cm;
-              }
-
-              @page {
-                size: A4;
-                margin: 1cm;
-              }
-            }
-          </style>
-        </head>
-        <body>
-          ${etiquetasHTML}
-        </body>
-        </html>
-      `);
-
-      printWindow.document.close();
-
-      // Esperar a que cargue y luego imprimir
-      printWindow.onload = () => {
-        printWindow.focus();
-        setTimeout(() => {
-          printWindow.print();
-          printWindow.close();
-        }, 250);
-      };
-    }
+  // Descargar todas en blanco
+  btnDescargar.addEventListener('click', () => {
+    const logoSrc = window.location.origin + '/assets/images/logo-2.png';
+    const blank = blankLabelHTML(logoSrc);
+    openPrintWindow(`<div class="sheet">
+  ${Array(10).fill(`<div class="label">${blank}</div>`).join('\n  ')}
+</div>`);
   });
 });
 </script>
