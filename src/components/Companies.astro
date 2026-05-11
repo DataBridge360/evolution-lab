@@ -1,0 +1,163 @@
+---
+const logos = [
+  { src: "/assets/images/hero/companies/YPF-logo.png", alt: "YPF", invert: false },
+  { src: "/assets/images/hero/companies/aesa-blanco.svg", alt: "AESA", invert: true },
+  { src: "/assets/images/hero/companies/logo-pampa.webp", alt: "Pampa Energía", invert: false },
+];
+---
+
+<section class="companies" id="clientes">
+  <div class="companies-inner">
+    <h3 class="companies-title">Confían en nosotros</h3>
+
+    <div class="companies-carousel">
+      <div class="companies-track">
+        {[...logos, ...logos, ...logos].map((logo) => (
+          <div class="companies-logo">
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              loading="lazy"
+              class={logo.invert ? 'invert-logo' : ''}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* ─── COMPANIES ──────────────────────────────────────────── */
+.companies {
+  background: #fff;
+  padding: 40px 0 60px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.companies-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.companies-title {
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gray-400);
+  margin-bottom: 48px;
+}
+
+/* ─── CAROUSEL ───────────────────────────────────────────── */
+.companies-carousel {
+  position: relative;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.companies-track {
+  display: flex;
+  gap: 80px;
+  align-items: center;
+  animation: scroll-infinite 30s linear infinite;
+  width: fit-content;
+}
+
+.companies-logo {
+  flex-shrink: 0;
+  width: 160px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.companies-logo:hover {
+  opacity: 1;
+}
+
+.companies-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.companies-logo img.invert-logo {
+  filter: grayscale(100%) invert(1);
+}
+
+.companies-logo:hover img {
+  filter: grayscale(0%);
+}
+
+.companies-logo:hover img.invert-logo {
+  filter: grayscale(0%) invert(1);
+}
+
+@keyframes scroll-infinite {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-160px * 3 - 80px * 3));
+  }
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .companies {
+    padding: 60px 0;
+  }
+
+  .companies-inner {
+    padding: 0 24px;
+  }
+
+  .companies-title {
+    font-size: 0.8rem;
+    margin-bottom: 36px;
+  }
+
+  .companies-track {
+    gap: 60px;
+  }
+
+  .companies-logo {
+    width: 120px;
+    height: 60px;
+  }
+
+  @keyframes scroll-infinite {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-120px * 3 - 60px * 3));
+    }
+  }
+}
+</style>

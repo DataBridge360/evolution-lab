@@ -1,0 +1,824 @@
+---
+// Generador de Etiquetas de Muestra
+---
+
+<section class="em" id="etiquetas">
+
+  <!-- ── HEADER ──────────────────────────────────────────── -->
+  <div class="em-header">
+    <p class="em-eyebrow">— Generador de Etiquetas</p>
+    <h2>Generá <em>etiquetas</em> para tus muestras</h2>
+    <p class="em-sub">Identificá tus muestras de laboratorio con etiquetas profesionales listas para imprimir</p>
+  </div>
+
+  <!-- ── ETIQUETA VISUAL (solo visual, no editable) ───────── -->
+  <div class="em-showcase">
+
+    <div class="label-preview">
+      <div class="lp-inner">
+
+        <div class="lp-row lp-top">
+          <div class="lp-logo">
+            <img src="/assets/images/logo-2.png" alt="Evolution Chemical S.R.L." />
+          </div>
+          <div class="lp-top-fields">
+            <div class="lp-field">
+              <span class="lp-lbl">Empresa solicitante:</span>
+              <span class="lp-line"></span>
+            </div>
+            <div class="lp-field lp-inline">
+              <span class="lp-lbl">Fecha:</span>
+              <span class="lp-line lp-line-short"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lp-row lp-tipo-row">
+          <div class="lp-tipo">
+            <span class="lp-lbl">Tipo de Muestra:</span>
+            <span class="lp-opt"><span class="lp-box"></span>Sólido</span>
+            <span class="lp-opt"><span class="lp-box"></span>Agua</span>
+            <span class="lp-opt"><span class="lp-box"></span>Petróleo</span>
+            <span class="lp-opt"><span class="lp-box"></span>Prod. Qco.</span>
+            <span class="lp-opt"><span class="lp-box"></span>Otro</span>
+          </div>
+        </div>
+
+        <div class="lp-row lp-bottom-row">
+          <div class="lp-bottom">
+            <div class="lp-field">
+              <span class="lp-lbl">Contacto:</span>
+              <span class="lp-line"></span>
+            </div>
+            <div class="lp-field lp-analisis">
+              <span class="lp-lbl">Análisis Requerido:</span>
+              <span class="lp-line"></span>
+            </div>
+            <span class="lp-line lp-line-full"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Botones de acción -->
+    <div class="em-actions">
+      <button id="btn-rellenar" class="em-btn-outline">
+        Rellenar etiqueta
+      </button>
+      <button id="btn-descargar" class="em-btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Descargar plantilla de etiquetas
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ── FORMULARIO (oculto por defecto) ─────────────────── -->
+  <div class="em-form-section" id="form-section" style="display:none">
+    <div class="em-form-inner">
+
+      <h3 class="em-form-title">Completá los datos de la etiqueta</h3>
+
+      <form id="em-form">
+
+        <div class="em-row">
+          <div class="em-field">
+            <label for="cliente">Empresa solicitante <span class="em-required">*</span></label>
+            <input type="text" id="cliente" name="cliente" required placeholder="Empresa ABC S.A." />
+          </div>
+          <div class="em-field">
+            <label for="fecha">Fecha <span class="em-required">*</span></label>
+            <input type="date" id="fecha" name="fecha" required />
+          </div>
+        </div>
+
+        <div class="em-field">
+          <label>Tipo de Muestra <span class="em-required">*</span> <span class="em-req">(selecciona al menos uno)</span></label>
+          <div class="em-checkbox-group">
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Sólido" />
+              <span>Sólido</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Agua" />
+              <span>Agua</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Petróleo" />
+              <span>Petróleo</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" name="tipo_muestra" value="Prod. Qco." />
+              <span>Prod. Qco.</span>
+            </label>
+            <label class="em-checkbox">
+              <input type="checkbox" id="tipo_otro" name="tipo_muestra" value="Otro" />
+              <span>Otro (especificar)</span>
+            </label>
+          </div>
+          <input
+            type="text"
+            id="tipo_otro_texto"
+            name="tipo_otro_texto"
+            placeholder="Especificar otro tipo..."
+            class="em-otro-input"
+            style="display:none; margin-top: 12px;"
+          />
+        </div>
+
+        <div class="em-field">
+          <label for="mail">Contacto <span class="em-required">*</span></label>
+          <input type="text" id="mail" name="mail" required placeholder="email o +54 299 000-0000" />
+        </div>
+
+        <div class="em-field">
+          <label for="analisis">Análisis Requerido <span class="em-required">*</span></label>
+          <textarea id="analisis" name="analisis" rows="4" required placeholder="Descripción del análisis requerido..."></textarea>
+        </div>
+
+        <div class="em-form-footer">
+          <button type="button" id="btn-cancelar" class="em-btn-cancel">Cancelar</button>
+          <button type="button" id="btn-generar" class="em-btn-generar">
+            Generar e Imprimir Etiqueta
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</section>
+
+<!-- ░░ STYLES ░░ -->
+<style>
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.em {
+  position: relative;
+  background: var(--gray-100);
+  padding: 100px 80px;
+  z-index: 2;
+}
+
+/* ─── HEADER ──────────────────────────────────────────── */
+.em-header {
+  max-width: 960px;
+  margin: 0 auto 56px;
+  text-align: center;
+}
+
+.em-eyebrow {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 16px;
+}
+
+.em-header h2 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.em-header h2 em {
+  color: var(--orange);
+  font-style: italic;
+}
+
+.em-sub {
+  font-size: 1rem;
+  color: var(--gray-600);
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── SHOWCASE ────────────────────────────────────────── */
+.em-showcase {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+}
+
+/* ─── LABEL PREVIEW (visual) ──────────────────────────── */
+.label-preview {
+  width: 100%;
+  max-width: 560px;
+  background: #fff;
+  border: 2px solid #111;
+  box-shadow: 0 6px 32px rgba(0,0,0,.14);
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.lp-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.lp-row {
+  display: flex;
+}
+.lp-row + .lp-row {
+  border-top: 1.5px solid #111;
+}
+
+/* Fila 1 */
+.lp-top { min-height: 76px; }
+.lp-logo {
+  flex: 0 0 110px;
+  border-right: 1.5px solid #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background: #fafafa;
+}
+.lp-logo img {
+  max-width: 72px;
+  max-height: 52px;
+  display: block;
+}
+.lp-top-fields {
+  flex: 1 1 auto;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.lp-field {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 0;
+}
+.lp-inline { flex: 0 0 auto; }
+.lp-lbl {
+  flex: 0 0 auto;
+  font-size: .72rem;
+  font-weight: 700;
+  color: #111;
+  white-space: nowrap;
+  line-height: 1.6;
+}
+.lp-line {
+  flex: 1 1 auto;
+  border-bottom: 1.2px solid #111;
+  height: 1.4em;
+}
+.lp-line-short {
+  flex: 0 0 80px;
+}
+
+/* Fila 2: tipo */
+.lp-tipo-row { min-height: 44px; }
+.lp-tipo {
+  flex: 1 1 auto;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+.lp-opt {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .72rem;
+  color: #111;
+  white-space: nowrap;
+}
+.lp-box {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  border: 1.2px solid #111;
+  background: #fff;
+  flex: 0 0 11px;
+}
+
+/* Fila 3: bottom */
+.lp-bottom-row { min-height: 72px; }
+.lp-bottom {
+  flex: 1 1 auto;
+  padding: 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lp-analisis { flex: 0 0 auto; }
+.lp-line-full {
+  display: block;
+  width: 100%;
+  border-bottom: 1.2px solid #111;
+  height: 1em;
+}
+
+/* ─── BOTONES DE ACCIÓN ───────────────────────────────── */
+.em-actions {
+  display: flex;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+}
+
+.em-btn-outline {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: .94rem;
+  font-weight: 600;
+  color: var(--navy);
+  background: #fff;
+  border: 2px solid rgba(11,31,58,.25);
+  border-radius: 100px;
+  padding: 16px 28px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+.em-btn-outline:hover {
+  border-color: var(--navy);
+  background: rgba(11,31,58,.04);
+  transform: translateY(-2px);
+}
+
+.em-btn-primary {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .94rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--orange);
+  border: 2px solid transparent;
+  border-radius: 100px;
+  padding: 16px 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(232,99,10,.25);
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.em-btn-primary:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232,99,10,.35);
+}
+
+/* ─── FORMULARIO ──────────────────────────────────────── */
+.em-form-section {
+  max-width: 640px;
+  margin: 48px auto 0;
+}
+
+.em-form-inner {
+  background: #fff;
+  border-radius: 20px;
+  padding: 44px 48px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.10);
+}
+
+.em-form-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 28px;
+}
+
+.em-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+form#em-form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.em-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.em-field {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.em-field label {
+  font-size: .86rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.em-required { color: #dc2626; font-weight: 700; margin-left: 2px; }
+.em-req { font-size: .75rem; font-weight: 500; color: var(--gray-400); font-style: italic; }
+
+.em-field input,
+.em-field textarea {
+  font-family: var(--font);
+  font-size: .9rem;
+  color: var(--navy);
+  background: var(--gray-50);
+  border: 1.5px solid rgba(11,31,58,.10);
+  border-radius: 10px;
+  padding: 13px 16px;
+  transition: border-color .2s, box-shadow .2s;
+  outline: none;
+}
+.em-field input::placeholder,
+.em-field textarea::placeholder { color: rgba(11,31,58,.35); }
+.em-field input:focus,
+.em-field textarea:focus {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(232,99,10,.09);
+}
+.em-field textarea { resize: vertical; min-height: 100px; }
+
+.em-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.em-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: .88rem;
+  color: var(--navy);
+  font-weight: 500;
+  user-select: none;
+}
+.em-checkbox input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: var(--orange);
+}
+.em-otro-input { width: 100%; }
+
+.em-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.em-btn-cancel {
+  font-family: var(--font);
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--gray-600);
+  background: transparent;
+  border: none;
+  padding: 14px 20px;
+  cursor: pointer;
+  border-radius: 100px;
+  transition: color .2s, background .2s;
+}
+.em-btn-cancel:hover {
+  color: var(--navy);
+  background: rgba(11,31,58,.05);
+}
+
+.em-btn-generar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .94rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--orange);
+  border: none;
+  border-radius: 100px;
+  padding: 14px 32px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(232,99,10,.25);
+  transition: background .2s, transform .2s, box-shadow .2s;
+}
+.em-btn-generar:hover {
+  background: var(--orange-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232,99,10,.35);
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────────── */
+@media (max-width: 860px) {
+  .em { padding: 80px 40px; }
+}
+
+@media (max-width: 640px) {
+  .em { padding: 60px 24px; }
+  .em-actions { flex-direction: column; }
+  .em-btn-outline, .em-btn-primary { flex: none; width: 100%; }
+  .em-row { grid-template-columns: 1fr; }
+  .em-form-inner { padding: 28px 24px; }
+  .em-form-footer { flex-direction: column-reverse; align-items: stretch; }
+  .em-btn-generar, .em-btn-cancel { width: 100%; justify-content: center; }
+}
+
+</style>
+
+<!-- ░░ SCRIPTS ░░ -->
+<script>
+const TIPOS_STD = ['Sólido', 'Agua', 'Petróleo', 'Prod. Qco.'];
+
+function escHtml(s: string): string {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+const PRINT_CSS = `
+  @page { size: A4; margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #eceae6;
+    font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
+    color: #111;
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+  }
+  .sheet {
+    width: 210mm; height: 297mm;
+    background: #fff;
+    margin: 24px auto;
+    padding: 23.5mm 5mm;
+    box-shadow: 0 2px 40px rgba(0,0,0,.18);
+    display: grid;
+    grid-template-columns: 100mm 100mm;
+    grid-auto-rows: 50mm;
+    gap: 0;
+  }
+  .sheet > .label { border: 0.25mm dashed #9aa0a6; }
+  .label { width: 100mm; height: 50mm; padding: 1.2mm; overflow: hidden; }
+  .label-inner {
+    width: 100%; height: 100%;
+    border: 0.4mm solid #111;
+    display: flex; flex-direction: column;
+    font-size: 8pt; line-height: 1.2;
+    overflow: hidden;
+  }
+  .row { display: flex; }
+  .row + .row { border-top: 0.4mm solid #111; }
+  .top { flex: 0 0 13mm; }
+  .logo-cell {
+    flex: 0 0 28mm; border-right: 0.4mm solid #111;
+    display: flex; align-items: center; justify-content: center; padding: 1mm 1.5mm;
+  }
+  .logo-cell img { max-width: 100%; max-height: 11mm; display: block; }
+  .top-fields {
+    flex: 1 1 auto; padding: 1.5mm 2mm;
+    display: flex; flex-direction: column; justify-content: center; gap: 1.5mm;
+    min-width: 0;
+  }
+  .field { display: flex; align-items: baseline; gap: 1mm; min-width: 0; }
+  .field > .lbl { flex: 0 0 auto; font-weight: 700; font-size: 7pt; }
+  .underline {
+    flex: 1 1 auto; border-bottom: 0.4mm solid #111;
+    min-height: 1.4em; align-self: flex-end;
+    padding: 0 1mm; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+    font-size: 8pt;
+  }
+  .field.fecha { flex: 0 0 auto; }
+  .tipo-row { flex: 0 0 7.5mm; }
+  .tipo {
+    flex: 1 1 auto; padding: 1.5mm 2mm;
+    display: flex; align-items: center; flex-wrap: wrap; gap: 1mm 2.5mm;
+  }
+  .tipo .lbl { font-weight: 700; font-size: 7pt; flex: 0 0 auto; }
+  .opt { display: inline-flex; align-items: center; gap: 1mm; white-space: nowrap; font-size: 7.5pt; }
+  .box {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 3mm; height: 3mm;
+    border: 0.4mm solid #111; background: #fff;
+    flex: 0 0 3mm; font-size: 2.8mm; line-height: 1; font-weight: 900;
+    print-color-adjust: exact; -webkit-print-color-adjust: exact;
+  }
+  .box.checked { background: #111; color: #fff; }
+  .bottom-row { flex: 1 1 auto; }
+  .bottom {
+    flex: 1 1 auto; padding: 1.5mm 2mm;
+    display: flex; flex-direction: column; justify-content: flex-start; gap: 2mm;
+    min-width: 0;
+  }
+  .field-analisis { display: flex; align-items: baseline; gap: 1mm; min-width: 0; }
+  .field-analisis .lbl { flex: 0 0 auto; font-weight: 700; font-size: 7pt; }
+  .analisis-val {
+    flex: 1 1 auto; white-space: normal; overflow: hidden;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  }
+  .toolbar {
+    position: fixed; top: 14px; right: 14px;
+    display: flex; gap: 8px; z-index: 10; text-transform: none;
+  }
+  .toolbar button {
+    font: 500 13px/1 Arial; padding: 9px 16px;
+    background: #111; color: #fff; border: none; border-radius: 6px; cursor: pointer;
+  }
+  .toolbar button:hover { opacity: .9; }
+  @media print {
+    html, body { background: #fff; }
+    .sheet { margin: 0; box-shadow: none; }
+    .sheet > .label { border: 0.2mm dashed #bbb; }
+    .toolbar { display: none !important; }
+  }
+`;
+
+function filledLabelHTML(data: {
+  cliente: string; fecha: string; tipos: string[]; mail: string; analisis: string; logoSrc: string;
+}): string {
+  const tiene = (t: string) => data.tipos.includes(t);
+  const otroVal = data.tipos.find((t: string) => !TIPOS_STD.includes(t));
+  const box = (sel: boolean) => `<span class="box${sel ? ' checked' : ''}">${sel ? '✓' : ''}</span>`;
+  return `<div class="label-inner">
+    <div class="row top">
+      <div class="logo-cell"><img src="${data.logoSrc}" alt="Evolution Chemical S.R.L." /></div>
+      <div class="top-fields">
+        <div class="field"><span class="lbl">Empresa solicitante:</span><span class="underline">${escHtml(data.cliente)}</span></div>
+        <div class="field fecha"><span class="lbl">Fecha:</span><span class="underline">${escHtml(data.fecha)}</span></div>
+      </div>
+    </div>
+    <div class="row tipo-row">
+      <div class="tipo">
+        <span class="lbl">Tipo de Muestra:</span>
+        <span class="opt">${box(tiene('Sólido'))}Sólido</span>
+        <span class="opt">${box(tiene('Agua'))}Agua</span>
+        <span class="opt">${box(tiene('Petróleo'))}Petróleo</span>
+        <span class="opt">${box(tiene('Prod. Qco.'))}Prod. Qco.</span>
+        <span class="opt">${box(!!otroVal)}Otro${otroVal ? ': ' + escHtml(otroVal) : ''}</span>
+      </div>
+    </div>
+    <div class="row bottom-row">
+      <div class="bottom">
+        <div class="field"><span class="lbl">Contacto:</span><span class="underline">${escHtml(data.mail)}</span></div>
+        <div class="field-analisis"><span class="lbl">Análisis Requerido:</span><span class="underline analisis-val">${escHtml(data.analisis)}</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function blankLabelHTML(logoSrc: string): string {
+  const box = () => `<span class="box"></span>`;
+  return `<div class="label-inner">
+    <div class="row top">
+      <div class="logo-cell"><img src="${logoSrc}" alt="Evolution Chemical S.R.L." /></div>
+      <div class="top-fields">
+        <div class="field"><span class="lbl">Empresa solicitante:</span><span class="underline"></span></div>
+        <div class="field fecha"><span class="lbl">Fecha:</span><span class="underline"></span></div>
+      </div>
+    </div>
+    <div class="row tipo-row">
+      <div class="tipo">
+        <span class="lbl">Tipo de Muestra:</span>
+        <span class="opt">${box()}Sólido</span>
+        <span class="opt">${box()}Agua</span>
+        <span class="opt">${box()}Petróleo</span>
+        <span class="opt">${box()}Prod. Qco.</span>
+        <span class="opt">${box()}Otro</span>
+      </div>
+    </div>
+    <div class="row bottom-row">
+      <div class="bottom">
+        <div class="field"><span class="lbl">Contacto:</span><span class="underline"></span></div>
+        <div class="field-analisis"><span class="lbl">Análisis Requerido:</span><span class="underline"></span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function openPrintWindow(sheetHTML: string): void {
+  const w = window.open('', '_blank', 'width=900,height=700');
+  if (!w) return;
+  w.document.write(`<!DOCTYPE html>
+<html lang="es"><head><meta charset="UTF-8" /><title>Etiquetas — Evolution Chemical S.R.L.</title>
+<style>${PRINT_CSS}</style></head><body>
+<div class="toolbar"><button onclick="window.print()">Imprimir hoja</button></div>
+${sheetHTML}
+</body></html>`);
+  w.document.close();
+  w.onload = () => { w.focus(); setTimeout(() => w.print(), 300); };
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const showcase = document.querySelector('.em-showcase') as HTMLElement;
+  const formSection = document.getElementById('form-section') as HTMLElement;
+  const form = document.getElementById('em-form') as HTMLFormElement;
+  const btnRellenar = document.getElementById('btn-rellenar') as HTMLButtonElement;
+  const btnDescargar = document.getElementById('btn-descargar') as HTMLButtonElement;
+  const btnGenerar = document.getElementById('btn-generar') as HTMLButtonElement;
+  const btnCancelar = document.getElementById('btn-cancelar') as HTMLButtonElement;
+  const checkboxes = form.querySelectorAll('input[name="tipo_muestra"]') as NodeListOf<HTMLInputElement>;
+  const checkOtro = document.getElementById('tipo_otro') as HTMLInputElement;
+  const inputOtro = document.getElementById('tipo_otro_texto') as HTMLInputElement;
+
+  // Mostrar formulario
+  btnRellenar.addEventListener('click', () => {
+    formSection.style.display = 'block';
+    setTimeout(() => formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  });
+
+  // Ocultar formulario (cancelar)
+  btnCancelar.addEventListener('click', () => {
+    formSection.style.display = 'none';
+    form.reset();
+    inputOtro.style.display = 'none';
+    inputOtro.required = false;
+    showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Validación de checkboxes
+  const validateCheckboxes = (): boolean => {
+    const checked = Array.from(checkboxes).some(cb => cb.checked);
+    checkboxes.forEach(cb => cb.setCustomValidity(checked ? '' : 'Selecciona al menos un tipo de muestra'));
+    return checked;
+  };
+  checkboxes.forEach(cb => cb.addEventListener('change', validateCheckboxes));
+
+  // Campo "Otro"
+  checkOtro?.addEventListener('change', () => {
+    inputOtro.style.display = checkOtro.checked ? 'block' : 'none';
+    inputOtro.required = checkOtro.checked;
+    if (!checkOtro.checked) { inputOtro.value = ''; inputOtro.setCustomValidity(''); }
+  });
+  inputOtro?.addEventListener('input', () => inputOtro.setCustomValidity(''));
+
+  // Generar e imprimir (1 llena + 9 en blanco)
+  btnGenerar.addEventListener('click', () => {
+    if (!form.checkValidity() || !validateCheckboxes()) { form.reportValidity(); return; }
+    if (checkOtro.checked && !inputOtro.value.trim()) {
+      inputOtro.focus();
+      inputOtro.setCustomValidity('Debes especificar el tipo de muestra');
+      inputOtro.reportValidity();
+      return;
+    }
+
+    const formData = new FormData(form);
+    const cliente = (formData.get('cliente') as string).trim();
+    const fechaRaw = formData.get('fecha') as string;
+    const mail = (formData.get('mail') as string).trim();
+    const analisis = (formData.get('analisis') as string).trim();
+    const fecha = new Date(fechaRaw + 'T12:00:00').toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+
+    const tipos: string[] = [];
+    checkboxes.forEach(cb => {
+      if (cb.checked) {
+        if (cb.value === 'Otro') {
+          const txt = (formData.get('tipo_otro_texto') as string).trim();
+          if (txt) tipos.push(txt);
+        } else {
+          tipos.push(cb.value);
+        }
+      }
+    });
+
+    const logoSrc = window.location.origin + '/assets/images/logo-2.png';
+    const filled = filledLabelHTML({ cliente, fecha, tipos, mail, analisis, logoSrc });
+    const blank = blankLabelHTML(logoSrc);
+
+    openPrintWindow(`<div class="sheet">
+  <div class="label">${filled}</div>
+  ${Array(9).fill(`<div class="label">${blank}</div>`).join('\n  ')}
+</div>`);
+  });
+
+  // Descargar todas en blanco
+  btnDescargar.addEventListener('click', () => {
+    const logoSrc = window.location.origin + '/assets/images/logo-2.png';
+    const blank = blankLabelHTML(logoSrc);
+    openPrintWindow(`<div class="sheet">
+  ${Array(10).fill(`<div class="label">${blank}</div>`).join('\n  ')}
+</div>`);
+  });
+});
+</script>

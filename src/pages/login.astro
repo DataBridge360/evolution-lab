@@ -6,6 +6,32 @@ import Layout from '../layouts/Layout.astro';
   <div class="login-page">
 
     <div class="login-left">
+      <!-- Animated Paths Background -->
+      <div class="login-paths">
+        <svg class="login-paths-svg" viewBox="0 0 1000 1000" fill="none">
+          <path class="login-path" d="M0 200C100 150 200 350 350 380C500 410 700 300 850 500C1000 700 1100 600 1100 600" stroke="currentColor" />
+          <path class="login-path" d="M0 250C100 200 200 400 350 430C500 460 700 350 850 550C1000 750 1100 650 1100 650" stroke="currentColor" />
+          <path class="login-path" d="M0 300C100 250 200 450 350 480C500 510 700 400 850 600C1000 800 1100 700 1100 700" stroke="currentColor" />
+          <path class="login-path" d="M50 220C150 170 250 370 400 400C550 430 750 320 900 520C1050 720 1150 620 1150 620" stroke="currentColor" />
+          <path class="login-path" d="M50 270C150 220 250 420 400 450C550 480 750 370 900 570C1050 770 1150 670 1150 670" stroke="currentColor" />
+          <path class="login-path" d="M-50 180C50 130 150 330 300 360C450 390 650 280 800 480C950 680 1050 580 1050 580" stroke="currentColor" />
+          <path class="login-path" d="M-50 230C50 180 150 380 300 410C450 440 650 330 800 530C950 730 1050 630 1050 630" stroke="currentColor" />
+          <path class="login-path" d="M-50 280C50 230 150 430 300 460C450 490 650 380 800 580C950 780 1050 680 1050 680" stroke="currentColor" />
+          <path class="login-path" d="M100 240C200 190 300 390 450 420C600 450 800 340 950 540C1100 740 1200 640 1200 640" stroke="currentColor" />
+          <path class="login-path" d="M100 290C200 240 300 440 450 470C600 500 800 390 950 590C1100 790 1200 690 1200 690" stroke="currentColor" />
+          <path class="login-path" d="M-100 160C0 110 100 310 250 340C400 370 600 260 750 460C900 660 1000 560 1000 560" stroke="currentColor" />
+          <path class="login-path" d="M-100 210C0 160 100 360 250 390C400 420 600 310 750 510C900 710 1000 610 1000 610" stroke="currentColor" />
+          <path class="login-path" d="M-100 260C0 210 100 410 250 440C400 470 600 360 750 560C900 760 1000 660 1000 660" stroke="currentColor" />
+          <path class="login-path" d="M150 260C250 210 350 410 500 440C650 470 850 360 1000 560C1150 760 1250 660 1250 660" stroke="currentColor" />
+          <path class="login-path" d="M150 310C250 260 350 460 500 490C650 520 850 410 1000 610C1150 810 1250 710 1250 710" stroke="currentColor" />
+          <path class="login-path" d="M25 235C125 185 225 385 375 415C525 445 725 335 875 535C1025 735 1125 635 1125 635" stroke="currentColor" />
+          <path class="login-path" d="M25 285C125 235 225 435 375 465C525 495 725 385 875 585C1025 785 1125 685 1125 685" stroke="currentColor" />
+          <path class="login-path" d="M-25 205C75 155 175 355 325 385C475 415 675 305 825 505C975 705 1075 605 1075 605" stroke="currentColor" />
+          <path class="login-path" d="M-25 255C75 205 175 405 325 435C475 465 675 355 825 555C975 755 1075 655 1075 655" stroke="currentColor" />
+          <path class="login-path" d="M75 225C175 175 275 375 425 405C575 435 775 325 925 525C1075 725 1175 625 1175 625" stroke="currentColor" />
+        </svg>
+      </div>
+
       <div class="login-left-inner">
         <a href="/" class="login-logo">
           <img src="/assets/images/logo-2.png" alt="Evolution Chemical SRL" height="44" />
@@ -81,6 +107,59 @@ import Layout from '../layouts/Layout.astro';
   position: relative;
   overflow: hidden;
 }
+
+/* Animated Paths Background */
+.login-paths {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 1;
+  overflow: hidden;
+}
+.login-paths-svg {
+  width: 100%;
+  height: 100%;
+  color: rgba(255,255,255,0.5);
+}
+.login-path {
+  stroke-dasharray: 1500;
+  stroke-dashoffset: 1500;
+  opacity: 0.15;
+  stroke-width: 0.6;
+  animation: pathDraw 10s linear infinite;
+}
+.login-path:nth-child(2) { animation-delay: 0.5s; opacity: 0.17; stroke-width: 0.62; }
+.login-path:nth-child(3) { animation-delay: 1s; opacity: 0.19; stroke-width: 0.64; }
+.login-path:nth-child(4) { animation-delay: 1.5s; opacity: 0.21; stroke-width: 0.66; }
+.login-path:nth-child(5) { animation-delay: 2s; opacity: 0.23; stroke-width: 0.68; }
+.login-path:nth-child(6) { animation-delay: 2.5s; opacity: 0.25; stroke-width: 0.7; }
+.login-path:nth-child(7) { animation-delay: 3s; opacity: 0.27; stroke-width: 0.72; }
+.login-path:nth-child(8) { animation-delay: 3.5s; opacity: 0.29; stroke-width: 0.74; }
+.login-path:nth-child(9) { animation-delay: 4s; opacity: 0.31; stroke-width: 0.76; }
+.login-path:nth-child(10) { animation-delay: 4.5s; opacity: 0.33; stroke-width: 0.78; }
+.login-path:nth-child(11) { animation-delay: 5s; opacity: 0.35; stroke-width: 0.8; }
+.login-path:nth-child(12) { animation-delay: 5.5s; opacity: 0.37; stroke-width: 0.82; }
+.login-path:nth-child(13) { animation-delay: 6s; opacity: 0.39; stroke-width: 0.84; }
+.login-path:nth-child(14) { animation-delay: 6.5s; opacity: 0.41; stroke-width: 0.86; }
+.login-path:nth-child(15) { animation-delay: 7s; opacity: 0.43; stroke-width: 0.88; }
+.login-path:nth-child(16) { animation-delay: 7.5s; opacity: 0.45; stroke-width: 0.9; }
+.login-path:nth-child(17) { animation-delay: 8s; opacity: 0.47; stroke-width: 0.92; }
+.login-path:nth-child(18) { animation-delay: 8.5s; opacity: 0.49; stroke-width: 0.94; }
+.login-path:nth-child(19) { animation-delay: 9s; opacity: 0.51; stroke-width: 0.96; }
+.login-path:nth-child(20) { animation-delay: 9.5s; opacity: 0.53; stroke-width: 0.98; }
+
+@keyframes pathDraw {
+  0% {
+    stroke-dashoffset: 1500;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1500;
+  }
+}
+
 .login-left::before {
   content: '';
   position: absolute;
@@ -89,6 +168,7 @@ import Layout from '../layouts/Layout.astro';
   border-radius: 50%;
   background: radial-gradient(circle, rgba(232,99,10,.18), transparent 70%);
   pointer-events: none;
+  z-index: 1;
 }
 .login-left::after {
   content: '';
@@ -98,6 +178,7 @@ import Layout from '../layouts/Layout.astro';
   border-radius: 50%;
   background: radial-gradient(circle, rgba(37,99,235,.12), transparent 70%);
   pointer-events: none;
+  z-index: 1;
 }
 
 .login-left-inner {

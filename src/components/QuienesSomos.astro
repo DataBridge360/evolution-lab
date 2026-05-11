@@ -49,12 +49,12 @@
         <div class="qs-img-fade"></div>
         <div class="qs-overlay-stats">
           <div class="qs-ostat">
-            <span class="qs-ostat-n">+25</span>
+            <span class="qs-ostat-n counter" data-count="25" data-prefix="+">0</span>
             <span class="qs-ostat-l">Años<br/>en el rubro</span>
           </div>
           <div class="qs-ostat-sep"></div>
           <div class="qs-ostat">
-            <span class="qs-ostat-n">2</span>
+            <span class="qs-ostat-n counter" data-count="2">0</span>
             <span class="qs-ostat-l">Sedes en<br/>Neuquén</span>
           </div>
           <div class="qs-ostat-sep"></div>
@@ -115,6 +115,8 @@
   padding: 110px 0 0;
   position: relative;
   overflow: hidden;
+  z-index: 2;
+  border-radius: 50px 50px 0 0;
 }
 
 /* ─── BLOBS ───────────────────────────────────────── */
@@ -236,7 +238,7 @@
 }
 
 .qs-ostat-n {
-  font-size: 1.55rem; font-weight: 900;
+  font-size: 3rem; font-weight: 900;
   color: #fff; letter-spacing: -.04em; line-height: 1;
 }
 
@@ -436,4 +438,69 @@ const ioQs = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.qs-reveal').forEach(el => ioQs.observe(el));
+
+// Counter animation
+const activeAnimations = new Map<HTMLElement, number>();
+
+function animateCounter(el: HTMLElement) {
+  // Cancel any existing animation
+  const existingAnimId = activeAnimations.get(el);
+  if (existingAnimId) {
+    cancelAnimationFrame(existingAnimId);
+  }
+
+  const target = parseInt(el.getAttribute('data-count') || '0');
+  const prefix = el.getAttribute('data-prefix') || '';
+  const duration = 2000; // 2 seconds
+  const start = 0;
+  const startTime = performance.now();
+
+  function update(currentTime: number) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+
+    // Easing function (ease-out)
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const current = Math.floor(start + (target - start) * easeOut);
+
+    el.textContent = prefix + current;
+
+    if (progress < 1) {
+      const animId = requestAnimationFrame(update);
+      activeAnimations.set(el, animId);
+    } else {
+      el.textContent = prefix + target;
+      activeAnimations.delete(el);
+    }
+  }
+
+  const animId = requestAnimationFrame(update);
+  activeAnimations.set(el, animId);
+}
+
+function resetCounter(el: HTMLElement) {
+  // Cancel any existing animation
+  const existingAnimId = activeAnimations.get(el);
+  if (existingAnimId) {
+    cancelAnimationFrame(existingAnimId);
+    activeAnimations.delete(el);
+  }
+
+  const prefix = el.getAttribute('data-prefix') || '';
+  el.textContent = prefix + '0';
+}
+
+// Observe counters
+const ioCounters = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    const el = entry.target as HTMLElement;
+    if (entry.isIntersecting) {
+      animateCounter(el);
+    } else {
+      resetCounter(el);
+    }
+  });
+}, { threshold: 0.3 });
+
+document.querySelectorAll('.counter').forEach(el => ioCounters.observe(el));
 </script>

@@ -44,6 +44,12 @@
     </div>
   </div>
 
+  <!-- ── HORARIO ─────────────────────────────────────────── -->
+  <div class="ct-horario">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <span><strong>Horario de atención:</strong> 8:00 am - 5:00 pm</span>
+  </div>
+
   <!-- ── FORM ────────────────────────────────────────────── -->
   <div class="ct-form-wrap">
     <div class="ct-form-inner">
@@ -95,6 +101,8 @@
 .ct {
   background: var(--gray-100);
   overflow: hidden;
+  position: relative;
+  z-index: 2;
 }
 
 /* ─── HEADER ──────────────────────────────────────────── */
@@ -137,6 +145,7 @@
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0;
   border-top: 1px solid rgba(11,31,58,.10);
   padding-top: 32px;
@@ -168,6 +177,24 @@ a.ct-strip-item:hover { color: var(--navy); }
 .ct-strip-item--sedes span { white-space: nowrap; }
 .ct-strip-sede-sep { color: rgba(11,31,58,.25) !important; font-weight: 400 !important; }
 .ct-strip-item strong { font-weight: 600; }
+
+/* ─── HORARIO ────────────────────────────────────────────── */
+.ct-horario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0 80px 48px;
+  font-size: .95rem;
+  color: var(--navy);
+}
+.ct-horario svg {
+  color: var(--orange);
+  flex-shrink: 0;
+}
+.ct-horario strong {
+  font-weight: 600;
+}
 
 /* ─── FORM ────────────────────────────────────────────── */
 .ct-form-wrap {
@@ -269,6 +296,11 @@ a.ct-strip-item:hover { color: var(--navy); }
 @media (max-width: 640px) {
   .ct-header { padding: 60px 24px 36px; }
   .ct-strip { padding: 0 24px 36px; }
+  .ct-horario {
+    padding: 0 24px 36px;
+    font-size: .88rem;
+    justify-content: flex-start;
+  }
   .ct-form-wrap { padding: 48px 24px 72px; }
   .ct-row { grid-template-columns: 1fr; }
   .ct-form-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
