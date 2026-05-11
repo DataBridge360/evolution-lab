@@ -27,10 +27,3 @@ Thumbs.db
 
 # Playwright snapshots
 .playwright-mcp/
-
-# Screenshots de debug
-*.png
-contacto-*.png
-navbar-*.png
-debug-*.png
-login-*.png
