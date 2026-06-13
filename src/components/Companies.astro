@@ -1,14 +1,15 @@
 ---
 const logos = [
-  { src: "/assets/images/hero/companies/YPF-logo.png", alt: "YPF", invert: false },
-  { src: "/assets/images/hero/companies/aesa-blanco.svg", alt: "AESA", invert: true },
-  { src: "/assets/images/hero/companies/logo-pampa.webp", alt: "Pampa Energía", invert: false },
+  { src: "/assets/images/hero/companies/YPF-logo.png", alt: "YPF", invert: false, scale: 1 },
+  { src: "/assets/images/hero/companies/aesa-blanco.svg", alt: "AESA", invert: true, scale: 1 },
+  { src: "/assets/images/hero/companies/logo-pampa.webp", alt: "Pampa Energía", invert: false, scale: 1.3 },
+  { src: "/assets/images/hero/companies/chevron.webp", alt: "Chevron", invert: false, scale: 1.15 },
 ];
 ---
 
 <section class="companies" id="clientes">
   <div class="companies-inner">
-    <h3 class="companies-title">Confían en nosotros</h3>
+    <h3 class="companies-title">Nuestros Clientes</h3>
 
     <div class="companies-carousel">
       <div class="companies-track">
@@ -19,6 +20,7 @@ const logos = [
               alt={logo.alt}
               loading="lazy"
               class={logo.invert ? 'invert-logo' : ''}
+              style={`transform: scale(${logo.scale});`}
             />
           </div>
         ))}
