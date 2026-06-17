@@ -27,3 +27,7 @@ Thumbs.db
 
 # Playwright snapshots
 .playwright-mcp/
+
+# Mockups de referencia / duplicados (no forman parte del sitio)
+/image.png
+public/assets/images/bg-muestras

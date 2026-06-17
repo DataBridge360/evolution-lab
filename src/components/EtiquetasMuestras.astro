@@ -1,672 +1,638 @@
 ---
-// Generador de Etiquetas de Muestra
+// Gestión de Muestras — Generador de Etiquetas
 ---
 
-<section class="em" id="etiquetas">
+<section class="ms" id="muestras">
 
-  <!-- ── HEADER ──────────────────────────────────────────── -->
-  <div class="em-header">
-    <p class="em-eyebrow">— Generador de Etiquetas</p>
-    <h2>Generá <em>etiquetas</em> para tus muestras</h2>
-    <p class="em-sub">Identificá tus muestras de laboratorio con etiquetas profesionales listas para imprimir</p>
-  </div>
+  <!-- ── ZONA SUPERIOR (con imagen) ────────────────────────── -->
+  <div class="ms-top">
 
-  <!-- ── ETIQUETA VISUAL (solo visual, no editable) ───────── -->
-  <div class="em-showcase">
-
-    <div class="label-preview">
-      <div class="lp-inner">
-
-        <div class="lp-row lp-top">
-          <div class="lp-logo">
-            <img src="/assets/images/logo-2.png" alt="Evolution Chemical S.R.L." />
-          </div>
-          <div class="lp-top-fields">
-            <div class="lp-field">
-              <span class="lp-lbl">Empresa solicitante:</span>
-              <span class="lp-line"></span>
-            </div>
-            <div class="lp-field lp-inline">
-              <span class="lp-lbl">Fecha:</span>
-              <span class="lp-line lp-line-short"></span>
-            </div>
-          </div>
-        </div>
-
-        <div class="lp-row lp-tipo-row">
-          <div class="lp-tipo">
-            <span class="lp-lbl">Tipo de Muestra:</span>
-            <span class="lp-opt"><span class="lp-box"></span>Sólido</span>
-            <span class="lp-opt"><span class="lp-box"></span>Agua</span>
-            <span class="lp-opt"><span class="lp-box"></span>Petróleo</span>
-            <span class="lp-opt"><span class="lp-box"></span>Prod. Qco.</span>
-            <span class="lp-opt"><span class="lp-box"></span>Otro</span>
-          </div>
-        </div>
-
-        <div class="lp-row lp-bottom-row">
-          <div class="lp-bottom">
-            <div class="lp-field">
-              <span class="lp-lbl">Contacto:</span>
-              <span class="lp-line"></span>
-            </div>
-            <div class="lp-field lp-analisis">
-              <span class="lp-lbl">Análisis Requerido:</span>
-              <span class="lp-line"></span>
-            </div>
-            <span class="lp-line lp-line-full"></span>
-          </div>
-        </div>
-
-      </div>
+    <!-- ── FONDO ─────────────────────────────────────────────── -->
+    <div class="ms-bg">
+      <img src="/assets/images/bg-muestras.png" alt="Muestra de laboratorio Evolution Chemical" />
+      <div class="ms-bg-overlay"></div>
     </div>
 
-    <!-- Botones de acción -->
-    <div class="em-actions">
-      <button id="btn-rellenar" class="em-btn-outline">
-        Rellenar etiqueta
-      </button>
-      <button id="btn-descargar" class="em-btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-          <polyline points="7 10 12 15 17 10"></polyline>
-          <line x1="12" y1="15" x2="12" y2="3"></line>
-        </svg>
-        Descargar plantilla de etiquetas
-      </button>
-    </div>
+    <div class="ms-inner">
 
-  </div>
+    <!-- ── ENCABEZADO ──────────────────────────────────────── -->
+    <header class="ms-head">
+      <p class="ms-eyebrow">— Generador de etiquetas</p>
+      <h2>Gestión de <em>muestras</em></h2>
+      <p class="ms-sub">
+        Generá etiquetas normalizadas para identificar correctamente
+        las muestras enviadas al laboratorio.
+      </p>
+    </header>
 
-  <!-- ── FORMULARIO (oculto por defecto) ─────────────────── -->
-  <div class="em-form-section" id="form-section" style="display:none">
-    <div class="em-form-inner">
+    <div class="ms-grid">
 
-      <h3 class="em-form-title">Completá los datos de la etiqueta</h3>
+      <!-- ── COLUMNA IZQUIERDA: etiqueta + acciones ────────── -->
+      <div class="ms-left">
 
-      <form id="em-form">
-
-        <div class="em-row">
-          <div class="em-field">
-            <label for="cliente">Empresa solicitante <span class="em-required">*</span></label>
-            <input type="text" id="cliente" name="cliente" required placeholder="Empresa ABC S.A." />
+        <!-- Etiqueta (preview con estilo del impreso) -->
+        <div class="label-card" id="label-card">
+          <div class="lc-row lc-top">
+            <div class="lc-logo">
+              <img src="/assets/images/logo-2.png" alt="Evolution Chemical S.R.L." />
+            </div>
+            <div class="lc-top-fields">
+              <div class="lc-field">
+                <span class="lc-lbl">Empresa solicitante:</span>
+                <span class="lc-line"></span>
+              </div>
+              <div class="lc-field lc-fecha">
+                <span class="lc-lbl">Fecha:</span>
+                <span class="lc-line lc-line-xs"></span>
+                <span class="lc-slash">/</span>
+                <span class="lc-line lc-line-xs"></span>
+                <span class="lc-slash">/</span>
+                <span class="lc-line lc-line-xs"></span>
+              </div>
+            </div>
           </div>
-          <div class="em-field">
-            <label for="fecha">Fecha <span class="em-required">*</span></label>
-            <input type="date" id="fecha" name="fecha" required />
+
+          <div class="lc-row lc-tipo-row">
+            <span class="lc-lbl">Tipo de muestra:</span>
+            <span class="lc-opt"><span class="lc-box"></span>Sólido</span>
+            <span class="lc-opt"><span class="lc-box"></span>Agua</span>
+            <span class="lc-opt"><span class="lc-box"></span>Petróleo</span>
+            <span class="lc-opt"><span class="lc-box"></span>Prod. Qco.</span>
+            <span class="lc-opt"><span class="lc-box"></span>Otro</span>
+          </div>
+
+          <div class="lc-row lc-bottom-row">
+            <div class="lc-field">
+              <span class="lc-lbl">Contacto:</span>
+              <span class="lc-line"></span>
+            </div>
+            <div class="lc-field">
+              <span class="lc-lbl">Análisis requerido:</span>
+              <span class="lc-line"></span>
+            </div>
+            <span class="lc-line lc-line-full"></span>
           </div>
         </div>
 
-        <div class="em-field">
-          <label>Tipo de Muestra <span class="em-required">*</span> <span class="em-req">(selecciona al menos uno)</span></label>
-          <div class="em-checkbox-group">
-            <label class="em-checkbox">
-              <input type="checkbox" name="tipo_muestra" value="Sólido" />
-              <span>Sólido</span>
-            </label>
-            <label class="em-checkbox">
-              <input type="checkbox" name="tipo_muestra" value="Agua" />
-              <span>Agua</span>
-            </label>
-            <label class="em-checkbox">
-              <input type="checkbox" name="tipo_muestra" value="Petróleo" />
-              <span>Petróleo</span>
-            </label>
-            <label class="em-checkbox">
-              <input type="checkbox" name="tipo_muestra" value="Prod. Qco." />
-              <span>Prod. Qco.</span>
-            </label>
-            <label class="em-checkbox">
-              <input type="checkbox" id="tipo_otro" name="tipo_muestra" value="Otro" />
-              <span>Otro (especificar)</span>
-            </label>
-          </div>
-          <input
-            type="text"
-            id="tipo_otro_texto"
-            name="tipo_otro_texto"
-            placeholder="Especificar otro tipo..."
-            class="em-otro-input"
-            style="display:none; margin-top: 12px;"
-          />
-        </div>
-
-        <div class="em-field">
-          <label for="mail">Contacto <span class="em-required">*</span></label>
-          <input type="text" id="mail" name="mail" required placeholder="email o +54 299 000-0000" />
-        </div>
-
-        <div class="em-field">
-          <label for="analisis">Análisis Requerido <span class="em-required">*</span></label>
-          <textarea id="analisis" name="analisis" rows="4" required placeholder="Descripción del análisis requerido..."></textarea>
-        </div>
-
-        <div class="em-form-footer">
-          <button type="button" id="btn-cancelar" class="em-btn-cancel">Cancelar</button>
-          <button type="button" id="btn-generar" class="em-btn-generar">
-            Generar e Imprimir Etiqueta
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 6 2 18 2 18 9"></polyline>
-              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
-              <rect x="6" y="14" width="12" height="8"></rect>
+        <!-- Botones de acción -->
+        <div class="ms-actions">
+          <button type="button" id="btn-completar" class="ms-btn-outline">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
             </svg>
+            Completar etiqueta
+          </button>
+          <button type="button" id="btn-plantilla" class="ms-btn-primary">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Descargar plantilla
           </button>
         </div>
 
-      </form>
+        <p class="ms-note">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          La plantilla se descarga en formato PDF lista para imprimir.
+        </p>
+      </div>
+
+      <!-- ── COLUMNA DERECHA: card informativa ──────────────── -->
+      <div class="ms-right">
+        <div class="ms-info-card">
+          <div class="ms-info-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 2h6"></path>
+              <path d="M10 2v3.5L6.2 13.2A4 4 0 0 0 9.8 19h4.4a4 4 0 0 0 3.6-5.8L14 5.5V2"></path>
+              <path d="M7.5 12h9"></path>
+            </svg>
+          </div>
+          <div class="ms-info-txt">
+            <strong>Etiquetas claras, resistentes y listas para impresión</strong>
+            <span>Mejor trazabilidad, menos errores, más eficiencia.</span>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+    </div><!-- /ms-inner -->
+  </div><!-- /ms-top -->
+
+  <!-- ── FILA DE BENEFICIOS (fondo blanco, fuera de la imagen) ── -->
+  <div class="ms-features-wrap">
+    <ul class="ms-features">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+          <path d="m9 12 2 2 4-4"></path>
+        </svg>
+        <div><strong>Trazabilidad garantizada</strong><span>Identificación precisa en cada etapa.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="8" y="2" width="8" height="4" rx="1"></rect>
+          <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+          <path d="m9 13 2 2 4-4"></path>
+        </svg>
+        <div><strong>Estandarización</strong><span>Etiquetas uniformes para todos tus análisis.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        <div><strong>Listo para imprimir</strong><span>Descargá e imprimí tus etiquetas en PDF.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        <div><strong>Menos errores</strong><span>Mejora la organización y reduce reprocesos.</span></div>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2"></rect>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+        </svg>
+        <div><strong>Confidencial y seguro</strong><span>Tus datos y muestras siempre protegidos.</span></div>
+      </li>
+    </ul>
+
   </div>
 
 </section>
 
+<!-- ── MODAL: completar muestras (fuera de la sección para escapar del stacking context) ── -->
+<div class="ms-modal" id="ms-modal" aria-hidden="true">
+    <div class="ms-modal-backdrop" data-close></div>
+    <div class="ms-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ms-modal-title">
+
+      <div class="ms-modal-head">
+        <div>
+          <h3 id="ms-modal-title">Completar etiquetas</h3>
+          <p>Cargá una o varias muestras y descargá la plantilla lista para imprimir.</p>
+        </div>
+        <button type="button" class="ms-modal-close" data-close aria-label="Cerrar">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </div>
+
+      <div class="ms-modal-body">
+
+        <!-- Formulario -->
+        <form id="ms-form" class="ms-form" novalidate>
+          <div class="ms-form-row">
+            <div class="ms-field">
+              <label for="f-cliente">Empresa solicitante <span class="req">*</span></label>
+              <input type="text" id="f-cliente" name="cliente" placeholder="Empresa ABC S.A." required />
+            </div>
+            <div class="ms-field">
+              <label for="f-fecha">Fecha <span class="req">*</span></label>
+              <input type="date" id="f-fecha" name="fecha" required />
+            </div>
+          </div>
+
+          <div class="ms-field">
+            <label>Tipo de muestra <span class="req">*</span></label>
+            <div class="ms-checks">
+              <label class="ms-check"><input type="checkbox" name="tipo" value="Sólido" /><span>Sólido</span></label>
+              <label class="ms-check"><input type="checkbox" name="tipo" value="Agua" /><span>Agua</span></label>
+              <label class="ms-check"><input type="checkbox" name="tipo" value="Petróleo" /><span>Petróleo</span></label>
+              <label class="ms-check"><input type="checkbox" name="tipo" value="Prod. Qco." /><span>Prod. Qco.</span></label>
+              <label class="ms-check"><input type="checkbox" id="f-otro" name="tipo" value="Otro" /><span>Otro</span></label>
+            </div>
+            <input type="text" id="f-otro-txt" name="otro_txt" placeholder="Especificar otro tipo…" class="ms-otro" style="display:none" />
+          </div>
+
+          <div class="ms-form-row">
+            <div class="ms-field">
+              <label for="f-contacto">Contacto <span class="req">*</span></label>
+              <input type="text" id="f-contacto" name="contacto" placeholder="email o +54 299 000-0000" required />
+            </div>
+            <div class="ms-field">
+              <label for="f-analisis">Análisis requerido <span class="req">*</span></label>
+              <input type="text" id="f-analisis" name="analisis" placeholder="Viscosidad / ASTM D445" required />
+            </div>
+          </div>
+
+          <div class="ms-form-foot">
+            <button type="button" id="btn-descargar-una" class="ms-btn-outline sm">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Descargar esta etiqueta
+            </button>
+            <button type="submit" id="btn-agregar" class="ms-btn-add">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              Agregar a la lista
+            </button>
+          </div>
+        </form>
+
+        <!-- Lista de muestras -->
+        <div class="ms-list-wrap">
+          <div class="ms-list-head">
+            <span>Muestras cargadas <em id="ms-count">0</em></span>
+          </div>
+          <ul class="ms-list" id="ms-list">
+            <li class="ms-list-empty" id="ms-list-empty">Todavía no agregaste muestras. Completá el formulario y presioná “Agregar a la lista”.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ms-modal-foot">
+        <span class="ms-foot-hint" id="ms-foot-hint">La hoja A4 incluye 10 etiquetas (10 × 5 cm).</span>
+        <div class="ms-foot-actions">
+          <button type="button" id="btn-descargar-cargadas" class="ms-btn-outline sm" disabled>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Descargar etiquetas cargadas
+          </button>
+          <button type="button" id="btn-descargar-plantilla" class="ms-btn-primary" disabled>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Descargar +plantilla
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
 <!-- ░░ STYLES ░░ -->
 <style>
-
-/* ─── SECTION ─────────────────────────────────────────── */
-.em {
+/* ─── SECCIÓN ──────────────────────────────────────────── */
+.ms {
   position: relative;
-  background: var(--gray-100);
-  padding: 100px 80px;
   z-index: 2;
-}
-
-/* ─── HEADER ──────────────────────────────────────────── */
-.em-header {
-  max-width: 960px;
-  margin: 0 auto 56px;
-  text-align: center;
-}
-
-.em-eyebrow {
-  font-size: .72rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 16px;
-}
-
-.em-header h2 {
-  font-size: clamp(1.9rem, 4vw, 2.6rem);
-  font-weight: 800;
-  color: var(--navy);
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
-
-.em-header h2 em {
-  color: var(--orange);
-  font-style: italic;
-}
-
-.em-sub {
-  font-size: 1rem;
-  color: var(--gray-600);
-  line-height: 1.6;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* ─── SHOWCASE ────────────────────────────────────────── */
-.em-showcase {
-  max-width: 640px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 36px;
-}
-
-/* ─── LABEL PREVIEW (visual) ──────────────────────────── */
-.label-preview {
-  width: 100%;
-  max-width: 560px;
+  isolation: isolate;
   background: #fff;
-  border: 2px solid #111;
-  box-shadow: 0 6px 32px rgba(0,0,0,.14);
+}
+
+/* Zona superior: contiene la imagen (confinada aquí, no llega a los beneficios) */
+.ms-top {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 40px 64px;
+  background: var(--gray-100);
+}
+.ms-bg { position: absolute; top: 0; right: 0; bottom: 0; width: 56%; z-index: 0; }
+.ms-bg img { width: 100%; height: 100%; object-fit: cover; object-position: 60% center; }
+.ms-bg-overlay {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg,
+      var(--gray-100) 0%,
+      rgba(243,246,251,.92) 16%,
+      rgba(243,246,251,.45) 38%,
+      rgba(243,246,251,0) 62%),
+    linear-gradient(to bottom, rgba(243,246,251,.85) 0%, rgba(243,246,251,0) 18%),
+    linear-gradient(to top, rgba(243,246,251,.92) 0%, rgba(243,246,251,0) 16%);
+}
+
+.ms-inner {
+  position: relative; z-index: 1;
+  max-width: 1320px; margin: 0 auto;
+}
+
+/* Zona de beneficios: fondo blanco, separada de la imagen */
+.ms-features-wrap {
+  background: #fff;
+  padding: 48px 40px 88px;
+}
+
+/* ─── ENCABEZADO ───────────────────────────────────────── */
+.ms-head { max-width: 620px; margin-bottom: 40px; }
+.ms-eyebrow {
+  font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 14px;
+}
+.ms-head h2 {
+  font-size: clamp(2rem, 4.4vw, 2.9rem); font-weight: 800;
+  color: var(--navy); line-height: 1.12; margin-bottom: 14px;
+}
+.ms-head h2 em { color: var(--orange); font-style: normal; }
+.ms-sub { font-size: 1.02rem; color: var(--gray-600); line-height: 1.6; max-width: 460px; }
+
+/* ─── GRID PRINCIPAL ───────────────────────────────────── */
+.ms-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 580px) 1fr;
+  gap: 40px; align-items: start;
+}
+.ms-left { min-width: 0; }
+.ms-right { position: relative; min-height: 320px; align-self: stretch; }
+
+/* ─── ETIQUETA (preview) ───────────────────────────────── */
+.label-card {
+  background: #fff;
+  border: 1.5px solid var(--navy);
+  border-radius: 14px;
+  box-shadow: 0 18px 50px rgba(11,31,58,.16);
   font-family: Arial, Helvetica, sans-serif;
   text-transform: uppercase;
+  color: #0f1b2d;
+  overflow: hidden;
   user-select: none;
 }
+.lc-row { display: flex; }
+.lc-row + .lc-row { border-top: 1.4px solid var(--navy); }
 
-.lp-inner {
-  display: flex;
-  flex-direction: column;
+.lc-top { min-height: 88px; }
+.lc-logo {
+  flex: 0 0 128px; border-right: 1.4px solid var(--navy);
+  display: flex; align-items: center; justify-content: center;
+  padding: 12px; background: #fbfcfe;
 }
+.lc-logo img { max-width: 92px; max-height: 60px; }
+.lc-top-fields {
+  flex: 1 1 auto; min-width: 0;
+  display: flex; flex-direction: column; justify-content: center;
+  gap: 16px; padding: 14px 22px;
+}
+.lc-field { display: flex; align-items: flex-end; gap: 8px; min-width: 0; }
+.lc-lbl {
+  flex: 0 0 auto; font-size: .76rem; font-weight: 700;
+  letter-spacing: .01em; white-space: nowrap; line-height: 1.5;
+}
+.lc-line { flex: 1 1 auto; border-bottom: 1.4px solid var(--navy); height: 1.3em; min-width: 24px; }
+.lc-fecha { flex: 0 0 auto; align-items: flex-end; gap: 5px; }
+.lc-line-xs { flex: 0 0 38px; }
+.lc-slash { font-weight: 700; font-size: .8rem; }
 
-.lp-row {
-  display: flex;
+.lc-tipo-row {
+  align-items: center; flex-wrap: wrap; gap: 6px 18px;
+  padding: 12px 22px; min-height: 46px;
 }
-.lp-row + .lp-row {
-  border-top: 1.5px solid #111;
-}
+.lc-opt { display: inline-flex; align-items: center; gap: 7px; font-size: .74rem; white-space: nowrap; }
+.lc-box { width: 12px; height: 12px; border: 1.4px solid var(--navy); background: #fff; flex: 0 0 12px; }
 
-/* Fila 1 */
-.lp-top { min-height: 76px; }
-.lp-logo {
-  flex: 0 0 110px;
-  border-right: 1.5px solid #111;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background: #fafafa;
-}
-.lp-logo img {
-  max-width: 72px;
-  max-height: 52px;
-  display: block;
-}
-.lp-top-fields {
-  flex: 1 1 auto;
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  min-width: 0;
-}
+.lc-bottom-row { flex-direction: column; gap: 14px; padding: 16px 22px 20px; }
+.lc-line-full { display: block; width: 100%; border-bottom: 1.4px solid var(--navy); height: 1.1em; }
 
-.lp-field {
-  display: flex;
-  align-items: flex-end;
-  gap: 6px;
-  min-width: 0;
-}
-.lp-inline { flex: 0 0 auto; }
-.lp-lbl {
-  flex: 0 0 auto;
-  font-size: .72rem;
-  font-weight: 700;
-  color: #111;
-  white-space: nowrap;
-  line-height: 1.6;
-}
-.lp-line {
-  flex: 1 1 auto;
-  border-bottom: 1.2px solid #111;
-  height: 1.4em;
-}
-.lp-line-short {
-  flex: 0 0 80px;
-}
-
-/* Fila 2: tipo */
-.lp-tipo-row { min-height: 44px; }
-.lp-tipo {
-  flex: 1 1 auto;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 4px 14px;
-}
-.lp-opt {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: .72rem;
-  color: #111;
+/* ─── ACCIONES ─────────────────────────────────────────── */
+.ms-actions { display: flex; gap: 14px; margin-top: 22px; }
+.ms-btn-outline, .ms-btn-primary, .ms-btn-add {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  font-family: var(--font); font-size: .95rem; font-weight: 600;
+  border-radius: 100px; padding: 15px 26px; cursor: pointer;
+  transition: transform .2s, box-shadow .2s, background .2s, border-color .2s, color .2s;
   white-space: nowrap;
 }
-.lp-box {
-  display: inline-block;
-  width: 11px;
-  height: 11px;
-  border: 1.2px solid #111;
-  background: #fff;
-  flex: 0 0 11px;
+.ms-btn-outline {
+  flex: 1; color: var(--navy); background: rgba(255,255,255,.85);
+  border: 1.8px solid rgba(11,31,58,.22); backdrop-filter: blur(4px);
 }
+.ms-btn-outline:hover { border-color: var(--navy); background: #fff; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(11,31,58,.12); }
+.ms-btn-primary {
+  flex: 1; color: #fff; background: var(--orange); border: 1.8px solid transparent;
+  box-shadow: 0 8px 22px rgba(232,99,10,.30);
+}
+.ms-btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(232,99,10,.40); }
+.ms-btn-primary:disabled,
+.ms-btn-outline:disabled { opacity: .45; cursor: not-allowed; transform: none; box-shadow: none; }
+.ms-btn-outline:disabled:hover { border-color: rgba(11,31,58,.22); background: rgba(255,255,255,.85); }
 
-/* Fila 3: bottom */
-.lp-bottom-row { min-height: 72px; }
-.lp-bottom {
-  flex: 1 1 auto;
-  padding: 10px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+.ms-note {
+  display: inline-flex; align-items: center; gap: 7px;
+  margin-top: 16px; font-size: .82rem; color: var(--gray-600);
 }
-.lp-analisis { flex: 0 0 auto; }
-.lp-line-full {
-  display: block;
-  width: 100%;
-  border-bottom: 1.2px solid #111;
-  height: 1em;
-}
+.ms-note svg { color: var(--gray-400); flex-shrink: 0; }
 
-/* ─── BOTONES DE ACCIÓN ───────────────────────────────── */
-.em-actions {
-  display: flex;
-  gap: 14px;
-  width: 100%;
-  max-width: 560px;
+/* ─── INFO CARD (derecha) ──────────────────────────────── */
+.ms-info-card {
+  position: absolute; left: 0; bottom: 40px;
+  display: flex; align-items: center; gap: 16px;
+  max-width: 320px; padding: 20px 22px;
+  background: linear-gradient(150deg, var(--navy), var(--navy-mid));
+  color: #fff; border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(11,31,58,.34);
 }
+.ms-info-icon {
+  flex: 0 0 46px; height: 46px; border-radius: 12px;
+  display: grid; place-items: center;
+  background: rgba(255,255,255,.12); color: #fff;
+}
+.ms-info-txt { display: flex; flex-direction: column; gap: 5px; }
+.ms-info-txt strong { font-size: .96rem; font-weight: 700; line-height: 1.3; }
+.ms-info-txt span { font-size: .82rem; color: rgba(255,255,255,.78); line-height: 1.45; }
 
-.em-btn-outline {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font);
-  font-size: .94rem;
-  font-weight: 600;
-  color: var(--navy);
-  background: #fff;
-  border: 2px solid rgba(11,31,58,.25);
-  border-radius: 100px;
-  padding: 16px 28px;
-  cursor: pointer;
-  transition: border-color .2s, background .2s, transform .2s;
+/* ─── FEATURES ─────────────────────────────────────────── */
+.ms-features {
+  max-width: 1320px; margin: 0 auto;
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 28px;
 }
-.em-btn-outline:hover {
-  border-color: var(--navy);
-  background: rgba(11,31,58,.04);
-  transform: translateY(-2px);
-}
+.ms-features li { display: flex; gap: 14px; align-items: flex-start; }
+.ms-features svg { width: 30px; height: 30px; flex: 0 0 30px; color: var(--navy); }
+.ms-features strong { display: block; font-size: .92rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.ms-features span { font-size: .8rem; color: var(--gray-600); line-height: 1.45; }
 
-.em-btn-primary {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: var(--font);
-  font-size: .94rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--orange);
-  border: 2px solid transparent;
-  border-radius: 100px;
-  padding: 16px 28px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(232,99,10,.25);
-  transition: background .2s, transform .2s, box-shadow .2s;
+/* ─── MODAL ────────────────────────────────────────────── */
+.ms-modal { position: fixed; inset: 0; z-index: 1000; display: none; }
+.ms-modal.open { display: block; }
+.ms-modal-backdrop { position: absolute; inset: 0; background: rgba(11,31,58,.55); backdrop-filter: blur(3px); animation: ms-fade .2s ease; }
+.ms-modal-dialog {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: min(720px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+  display: flex; flex-direction: column;
+  background: #fff; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 30px 80px rgba(11,31,58,.4); animation: ms-pop .25s cubic-bezier(.16,1,.3,1);
 }
-.em-btn-primary:hover {
-  background: var(--orange-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(232,99,10,.35);
+@keyframes ms-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes ms-pop { from { opacity: 0; transform: translate(-50%, -46%) scale(.97); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+
+.ms-modal-head {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;
+  padding: 24px 28px 18px; border-bottom: 1px solid rgba(11,31,58,.08);
 }
-
-/* ─── FORMULARIO ──────────────────────────────────────── */
-.em-form-section {
-  max-width: 640px;
-  margin: 48px auto 0;
+.ms-modal-head h3 { font-size: 1.25rem; font-weight: 800; color: var(--navy); }
+.ms-modal-head p { font-size: .86rem; color: var(--gray-600); margin-top: 4px; }
+.ms-modal-close {
+  flex: 0 0 auto; color: var(--gray-600); background: none; border: none;
+  padding: 6px; border-radius: 8px; cursor: pointer; transition: background .2s, color .2s;
 }
+.ms-modal-close:hover { background: rgba(11,31,58,.06); color: var(--navy); }
 
-.em-form-inner {
-  background: #fff;
-  border-radius: 20px;
-  padding: 44px 48px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.10);
-}
+.ms-modal-body { padding: 22px 28px; overflow-y: auto; }
 
-.em-form-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--navy);
-  margin-bottom: 28px;
-}
-
-.em-form {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-form#em-form {
-  display: flex;
-  flex-direction: column;
-  gap: 22px;
-}
-
-.em-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.em-field {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-}
-
-.em-field label {
-  font-size: .86rem;
-  font-weight: 600;
-  color: var(--navy);
-}
-
-.em-required { color: #dc2626; font-weight: 700; margin-left: 2px; }
-.em-req { font-size: .75rem; font-weight: 500; color: var(--gray-400); font-style: italic; }
-
-.em-field input,
-.em-field textarea {
-  font-family: var(--font);
-  font-size: .9rem;
-  color: var(--navy);
-  background: var(--gray-50);
-  border: 1.5px solid rgba(11,31,58,.10);
-  border-radius: 10px;
-  padding: 13px 16px;
+.ms-form { display: flex; flex-direction: column; gap: 18px; }
+.ms-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ms-field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.ms-field label { font-size: .84rem; font-weight: 600; color: var(--navy); }
+.req { color: #dc2626; font-weight: 700; }
+.ms-field input[type="text"], .ms-field input[type="date"], .ms-otro {
+  font-family: var(--font); font-size: .9rem; color: var(--navy);
+  background: var(--gray-50); border: 1.5px solid rgba(11,31,58,.12);
+  border-radius: 10px; padding: 12px 14px; outline: none;
   transition: border-color .2s, box-shadow .2s;
-  outline: none;
 }
-.em-field input::placeholder,
-.em-field textarea::placeholder { color: rgba(11,31,58,.35); }
-.em-field input:focus,
-.em-field textarea:focus {
-  border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(232,99,10,.09);
-}
-.em-field textarea { resize: vertical; min-height: 100px; }
+.ms-field input::placeholder, .ms-otro::placeholder { color: rgba(11,31,58,.4); }
+.ms-field input:focus, .ms-otro:focus { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(232,99,10,.1); }
+.ms-field input.invalid, .ms-otro.invalid { border-color: #dc2626; box-shadow: 0 0 0 3px rgba(220,38,38,.1); }
 
-.em-checkbox-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.em-checkbox {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  font-size: .88rem;
-  color: var(--navy);
-  font-weight: 500;
-  user-select: none;
-}
-.em-checkbox input[type="checkbox"] {
-  width: 17px;
-  height: 17px;
-  cursor: pointer;
-  accent-color: var(--orange);
-}
-.em-otro-input { width: 100%; }
+.ms-checks { display: flex; flex-wrap: wrap; gap: 10px 16px; }
+.ms-check { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: .87rem; font-weight: 500; color: var(--navy); }
+.ms-check input { width: 17px; height: 17px; accent-color: var(--orange); cursor: pointer; }
+.ms-otro { width: 100%; margin-top: 4px; }
 
-.em-form-footer {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 12px;
-  margin-top: 8px;
-}
+.ms-form-foot { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.ms-btn-outline.sm, .ms-btn-add { font-size: .88rem; padding: 12px 20px; flex: 1; }
+.ms-btn-outline.sm { flex: 1 1 auto; }
+.ms-btn-add { color: #fff; background: var(--navy); border: 1.8px solid transparent; flex: 1 1 auto; }
+.ms-btn-add:hover { background: var(--navy-mid); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(11,31,58,.22); }
 
-.em-btn-cancel {
-  font-family: var(--font);
-  font-size: .9rem;
-  font-weight: 600;
-  color: var(--gray-600);
-  background: transparent;
-  border: none;
-  padding: 14px 20px;
-  cursor: pointer;
-  border-radius: 100px;
-  transition: color .2s, background .2s;
+/* Lista de muestras */
+.ms-list-wrap { margin-top: 24px; }
+.ms-list-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.ms-list-head span { font-size: .84rem; font-weight: 700; color: var(--navy); }
+.ms-list-head em { font-style: normal; color: var(--orange); margin-left: 4px; }
+.ms-list { display: flex; flex-direction: column; gap: 8px; }
+.ms-list-empty { font-size: .85rem; color: var(--gray-400); background: var(--gray-50); border: 1px dashed rgba(11,31,58,.15); border-radius: 10px; padding: 16px; text-align: center; }
+.ms-item {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--gray-50); border: 1px solid rgba(11,31,58,.1);
+  border-radius: 10px; padding: 11px 14px;
 }
-.em-btn-cancel:hover {
-  color: var(--navy);
-  background: rgba(11,31,58,.05);
-}
+.ms-item-info { flex: 1 1 auto; min-width: 0; }
+.ms-item-info strong { display: block; font-size: .88rem; font-weight: 700; color: var(--navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ms-item-info span { font-size: .78rem; color: var(--gray-600); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+.ms-item-btn { flex: 0 0 auto; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 8px; border: none; background: transparent; color: var(--gray-600); cursor: pointer; transition: background .2s, color .2s; }
+.ms-item-btn:hover { background: rgba(11,31,58,.06); color: var(--navy); }
+.ms-item-btn.danger:hover { background: rgba(220,38,38,.1); color: #dc2626; }
 
-.em-btn-generar {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font);
-  font-size: .94rem;
-  font-weight: 600;
-  color: #fff;
-  background: var(--orange);
-  border: none;
-  border-radius: 100px;
-  padding: 14px 32px;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(232,99,10,.25);
-  transition: background .2s, transform .2s, box-shadow .2s;
+.ms-modal-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 18px 28px; border-top: 1px solid rgba(11,31,58,.08); background: var(--gray-50);
 }
-.em-btn-generar:hover {
-  background: var(--orange-light);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(232,99,10,.35);
-}
+.ms-foot-hint { font-size: .8rem; color: var(--gray-600); flex: 1 1 auto; min-width: 0; }
+.ms-foot-actions { display: flex; gap: 10px; flex: 0 0 auto; }
+.ms-modal-foot .ms-btn-outline.sm,
+.ms-modal-foot .ms-btn-primary { flex: 0 0 auto; }
 
-/* ─── RESPONSIVE ──────────────────────────────────────── */
+/* ─── RESPONSIVE ───────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .ms-grid { grid-template-columns: 1fr; gap: 28px; }
+  .ms-right { min-height: 0; }
+  .ms-info-card { position: relative; left: auto; right: auto; top: auto; bottom: auto; transform: none; max-width: 100%; }
+  .ms-features { grid-template-columns: repeat(3, 1fr); gap: 30px 28px; }
+  .ms-bg { width: 100%; }
+  .ms-bg-overlay {
+    background:
+      linear-gradient(180deg, rgba(243,246,251,.97) 0%, rgba(243,246,251,.92) 55%, rgba(243,246,251,.86) 100%);
+  }
+}
 @media (max-width: 860px) {
-  .em { padding: 80px 40px; }
+  .ms-top { padding: 100px 28px 52px; }
+  .ms-features-wrap { padding: 40px 28px 70px; }
 }
-
 @media (max-width: 640px) {
-  .em { padding: 60px 24px; }
-  .em-actions { flex-direction: column; }
-  .em-btn-outline, .em-btn-primary { flex: none; width: 100%; }
-  .em-row { grid-template-columns: 1fr; }
-  .em-form-inner { padding: 28px 24px; }
-  .em-form-footer { flex-direction: column-reverse; align-items: stretch; }
-  .em-btn-generar, .em-btn-cancel { width: 100%; justify-content: center; }
+  .ms-top { padding: 88px 18px 44px; }
+  .ms-features-wrap { padding: 34px 18px 60px; }
+  .ms-actions { flex-direction: column; }
+  .ms-btn-outline, .ms-btn-primary { flex: none; width: 100%; }
+  .ms-features { grid-template-columns: 1fr; gap: 20px; }
+  .lc-logo { flex: 0 0 96px; }
+  .lc-logo img { max-width: 70px; }
+  .lc-top-fields { padding: 12px 14px; gap: 12px; }
+  .lc-tipo-row, .lc-bottom-row { padding-left: 14px; padding-right: 14px; }
+  .ms-form-row { grid-template-columns: 1fr; }
+  .ms-modal-head, .ms-modal-body, .ms-modal-foot { padding-left: 18px; padding-right: 18px; }
+  .ms-modal-foot { flex-direction: column; align-items: stretch; }
+  .ms-foot-actions { flex-direction: column; width: 100%; }
+  .ms-modal-foot .ms-btn-primary,
+  .ms-modal-foot .ms-btn-outline.sm { width: 100%; }
+  .ms-form-foot { flex-direction: column; }
+  .ms-btn-outline.sm, .ms-btn-add { width: 100%; }
 }
-
+@media (max-width: 380px) {
+  .lc-lbl { font-size: .68rem; }
+  .lc-opt { font-size: .68rem; }
+}
 </style>
 
-<!-- ░░ SCRIPTS ░░ -->
+<!-- ░░ SCRIPT ░░ -->
 <script>
+type Muestra = { cliente: string; fecha: string; tipos: string[]; contacto: string; analisis: string };
+
 const TIPOS_STD = ['Sólido', 'Agua', 'Petróleo', 'Prod. Qco.'];
 
 function escHtml(s: string): string {
-  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+/* ── CSS de la hoja imprimible ─────────────────────────── */
 const PRINT_CSS = `
   @page { size: A4; margin: 0; }
   *, *::before, *::after { box-sizing: border-box; }
   html, body {
-    margin: 0; padding: 0;
-    background: #eceae6;
+    margin: 0; padding: 0; background: #e9ecf2;
     font-family: Arial, Helvetica, "Helvetica Neue", sans-serif;
-    color: #111;
-    -webkit-font-smoothing: antialiased;
-    text-transform: uppercase;
+    color: #0f1b2d; -webkit-font-smoothing: antialiased; text-transform: uppercase;
   }
   .sheet {
-    width: 210mm; height: 297mm;
-    background: #fff;
-    margin: 24px auto;
-    padding: 23.5mm 5mm;
-    box-shadow: 0 2px 40px rgba(0,0,0,.18);
-    display: grid;
-    grid-template-columns: 100mm 100mm;
-    grid-auto-rows: 50mm;
-    gap: 0;
+    width: 210mm; height: 297mm; background: #fff; margin: 20px auto;
+    padding: 23.5mm 5mm; box-shadow: 0 2px 40px rgba(0,0,0,.18);
+    display: grid; grid-template-columns: 100mm 100mm; grid-auto-rows: 50mm; gap: 0;
+    page-break-after: always;
   }
+  .sheet:last-child { page-break-after: auto; }
+  .sheet.single { display: block; height: auto; min-height: 0; padding: 18mm 5mm; }
+  .sheet.single > .label { margin: 0 auto; }
   .sheet > .label { border: 0.25mm dashed #9aa0a6; }
   .label { width: 100mm; height: 50mm; padding: 1.2mm; overflow: hidden; }
   .label-inner {
-    width: 100%; height: 100%;
-    border: 0.4mm solid #111;
-    display: flex; flex-direction: column;
-    font-size: 8pt; line-height: 1.2;
-    overflow: hidden;
+    width: 100%; height: 100%; border: 0.4mm solid #0f1b2d;
+    display: flex; flex-direction: column; font-size: 8pt; line-height: 1.2; overflow: hidden;
   }
   .row { display: flex; }
-  .row + .row { border-top: 0.4mm solid #111; }
+  .row + .row { border-top: 0.4mm solid #0f1b2d; }
   .top { flex: 0 0 13mm; }
-  .logo-cell {
-    flex: 0 0 28mm; border-right: 0.4mm solid #111;
-    display: flex; align-items: center; justify-content: center; padding: 1mm 1.5mm;
-  }
+  .logo-cell { flex: 0 0 28mm; border-right: 0.4mm solid #0f1b2d; display: flex; align-items: center; justify-content: center; padding: 1mm 1.5mm; }
   .logo-cell img { max-width: 100%; max-height: 11mm; display: block; }
-  .top-fields {
-    flex: 1 1 auto; padding: 1.5mm 2mm;
-    display: flex; flex-direction: column; justify-content: center; gap: 1.5mm;
-    min-width: 0;
-  }
+  .top-fields { flex: 1 1 auto; padding: 1.5mm 2mm; display: flex; flex-direction: column; justify-content: center; gap: 1.5mm; min-width: 0; }
   .field { display: flex; align-items: baseline; gap: 1mm; min-width: 0; }
   .field > .lbl { flex: 0 0 auto; font-weight: 700; font-size: 7pt; }
-  .underline {
-    flex: 1 1 auto; border-bottom: 0.4mm solid #111;
-    min-height: 1.4em; align-self: flex-end;
-    padding: 0 1mm; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
-    font-size: 8pt;
-  }
+  .underline { flex: 1 1 auto; border-bottom: 0.4mm solid #0f1b2d; min-height: 1.4em; align-self: flex-end; padding: 0 1mm; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font-size: 8pt; }
   .field.fecha { flex: 0 0 auto; }
   .tipo-row { flex: 0 0 7.5mm; }
-  .tipo {
-    flex: 1 1 auto; padding: 1.5mm 2mm;
-    display: flex; align-items: center; flex-wrap: wrap; gap: 1mm 2.5mm;
-  }
+  .tipo { flex: 1 1 auto; padding: 1.5mm 2mm; display: flex; align-items: center; flex-wrap: wrap; gap: 1mm 2.5mm; }
   .tipo .lbl { font-weight: 700; font-size: 7pt; flex: 0 0 auto; }
   .opt { display: inline-flex; align-items: center; gap: 1mm; white-space: nowrap; font-size: 7.5pt; }
-  .box {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 3mm; height: 3mm;
-    border: 0.4mm solid #111; background: #fff;
-    flex: 0 0 3mm; font-size: 2.8mm; line-height: 1; font-weight: 900;
-    print-color-adjust: exact; -webkit-print-color-adjust: exact;
-  }
-  .box.checked { background: #111; color: #fff; }
+  .box { display: inline-flex; align-items: center; justify-content: center; width: 3mm; height: 3mm; border: 0.4mm solid #0f1b2d; background: #fff; flex: 0 0 3mm; font-size: 2.8mm; line-height: 1; font-weight: 900; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .box.checked { background: #0f1b2d; color: #fff; }
   .bottom-row { flex: 1 1 auto; }
-  .bottom {
-    flex: 1 1 auto; padding: 1.5mm 2mm;
-    display: flex; flex-direction: column; justify-content: flex-start; gap: 2mm;
-    min-width: 0;
-  }
+  .bottom { flex: 1 1 auto; padding: 1.5mm 2mm; display: flex; flex-direction: column; justify-content: flex-start; gap: 2mm; min-width: 0; }
   .field-analisis { display: flex; align-items: baseline; gap: 1mm; min-width: 0; }
   .field-analisis .lbl { flex: 0 0 auto; font-weight: 700; font-size: 7pt; }
-  .analisis-val {
-    flex: 1 1 auto; white-space: normal; overflow: hidden;
-    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
-  }
-  .toolbar {
-    position: fixed; top: 14px; right: 14px;
-    display: flex; gap: 8px; z-index: 10; text-transform: none;
-  }
-  .toolbar button {
-    font: 500 13px/1 Arial; padding: 9px 16px;
-    background: #111; color: #fff; border: none; border-radius: 6px; cursor: pointer;
-  }
-  .toolbar button:hover { opacity: .9; }
+  .analisis-val { flex: 1 1 auto; white-space: normal; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .toolbar { position: fixed; top: 14px; right: 14px; display: flex; gap: 8px; z-index: 10; text-transform: none; }
+  .toolbar button { font: 600 13px/1 Arial; padding: 10px 18px; background: #e8630a; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+  .toolbar button:hover { opacity: .92; }
+  .hint { position: fixed; left: 14px; bottom: 14px; max-width: 340px; background: #fff; border: 1px solid #d6d3cd; border-radius: 10px; padding: 12px 14px; font: 12px/1.5 Arial; color: #444; text-transform: none; z-index: 10; }
   @media print {
     html, body { background: #fff; }
     .sheet { margin: 0; box-shadow: none; }
     .sheet > .label { border: 0.2mm dashed #bbb; }
-    .toolbar { display: none !important; }
+    .toolbar, .hint { display: none !important; }
   }
 `;
 
-function filledLabelHTML(data: {
-  cliente: string; fecha: string; tipos: string[]; mail: string; analisis: string; logoSrc: string;
-}): string {
-  const tiene = (t: string) => data.tipos.includes(t);
-  const otroVal = data.tipos.find((t: string) => !TIPOS_STD.includes(t));
+function labelHTML(data: Muestra | null, logoSrc: string): string {
+  const tiene = (t: string) => !!data && data.tipos.includes(t);
+  const otroVal = data ? data.tipos.find(t => !TIPOS_STD.includes(t)) : undefined;
   const box = (sel: boolean) => `<span class="box${sel ? ' checked' : ''}">${sel ? '✓' : ''}</span>`;
+  const v = (s: string | undefined) => (data && s ? escHtml(s) : '');
   return `<div class="label-inner">
     <div class="row top">
-      <div class="logo-cell"><img src="${data.logoSrc}" alt="Evolution Chemical S.R.L." /></div>
+      <div class="logo-cell"><img src="${logoSrc}" alt="Evolution Chemical S.R.L." /></div>
       <div class="top-fields">
-        <div class="field"><span class="lbl">Empresa solicitante:</span><span class="underline">${escHtml(data.cliente)}</span></div>
-        <div class="field fecha"><span class="lbl">Fecha:</span><span class="underline">${escHtml(data.fecha)}</span></div>
+        <div class="field"><span class="lbl">Empresa solicitante:</span><span class="underline">${v(data?.cliente)}</span></div>
+        <div class="field fecha"><span class="lbl">Fecha:</span><span class="underline">${v(data?.fecha)}</span></div>
       </div>
     </div>
     <div class="row tipo-row">
@@ -681,144 +647,220 @@ function filledLabelHTML(data: {
     </div>
     <div class="row bottom-row">
       <div class="bottom">
-        <div class="field"><span class="lbl">Contacto:</span><span class="underline">${escHtml(data.mail)}</span></div>
-        <div class="field-analisis"><span class="lbl">Análisis Requerido:</span><span class="underline analisis-val">${escHtml(data.analisis)}</span></div>
+        <div class="field"><span class="lbl">Contacto:</span><span class="underline">${v(data?.contacto)}</span></div>
+        <div class="field-analisis"><span class="lbl">Análisis Requerido:</span><span class="underline analisis-val">${v(data?.analisis)}</span></div>
       </div>
     </div>
   </div>`;
 }
 
-function blankLabelHTML(logoSrc: string): string {
-  const box = () => `<span class="box"></span>`;
-  return `<div class="label-inner">
-    <div class="row top">
-      <div class="logo-cell"><img src="${logoSrc}" alt="Evolution Chemical S.R.L." /></div>
-      <div class="top-fields">
-        <div class="field"><span class="lbl">Empresa solicitante:</span><span class="underline"></span></div>
-        <div class="field fecha"><span class="lbl">Fecha:</span><span class="underline"></span></div>
-      </div>
-    </div>
-    <div class="row tipo-row">
-      <div class="tipo">
-        <span class="lbl">Tipo de Muestra:</span>
-        <span class="opt">${box()}Sólido</span>
-        <span class="opt">${box()}Agua</span>
-        <span class="opt">${box()}Petróleo</span>
-        <span class="opt">${box()}Prod. Qco.</span>
-        <span class="opt">${box()}Otro</span>
-      </div>
-    </div>
-    <div class="row bottom-row">
-      <div class="bottom">
-        <div class="field"><span class="lbl">Contacto:</span><span class="underline"></span></div>
-        <div class="field-analisis"><span class="lbl">Análisis Requerido:</span><span class="underline"></span></div>
-      </div>
-    </div>
-  </div>`;
+/* Construye una o varias hojas A4 de 10 etiquetas, rellenando con muestras y completando con etiquetas en blanco. */
+function buildSheets(muestras: Muestra[], logoSrc: string): string {
+  const perSheet = 10;
+  const totalSlots = Math.max(perSheet, Math.ceil(muestras.length / perSheet) * perSheet);
+  const labels: string[] = [];
+  for (let i = 0; i < totalSlots; i++) {
+    const data = muestras[i] ?? null;
+    labels.push(`<div class="label">${labelHTML(data, logoSrc)}</div>`);
+  }
+  let html = '';
+  for (let i = 0; i < labels.length; i += perSheet) {
+    html += `<div class="sheet">${labels.slice(i, i + perSheet).join('')}</div>`;
+  }
+  return html;
 }
 
-function openPrintWindow(sheetHTML: string): void {
-  const w = window.open('', '_blank', 'width=900,height=700');
-  if (!w) return;
+/* Construye hojas A4 SOLO con las etiquetas cargadas (sin rellenar el resto en blanco). */
+function buildLoadedSheets(muestras: Muestra[], logoSrc: string): string {
+  const perSheet = 10;
+  const labels = muestras.map(m => `<div class="label">${labelHTML(m, logoSrc)}</div>`);
+  let html = '';
+  for (let i = 0; i < labels.length; i += perSheet) {
+    html += `<div class="sheet">${labels.slice(i, i + perSheet).join('')}</div>`;
+  }
+  return html;
+}
+
+/* Construye una hoja con una sola etiqueta. */
+function buildSingleSheet(muestra: Muestra, logoSrc: string): string {
+  return `<div class="sheet single"><div class="label">${labelHTML(muestra, logoSrc)}</div></div>`;
+}
+
+function openPrintWindow(sheetsHTML: string): void {
+  const w = window.open('', '_blank', 'width=920,height=720');
+  if (!w) { alert('Permití las ventanas emergentes para descargar la plantilla.'); return; }
   w.document.write(`<!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8" /><title>Etiquetas — Evolution Chemical S.R.L.</title>
 <style>${PRINT_CSS}</style></head><body>
-<div class="toolbar"><button onclick="window.print()">Imprimir hoja</button></div>
-${sheetHTML}
+<div class="toolbar"><button onclick="window.print()">Descargar / Imprimir PDF</button></div>
+<div class="hint">Para guardar como <b>PDF</b>: en destino elegí <b>“Guardar como PDF”</b>, márgenes en <b>“Ninguno”</b> y desmarcá <b>“Encabezados y pies de página”</b>.</div>
+${sheetsHTML}
 </body></html>`);
   w.document.close();
-  w.onload = () => { w.focus(); setTimeout(() => w.print(), 300); };
+  w.onload = () => { w.focus(); setTimeout(() => w.print(), 350); };
 }
 
+function logoSrc(): string { return window.location.origin + '/assets/images/logo-2.png'; }
+
 document.addEventListener('DOMContentLoaded', () => {
-  const showcase = document.querySelector('.em-showcase') as HTMLElement;
-  const formSection = document.getElementById('form-section') as HTMLElement;
-  const form = document.getElementById('em-form') as HTMLFormElement;
-  const btnRellenar = document.getElementById('btn-rellenar') as HTMLButtonElement;
-  const btnDescargar = document.getElementById('btn-descargar') as HTMLButtonElement;
-  const btnGenerar = document.getElementById('btn-generar') as HTMLButtonElement;
-  const btnCancelar = document.getElementById('btn-cancelar') as HTMLButtonElement;
-  const checkboxes = form.querySelectorAll('input[name="tipo_muestra"]') as NodeListOf<HTMLInputElement>;
-  const checkOtro = document.getElementById('tipo_otro') as HTMLInputElement;
-  const inputOtro = document.getElementById('tipo_otro_texto') as HTMLInputElement;
+  const modal = document.getElementById('ms-modal') as HTMLElement;
+  const form = document.getElementById('ms-form') as HTMLFormElement;
+  const btnCompletar = document.getElementById('btn-completar') as HTMLButtonElement;
+  const btnPlantilla = document.getElementById('btn-plantilla') as HTMLButtonElement;        // blank
+  const btnAgregar = document.getElementById('btn-agregar') as HTMLButtonElement;
+  const btnDescargarUna = document.getElementById('btn-descargar-una') as HTMLButtonElement;
+  const btnDescargarCargadas = document.getElementById('btn-descargar-cargadas') as HTMLButtonElement;
+  const btnDescargarPlantilla = document.getElementById('btn-descargar-plantilla') as HTMLButtonElement;
+  const checkOtro = document.getElementById('f-otro') as HTMLInputElement;
+  const inputOtro = document.getElementById('f-otro-txt') as HTMLInputElement;
+  const listEl = document.getElementById('ms-list') as HTMLElement;
+  const emptyEl = document.getElementById('ms-list-empty') as HTMLElement;
+  const countEl = document.getElementById('ms-count') as HTMLElement;
+  const hintEl = document.getElementById('ms-foot-hint') as HTMLElement;
+  const tipoChecks = Array.from(form.querySelectorAll('input[name="tipo"]')) as HTMLInputElement[];
 
-  // Mostrar formulario
-  btnRellenar.addEventListener('click', () => {
-    formSection.style.display = 'block';
-    setTimeout(() => formSection.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
-  });
+  const muestras: Muestra[] = [];
 
-  // Ocultar formulario (cancelar)
-  btnCancelar.addEventListener('click', () => {
-    formSection.style.display = 'none';
-    form.reset();
-    inputOtro.style.display = 'none';
-    inputOtro.required = false;
-    showcase.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  // Validación de checkboxes
-  const validateCheckboxes = (): boolean => {
-    const checked = Array.from(checkboxes).some(cb => cb.checked);
-    checkboxes.forEach(cb => cb.setCustomValidity(checked ? '' : 'Selecciona al menos un tipo de muestra'));
-    return checked;
+  /* ── Modal abrir / cerrar ── */
+  const openModal = () => {
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
   };
-  checkboxes.forEach(cb => cb.addEventListener('change', validateCheckboxes));
+  const closeModal = () => {
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  };
+  btnCompletar.addEventListener('click', openModal);
+  modal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeModal));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) closeModal(); });
 
-  // Campo "Otro"
-  checkOtro?.addEventListener('change', () => {
+  /* ── Campo "Otro" ── */
+  checkOtro.addEventListener('change', () => {
     inputOtro.style.display = checkOtro.checked ? 'block' : 'none';
-    inputOtro.required = checkOtro.checked;
-    if (!checkOtro.checked) { inputOtro.value = ''; inputOtro.setCustomValidity(''); }
+    if (!checkOtro.checked) { inputOtro.value = ''; inputOtro.classList.remove('invalid'); }
+    else inputOtro.focus();
   });
-  inputOtro?.addEventListener('input', () => inputOtro.setCustomValidity(''));
+  [inputOtro, ...tipoChecks].forEach(el => el.addEventListener('input', () => clearInvalid()));
+  form.querySelectorAll('input[type="text"], input[type="date"]').forEach(el =>
+    el.addEventListener('input', () => el.classList.remove('invalid')));
 
-  // Generar e imprimir (1 llena + 9 en blanco)
-  btnGenerar.addEventListener('click', () => {
-    if (!form.checkValidity() || !validateCheckboxes()) { form.reportValidity(); return; }
-    if (checkOtro.checked && !inputOtro.value.trim()) {
-      inputOtro.focus();
-      inputOtro.setCustomValidity('Debes especificar el tipo de muestra');
-      inputOtro.reportValidity();
-      return;
-    }
+  function clearInvalid() { tipoChecks.forEach(c => c.closest('.ms-checks')?.classList.remove('invalid')); inputOtro.classList.remove('invalid'); }
 
-    const formData = new FormData(form);
-    const cliente = (formData.get('cliente') as string).trim();
-    const fechaRaw = formData.get('fecha') as string;
-    const mail = (formData.get('mail') as string).trim();
-    const analisis = (formData.get('analisis') as string).trim();
-    const fecha = new Date(fechaRaw + 'T12:00:00').toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+  /* ── Leer y validar formulario ── */
+  function readForm(): Muestra | null {
+    const fd = new FormData(form);
+    const cliente = (fd.get('cliente') as string || '').trim();
+    const fechaRaw = (fd.get('fecha') as string || '').trim();
+    const contacto = (fd.get('contacto') as string || '').trim();
+    const analisis = (fd.get('analisis') as string || '').trim();
+
+    let ok = true;
+    const mark = (id: string, cond: boolean) => {
+      const el = document.getElementById(id) as HTMLInputElement;
+      el.classList.toggle('invalid', !cond); if (!cond) ok = false;
+    };
+    mark('f-cliente', !!cliente);
+    mark('f-fecha', !!fechaRaw);
+    mark('f-contacto', !!contacto);
+    mark('f-analisis', !!analisis);
 
     const tipos: string[] = [];
-    checkboxes.forEach(cb => {
-      if (cb.checked) {
-        if (cb.value === 'Otro') {
-          const txt = (formData.get('tipo_otro_texto') as string).trim();
-          if (txt) tipos.push(txt);
-        } else {
-          tipos.push(cb.value);
-        }
-      }
+    tipoChecks.forEach(c => {
+      if (!c.checked) return;
+      if (c.value === 'Otro') { const t = inputOtro.value.trim(); if (t) tipos.push(t); else { inputOtro.classList.add('invalid'); ok = false; } }
+      else tipos.push(c.value);
     });
+    if (tipos.length === 0) { ok = false; (form.querySelector('input[name="tipo"]') as HTMLInputElement)?.focus(); }
 
-    const logoSrc = window.location.origin + '/assets/images/logo-2.png';
-    const filled = filledLabelHTML({ cliente, fecha, tipos, mail, analisis, logoSrc });
-    const blank = blankLabelHTML(logoSrc);
+    if (!ok) { const firstInvalid = form.querySelector('.invalid') as HTMLElement; firstInvalid?.focus(); return null; }
 
-    openPrintWindow(`<div class="sheet">
-  <div class="label">${filled}</div>
-  ${Array(9).fill(`<div class="label">${blank}</div>`).join('\n  ')}
-</div>`);
+    const fecha = new Date(fechaRaw + 'T12:00:00').toLocaleDateString('es-AR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    return { cliente, fecha, tipos, contacto, analisis };
+  }
+
+  /* ── Renderizar lista ── */
+  function renderList() {
+    countEl.textContent = String(muestras.length);
+    listEl.querySelectorAll('.ms-item').forEach(n => n.remove());
+    emptyEl.style.display = muestras.length ? 'none' : 'block';
+    btnDescargarPlantilla.disabled = muestras.length === 0;
+    btnDescargarCargadas.disabled = muestras.length === 0;
+    hintEl.textContent = muestras.length
+      ? `${muestras.length} muestra${muestras.length > 1 ? 's' : ''} cargada${muestras.length > 1 ? 's' : ''} · hoja A4 de 10 etiquetas (10 × 5 cm).`
+      : 'La hoja A4 incluye 10 etiquetas (10 × 5 cm).';
+
+    muestras.forEach((m, i) => {
+      const li = document.createElement('li');
+      li.className = 'ms-item';
+      li.innerHTML = `
+        <div class="ms-item-info">
+          <strong>${escHtml(m.cliente)}</strong>
+          <span>${escHtml(m.tipos.join(', '))} · ${escHtml(m.contacto)}</span>
+        </div>
+        <button type="button" class="ms-item-btn" data-dl="${i}" title="Descargar esta etiqueta" aria-label="Descargar esta etiqueta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        </button>
+        <button type="button" class="ms-item-btn danger" data-rm="${i}" title="Quitar" aria-label="Quitar muestra">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+        </button>`;
+      listEl.appendChild(li);
+    });
+  }
+
+  listEl.addEventListener('click', e => {
+    const t = (e.target as HTMLElement).closest('button');
+    if (!t) return;
+    const rm = t.getAttribute('data-rm');
+    const dl = t.getAttribute('data-dl');
+    if (rm !== null) { muestras.splice(Number(rm), 1); renderList(); }
+    else if (dl !== null) { openPrintWindow(buildSingleSheet(muestras[Number(dl)], logoSrc())); }
   });
 
-  // Descargar todas en blanco
-  btnDescargar.addEventListener('click', () => {
-    const logoSrc = window.location.origin + '/assets/images/logo-2.png';
-    const blank = blankLabelHTML(logoSrc);
-    openPrintWindow(`<div class="sheet">
-  ${Array(10).fill(`<div class="label">${blank}</div>`).join('\n  ')}
-</div>`);
+  function resetForm() {
+    form.reset();
+    inputOtro.style.display = 'none';
+    inputOtro.value = '';
+    clearInvalid();
+    form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+    (document.getElementById('f-cliente') as HTMLInputElement).focus();
+  }
+
+  /* ── Agregar a la lista ── */
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const m = readForm();
+    if (!m) return;
+    muestras.push(m);
+    renderList();
+    resetForm();
   });
+
+  /* ── Descargar esta etiqueta: solo UNA etiqueta ── */
+  btnDescargarUna.addEventListener('click', () => {
+    const m = readForm();
+    if (!m) return;
+    openPrintWindow(buildSingleSheet(m, logoSrc()));
+  });
+
+  /* ── Descargar solo las etiquetas cargadas (sin rellenar en blanco) ── */
+  btnDescargarCargadas.addEventListener('click', () => {
+    if (muestras.length === 0) return;
+    openPrintWindow(buildLoadedSheets(muestras, logoSrc()));
+  });
+
+  /* ── Descargar +plantilla: muestras cargadas + resto en blanco ── */
+  btnDescargarPlantilla.addEventListener('click', () => {
+    if (muestras.length === 0) return;
+    openPrintWindow(buildSheets(muestras, logoSrc()));
+  });
+
+  /* ── Descargar plantilla en blanco (botón principal) ── */
+  btnPlantilla.addEventListener('click', () => {
+    openPrintWindow(buildSheets([], logoSrc()));
+  });
+
+  renderList();
 });
 </script>
