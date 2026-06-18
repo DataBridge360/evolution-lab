@@ -54,7 +54,7 @@
   <div class="ct-form-wrap">
     <div class="ct-form-inner">
 
-      <form class="ct-form" name="contacto" method="POST" data-netlify="true" novalidate>
+      <form class="ct-form" id="ct-form" name="contacto" novalidate>
         <div class="ct-row">
           <div class="ct-field">
             <label for="nombre">Nombre completo</label>
@@ -306,3 +306,43 @@ a.ct-strip-item:hover { color: var(--navy); }
   .ct-form-footer { flex-direction: column; align-items: flex-start; gap: 16px; }
 }
 </style>
+
+<!-- ░░ ENVÍO POR CORREO (mailto) ░░ -->
+<script>
+  const DESTINO = 'info@evolution-chemical.net';
+  const form = document.getElementById('ct-form') as HTMLFormElement | null;
+  const submitBtn = form?.querySelector('.ct-submit') as HTMLButtonElement | null;
+
+  form?.addEventListener('submit', (e: Event) => {
+    e.preventDefault();
+    if (!form.checkValidity()) { form.reportValidity(); return; }
+
+    const data = new FormData(form);
+    const val = (k: string) => (data.get(k)?.toString() ?? '').trim();
+    const nombre = val('nombre');
+    const email = val('email');
+    const telefono = val('telefono');
+    const asunto = val('asunto');
+    const mensaje = val('mensaje');
+
+    const subject = asunto || `Consulta web de ${nombre}`;
+    const body = [
+      `Nombre: ${nombre}`,
+      `Email: ${email}`,
+      telefono ? `Teléfono: ${telefono}` : null,
+      '',
+      mensaje,
+    ].filter((l): l is string => l !== null).join('\r\n');
+
+    const href = `mailto:${DESTINO}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (submitBtn) {
+      const original = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Abriendo tu correo…';
+      submitBtn.disabled = true;
+      setTimeout(() => { submitBtn.innerHTML = original; submitBtn.disabled = false; }, 4000);
+    }
+
+    window.location.href = href;
+  });
+</script>
